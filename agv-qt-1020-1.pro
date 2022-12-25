@@ -14,55 +14,55 @@ TEMPLATE = app
 
 DESTDIR = $$PWD/bin
 
-SOURCES += main.cpp\
-    communicate.cpp \
-    customClass.cpp \
-    drawdraw.cpp \
-    editdialog.cpp \
-    editwidget.cpp \
-    function.cpp \
-        mainwindow.cpp \
-    device_con.cpp \
-    login2.cpp \
-    firstwindow2.cpp \
-    mythread.cpp \
-    mythread2.cpp \
-    mythread3.cpp \
-    amr_b_dispatch.cpp \
-    amr_d_dispatch.cpp \
-    global_variables.cpp \
-    mythread4.cpp \
-    XStateClient.cpp \
-    XData.cpp \
-    showunitywindowsinqt.cpp
+SOURCES += src/main.cpp\
+    src/communicate.cpp \
+    src/customClass.cpp \
+    src/drawdraw.cpp \
+    src/editdialog.cpp \
+    src/editwidget.cpp \
+    src/function.cpp \
+       src/mainwindow.cpp \
+    src/device_con.cpp \
+    src/login2.cpp \
+    src/firstwindow2.cpp \
+    src/mythread.cpp \
+    src/mythread2.cpp \
+    src/mythread3.cpp \
+    src/amr_b_dispatch.cpp \
+    src/amr_d_dispatch.cpp \
+    src/global_variables.cpp \
+    src/mythread4.cpp \
+    src/XStateClient.cpp \
+    src/XData.cpp \
+    src/showunitywindowsinqt.cpp
 
-HEADERS  += mainwindow.h \
-    car.h \
-    communicate.h \
-    customClass.h \
-    device_con.h \
-    drawdraw.h \
-    editdialog.h \
-    editwidget.h \
-    login2.h \
-    firstwindow2.h \
-    mythread.h \
-    mythread2.h \
-    mythread3.h \
-    amr_b_dispatch.h \
-    amr_d_dispatch.h \
-    global_variables.h \
-    mythread4.h \
-    XData.h \
-    XStateClient.h \
-    showunitywindowsinqt.h
+HEADERS  += inc/mainwindow.h \
+    inc/car.h \
+    inc/communicate.h \
+    inc/customClass.h \
+    inc/device_con.h \
+    inc/drawdraw.h \
+    inc/editdialog.h \
+    inc/editwidget.h \
+    inc/login2.h \
+    inc/firstwindow2.h \
+    inc/mythread.h \
+    inc/mythread2.h \
+    inc/mythread3.h \
+    inc/amr_b_dispatch.h \
+    inc/amr_d_dispatch.h \
+    inc/global_variables.h \
+    inc/mythread4.h \
+    inc/XData.h \
+    inc/XStateClient.h \
+    inc/showunitywindowsinqt.h
 
-FORMS    += mainwindow.ui \
-    device_con.ui \
-    editdialog.ui \
-    editwidget.ui \
-    login2.ui \
-    firstwindow2.ui \
+FORMS    += ui/mainwindow.ui \
+    ui/device_con.ui \
+    ui/editdialog.ui \
+    ui/editwidget.ui \
+    ui/login2.ui \
+    ui/firstwindow2.ui \
 
 //win32:RC_FILE = ICO.rc
 
