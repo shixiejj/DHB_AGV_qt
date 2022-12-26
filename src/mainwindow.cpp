@@ -190,14 +190,14 @@ MainWindow::MainWindow(QWidget *parent) :
      为实现任务管理界面中的核心内部功能-获取数据库中的任务信息之后，
      顺序执行数据库中的任务信息
     */
-   timer4 = new QTimer(this);
-   timer4->start(5000);
-   connect(ui->starttBtn,ui->starttBtn->click(),this,[=](){
-       connect(timer4,SIGNAL(timeout()),this,SLOT(DB_task()));
-   });
-   connect(ui->starttBtn_2,ui->starttBtn_2->click(),this,[=](){
-      timer4->stop();
-   });
+//   timer4 = new QTimer(this);
+//   timer4->start(5000);
+//   connect(ui->starttBtn,ui->starttBtn->click(),this,[=](){
+//       connect(timer4,SIGNAL(timeout()),this,SLOT(DB_task()));
+//   });
+//   connect(ui->starttBtn_2,ui->starttBtn_2->click(),this,[=](){
+//      timer4->stop();
+//   });
 
     /* 线程1-位置刷新
      * 代码tsx01

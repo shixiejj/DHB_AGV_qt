@@ -14,6 +14,8 @@ TEMPLATE = app
 
 DESTDIR = $$PWD/bin
 
+INCLUDEPATH += ./inc
+
 SOURCES += src/main.cpp\
     src/communicate.cpp \
     src/customClass.cpp \
