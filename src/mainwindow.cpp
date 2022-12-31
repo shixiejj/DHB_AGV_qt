@@ -1641,17 +1641,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     //嵌入unity
-    util = new ShowUnityWindowsInQt(this);
-    unity_task = new QThread;
-    util->moveToThread(unity_task);
-    QString titleName("My project");
-    connect(util, &ShowUnityWindowsInQt::unityProgramStarted, this, [&]()
-    {
-        util->setWindowParent((HWND)ui->unity->winId(), titleName);
-    });
-    // start your unity program
-    QString unityExePath(R"(G:\QT\projects\DHBLAB(4files)\DHBLAB\My project.exe)");
-    util->startUnityProgram(unityExePath);
+//    util = new ShowUnityWindowsInQt(this);
+//    unity_task = new QThread;
+//    util->moveToThread(unity_task);
+//    QString titleName("My project");
+//    connect(util, &ShowUnityWindowsInQt::unityProgramStarted, this, [&]()
+//    {
+//        util->setWindowParent((HWND)ui->unity->winId(), titleName);
+//    });
+//    // start your unity program
+//    QString unityExePath(R"(G:\QT\projects\DHBLAB(4files)\DHBLAB\My project.exe)");
+//    util->startUnityProgram(unityExePath);
 
 
 
@@ -1683,15 +1683,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->newPriority->lineEdit()->setAlignment(Qt::AlignCenter);
     ui->lineEdit_221->setAlignment(Qt::AlignCenter);
 
-    ui->subOrder_2->horizontalHeader()->setVisible(true);
-    ui->subOrder_2->setColumnWidth(0,51);
-    ui->subOrder_2->setColumnWidth(1,120);
-    ui->subOrder_2->setColumnWidth(2,120);
-    ui->subOrder_2->setColumnWidth(3,60);
-    ui->subOrder_2->setColumnWidth(4,118);
-    ui->subOrder_2->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");
-    ui->subOrder_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //自动适配表格大小
-    ui->subOrder_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     ui->subOrder_6->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //自动适配表格大小
     ui->subOrder_6->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -1699,15 +1690,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->subOrder_6->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
 
 
-
-    ui->subOrder_2->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
-    ui->subOrder_2->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
-
     //tabWidget相关设置
     ui->tabWidget->removeTab(2);        //隐藏任务编辑栏
 
     ui->tableTest->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    //ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->tableTest->setColumnWidth(0,300);                               //设置第一列宽度
     ui->tableTest->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
@@ -1715,6 +1702,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTest->setAlternatingRowColors(true);
     ui->tableTest->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableTest->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    ui->offerConfirmTable->horizontalHeader()->setVisible(true);
+//    ui->offerConfirmTable->setColumnWidth(0,51);
+//    ui->offerConfirmTable->setColumnWidth(1,120);
+//    ui->offerConfirmTable->setColumnWidth(2,120);
+//    ui->offerConfirmTable->setColumnWidth(3,60);
+    ui->offerConfirmTable->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");
+    ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //行高自动适配表格大小
+    ui->offerConfirmTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
+    ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
 
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
@@ -2760,9 +2758,10 @@ void MainWindow::openTable()
     }
     qryModel=new CustomSqlQueryModel(this);
     qryModel4=new CustomSqlQueryModel(this);
+    qryModel5=new CustomSqlQueryModel(this);
     theSelection=new QItemSelectionModel(qryModel);
 
-    qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test");
+    qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test LIMIT 1,11");
     if (qryModel->lastError().isValid())
     {
         QMessageBox::information(this, "错误", "数据表查询错误,错误信息\n"+qryModel->lastError().text(),
@@ -2770,6 +2769,11 @@ void MainWindow::openTable()
         return;
     }
     qryModel4->setQuery("SELECT offerID, offerState FROM test");
+
+    qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
+    ui->offerNum->setText(QString::number(qryModel5->rowCount()));
+    qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+
 
     qryModel->setHeaderData(0,Qt::Horizontal,"任务ID");
     qryModel->setHeaderData(1,Qt::Horizontal,"任务类型");
@@ -2782,9 +2786,15 @@ void MainWindow::openTable()
     qryModel4->setHeaderData(0,Qt::Horizontal,"任务ID");
     qryModel4->setHeaderData(1,Qt::Horizontal,"任务状态");
 
+    qryModel5->setHeaderData(0,Qt::Horizontal,"任务起点");
+    qryModel5->setHeaderData(1,Qt::Horizontal,"任务终点");
+    qryModel5->setHeaderData(2,Qt::Horizontal,"优先级");
+    qryModel5->setHeaderData(3,Qt::Horizontal,"接收时间");
+
     ui->tableTest->setModel(qryModel);
     ui->tableTest->setSelectionModel(theSelection);
     ui->tableTest_2->setModel(qryModel4);
+    ui->offerConfirmTable->setModel(qryModel5);
 
 }
 
@@ -2800,7 +2810,7 @@ void MainWindow::on_shanchu_clicked()
 
         QString empNo=curRec.value("offerID").toString();//获取员工编号
         QSqlQuery query;
-        query.prepare("delete  from test where offerID = :ID");
+        query.prepare("delete from test where offerID = :ID");
         query.bindValue(":ID",empNo);
 
         if (!query.exec())
@@ -2981,3 +2991,60 @@ void MainWindow::on_debugSwitch_stateChanged(int arg1)
     }
 }
 
+
+//拒绝当前任务
+void MainWindow::on_rejectOffer_clicked()
+{
+    QSqlQuery query;
+    query.prepare("delete from offerConfirm where offerID = (select offerID from offerConfirm limit 0,1)");
+
+    if (!query.exec())
+        QMessageBox::critical(this, "错误", "删除记录出现错误\n"+query.lastError().text(),
+                                 QMessageBox::Ok,QMessageBox::NoButton);
+    else //插入，删除记录后需要重新设置SQL语句查询
+    {
+        qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
+        ui->offerNum->setText(QString::number(qryModel5->rowCount()));
+        qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+    }
+}
+
+void MainWindow::on_acceptOffer_clicked()
+{
+     QSqlQuery query;
+     query.exec("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+     //需要特别注意，刚执行完query.exec()这个函数时得到结果集，query是指向结果集以外的,此处要用next函数
+     query.next();
+     if (!query.isValid()) //是否为有效记录
+     {
+         qDebug()<<"error!";
+         return;
+     }
+     //QSqlRecord  recData = qryModel5->record(0);
+     QSqlRecord  recData = query.record();
+     query.prepare("INSERT INTO test (offerID, offerState, offerProcess, offerSourse, recieveTime, offerKind, offerStart, startHigh, offerEnd, endHigh, offerPriority) "
+                   "VALUES(:offerID, :offerState, :offerProcess, :offerSourse, :recieveTime, :offerKind, :offerStart, :startHigh, :offerEnd, :endHigh, :offerPriority)");
+     //绑定对应的值
+     query.bindValue(":offerID","100");
+     query.bindValue(":offerState","待执行");
+     query.bindValue(":offerProcess", 0);
+     query.bindValue(":offerSourse", "TSX");
+     query.bindValue(":recieveTime", recData.value("recieveTime"));
+     query.bindValue(":offerKind","出库");
+     query.bindValue(":offerStart",recData.value("offerStart"));
+     query.bindValue(":startHigh",0);
+     query.bindValue(":offerEnd",recData.value("offerEnd"));
+     query.bindValue(":endHigh",0);
+     query.bindValue(":offerPriority",recData.value("offerPriority"));
+     if (!query.exec())
+         QMessageBox::critical(this, "错误", "删除记录出现错误\n"+query.lastError().text(),
+                                  QMessageBox::Ok,QMessageBox::NoButton);
+     else //插入，删除记录后需要重新设置SQL语句查询
+     {
+         query.exec("delete from offerConfirm where offerID = (select offerID from offerConfirm limit 0,1)");
+         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
+         ui->offerNum->setText(QString::number(qryModel5->rowCount()));
+         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+     }
+
+}

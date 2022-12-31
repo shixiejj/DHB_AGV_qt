@@ -40,6 +40,7 @@ private:
     CustomSqlQueryModel *qryModel;
     CustomSqlQueryModel *qryModel3;
     CustomSqlQueryModel *qryModel4;
+    CustomSqlQueryModel *qryModel5;
     QSqlQueryModel *qryModel2;
     QItemSelectionModel *theSelection;
     QSqlRecord newRecord;
@@ -168,7 +169,10 @@ private slots:
 
     void on_stopButton_10_clicked();
 
+    void on_rejectOffer_clicked();
 
+    void on_acceptOffer_clicked();
+    
 signals:
     void startConnectSend(unsigned short,QString);
 

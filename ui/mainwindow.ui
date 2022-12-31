@@ -30,7 +30,7 @@
      <string notr="true">background-color:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QGroupBox" name="netCar_1">
@@ -2201,7 +2201,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -3500,7 +3500,7 @@ color: rgb(255, 255, 255);</string>
         <widget class="QLabel" name="offerLeft">
          <property name="geometry">
           <rect>
-           <x>110</x>
+           <x>100</x>
            <y>70</y>
            <width>251</width>
            <height>21</height>
@@ -3530,101 +3530,80 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>    2</string>
+          <string>2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QTableWidget" name="subOrder_2">
+        <widget class="QTableView" name="offerConfirmTable">
          <property name="geometry">
           <rect>
-           <x>120</x>
-           <y>120</y>
-           <width>1191</width>
+           <x>70</x>
+           <y>130</y>
+           <width>1301</width>
            <height>101</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <family>宋体</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::NoContextMenu</enum>
-         </property>
          <property name="styleSheet">
-          <string notr="true">gridline-color: rgb(255, 255, 255);</string>
+          <string notr="true">font: 14pt &quot;宋体&quot; bold;
+color: rgb(255, 255, 255);
+background-color: rgb(0, 85, 127);
+gridline-color: rgb(255, 255, 255);
+border-color: rgb(255, 255, 255);</string>
          </property>
-         <property name="rowCount">
-          <number>1</number>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
          </property>
-         <property name="columnCount">
-          <number>4</number>
+         <property name="textElideMode">
+          <enum>Qt::ElideMiddle</enum>
          </property>
-         <attribute name="horizontalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>
-         <row>
-          <property name="text">
-           <string>1</string>
-          </property>
-         </row>
-         <column>
-          <property name="text">
-           <string>任务起点</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>任务终点</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>搬运量</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>接收时间</string>
-          </property>
-         </column>
         </widget>
-        <widget class="QPushButton" name="pushButton_15">
+        <widget class="QWidget" name="">
          <property name="geometry">
           <rect>
-           <x>780</x>
-           <y>280</y>
-           <width>97</width>
-           <height>29</height>
+           <x>610</x>
+           <y>270</y>
+           <width>271</width>
+           <height>41</height>
           </rect>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(56, 56, 56);
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <property name="spacing">
+           <number>40</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="rejectOffer">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(56, 56, 56);
 color: rgb(200, 200, 200);</string>
-         </property>
-         <property name="text">
-          <string>接收</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_14">
-         <property name="geometry">
-          <rect>
-           <x>630</x>
-           <y>280</y>
-           <width>97</width>
-           <height>29</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(56, 56, 56);
+            </property>
+            <property name="text">
+             <string>拒绝</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="acceptOffer">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(56, 56, 56);
 color: rgb(200, 200, 200);</string>
-         </property>
-         <property name="text">
-          <string>取消</string>
-         </property>
+            </property>
+            <property name="text">
+             <string>接收</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -8973,7 +8952,7 @@ color: rgb(255, 255, 255);</string>
          <string>网络管理</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/01.png</normaloff>
           <normalon>:/res/01_on.png</normalon>:/res/01.png</iconset>
         </property>
@@ -9021,7 +9000,7 @@ color: rgb(255, 255, 255);</string>
          <string>任务管理</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/02.png</normaloff>
           <normalon>:/res/02_on.png</normalon>:/res/02.png</iconset>
         </property>
@@ -9057,7 +9036,7 @@ color: rgb(255, 255, 255);</string>
          <string>调度管理</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/03.png</normaloff>
           <normalon>:/res/03_on.png</normalon>:/res/03.png</iconset>
         </property>
@@ -9093,7 +9072,7 @@ color: rgb(255, 255, 255);</string>
          <string>状态监控</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/04.png</normaloff>
           <normalon>:/res/04_on.png</normalon>:/res/04.png</iconset>
         </property>
@@ -9135,7 +9114,7 @@ color: rgb(255, 255, 255);</string>
          <string>AMR管理</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/05.png</normaloff>
           <normalon>:/res/05_on.png</normalon>:/res/05.png</iconset>
         </property>
@@ -9171,7 +9150,7 @@ color: rgb(255, 255, 255);</string>
          <string>外设面板</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/06.png</normaloff>
           <normalon>:/res/06_on.png</normalon>:/res/06.png</iconset>
         </property>
@@ -9207,7 +9186,7 @@ color: rgb(255, 255, 255);</string>
          <string>电子地图</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/07.png</normaloff>
           <normalon>:/res/07_on.png</normalon>:/res/07.png</iconset>
         </property>
@@ -9249,7 +9228,7 @@ color: rgb(255, 255, 255);</string>
          <string>数据统计</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/08.png</normaloff>
           <normalon>:/res/08_on.png</normalon>:/res/08.png</iconset>
         </property>
@@ -9286,7 +9265,7 @@ color: rgb(255, 255, 255);
          <string>工作日志</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/09.png</normaloff>
           <normalon>:/res/09_on.png</normalon>:/res/09.png</iconset>
         </property>
@@ -9322,7 +9301,7 @@ color: rgb(255, 255, 255);</string>
          <string>用户管理</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/res/10.png</normaloff>
           <normalon>:/res/10_on.png</normalon>:/res/10.png</iconset>
         </property>
@@ -9521,7 +9500,7 @@ color: rgb(72, 189, 207);</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections>
   <connection>
