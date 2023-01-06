@@ -1640,7 +1640,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-    //嵌入unity
+//    //嵌入unity
 //    util = new ShowUnityWindowsInQt(this);
 //    unity_task = new QThread;
 //    util->moveToThread(unity_task);
@@ -1692,6 +1692,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //tabWidget相关设置
     ui->tabWidget->removeTab(2);        //隐藏任务编辑栏
+    ui->TabAMRManage->removeTab(2);
 
     ui->tableTest->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -2520,17 +2521,7 @@ void MainWindow::on_userManage_clicked()
 //}
 
 
-
-
-
-
-//void MainWindow::on_newTask_Button_clicked()
-//{
-    
-//}
-
 //侧边栏按下效果
-
 void MainWindow::on_netManage_toggled(bool checked)
 {
     if(checked)
@@ -2857,7 +2848,7 @@ void MainWindow::task_timeinfo()
 
 
 /******************************************************
- * 测试：打通数据库下发
+ * 测试：打通数据库下发(仙工小车）
  * 一次性下发数据库中多条指令任务，根据任务列表构造json数据内容
  * 此处用指针数组+循环方式进行json内容构造
 ******************************************************/
