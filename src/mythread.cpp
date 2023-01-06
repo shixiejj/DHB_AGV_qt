@@ -11,7 +11,6 @@
 
 MyThread::MyThread(QObject *parent ):
     QThread(parent)
-
 {
      stopped = false;
 }

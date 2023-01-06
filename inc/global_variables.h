@@ -205,6 +205,8 @@ extern double yy3;
 extern double theta3;
 extern int p3;
 
+extern int ui_num ;
+
 
 extern int D2_task_percent ;//4车执行任务进度提示，0-空闲 没有执行任务  1-正在执行任务
 extern int D1_task_percent ;//3车执行任务进度提示，0-空闲 没有执行任务  1-正在执行任务

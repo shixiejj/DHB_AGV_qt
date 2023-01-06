@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset resource="../res.qrc">
     <normaloff>:/res/1.png</normaloff>:/res/1.png</iconset>
   </property>
   <property name="styleSheet">
@@ -54,27 +54,37 @@ QDialog{background-image: url(:/res/back1(1).jpg);}</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;满足多业务需求、集信息化、数字化为一体   满足多业务需求、集信息化、数字化为一体&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QPushButton" name="pushButton_6">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
+     <x>640</x>
+     <y>550</y>
+     <width>97</width>
+     <height>29</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/res/2.png);</string>
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>外设面板</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>540</y>
+     <x>160</x>
+     <y>550</y>
      <width>97</width>
      <height>29</height>
     </rect>
@@ -93,93 +103,17 @@ QDialog{background-image: url(:/res/back1(1).jpg);}</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>日志管理</string>
+    <string>任务管理</string>
    </property>
    <property name="flat">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>540</y>
-     <width>97</width>
-     <height>33</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Microsoft YaHei UI</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>用户管理</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/1.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_9">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/3.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>540</y>
+     <x>400</x>
+     <y>550</y>
      <width>97</width>
      <height>29</height>
     </rect>
@@ -195,33 +129,17 @@ background-color: rgb(110, 159, 215);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>网络管理</string>
+    <string>状态监控</string>
    </property>
    <property name="flat">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/4.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_4">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>540</y>
+     <x>520</x>
+     <y>550</y>
      <width>97</width>
      <height>29</height>
     </rect>
@@ -243,33 +161,18 @@ background-color: rgb(110, 159, 215);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/5.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_5">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>540</y>
+     <x>40</x>
+     <y>550</y>
      <width>97</width>
-     <height>29</height>
+     <height>33</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Microsoft YaHei UI</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -279,117 +182,17 @@ background-color: rgb(110, 159, 215);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>设备监控</string>
+    <string>网络管理</string>
    </property>
    <property name="flat">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/6.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_6">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>540</y>
-     <width>97</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>任务管理</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>480</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/7.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_7">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>540</y>
-     <width>97</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>AMR调度</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>880</x>
-     <y>470</y>
-     <width>80</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/res/8.png);</string>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_8">
    <property name="geometry">
     <rect>
-     <x>870</x>
-     <y>540</y>
+     <x>880</x>
+     <y>550</y>
      <width>97</width>
      <height>29</height>
     </rect>
@@ -405,160 +208,160 @@ background-color: rgb(110, 159, 215);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>地图管理</string>
+    <string>个人中心</string>
    </property>
    <property name="flat">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_10">
+  <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
+     <x>280</x>
+     <y>550</y>
+     <width>97</width>
+     <height>29</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>调度管理</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_11">
+  <widget class="QPushButton" name="pushButton_7">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
+     <x>760</x>
+     <y>550</y>
+     <width>97</width>
+     <height>29</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>电子地图</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_12">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
+     <x>30</x>
+     <y>480</y>
+     <width>951</width>
+     <height>71</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/06.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_7">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/05.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_6">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/04.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_10">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/08.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_5">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/03.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_9">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/07.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/02.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/res/1.png);
+image: url(:/res/01.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_13">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_14">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_15">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_16">
-   <property name="geometry">
-    <rect>
-     <x>870</x>
-     <y>470</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(144, 108, 188);
-background-color: rgb(110, 159, 215);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <zorder>pushButton_16</zorder>
-  <zorder>pushButton_15</zorder>
-  <zorder>pushButton_14</zorder>
-  <zorder>pushButton_13</zorder>
-  <zorder>pushButton_12</zorder>
-  <zorder>pushButton_11</zorder>
-  <zorder>pushButton_10</zorder>
-  <zorder>pushButton_9</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_4</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_5</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>label_6</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>label_7</zorder>
-  <zorder>pushButton_5</zorder>
-  <zorder>label_8</zorder>
-  <zorder>pushButton_6</zorder>
-  <zorder>label_9</zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>label_10</zorder>
-  <zorder>pushButton_8</zorder>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

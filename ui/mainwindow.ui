@@ -30,7 +30,7 @@
      <string notr="true">background-color:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QGroupBox" name="netCar_1">
@@ -118,10 +118,10 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_15">
        <property name="geometry">
         <rect>
-         <x>140</x>
-         <y>15</y>
-         <width>101</width>
-         <height>24</height>
+         <x>120</x>
+         <y>10</y>
+         <width>131</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="text">
@@ -2201,7 +2201,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -2218,7 +2218,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
         </property>
         <property name="font">
          <font>
-          <family>宋体 13</family>
+          <family>宋体 12</family>
           <pointsize>14</pointsize>
           <weight>50</weight>
           <italic>false</italic>
@@ -2744,15 +2744,6 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
                 </active>
                 <inactive>
                  <colorrole role="WindowText">
@@ -2809,15 +2800,6 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
                 </inactive>
                 <disabled>
                  <colorrole role="WindowText">
@@ -2871,15 +2853,6 @@ color: rgb(255, 255, 255);</string>
                     <red>55</red>
                     <green>111</green>
                     <blue>167</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
                    </color>
                   </brush>
                  </colorrole>
@@ -3567,7 +3540,7 @@ border-color: rgb(255, 255, 255);</string>
           <rect>
            <x>610</x>
            <y>270</y>
-           <width>271</width>
+           <width>274</width>
            <height>41</height>
           </rect>
          </property>
@@ -5235,7 +5208,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}</string>
             <x>30</x>
             <y>50</y>
             <width>211</width>
-            <height>22</height>
+            <height>24</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -5290,7 +5263,7 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>30</x>
             <y>90</y>
-            <width>211</width>
+            <width>242</width>
             <height>81</height>
            </rect>
           </property>
@@ -5376,7 +5349,7 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;遥控操作参数设定&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -5442,12 +5415,12 @@ color: rgb(255, 255, 255);</string>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>30</x>
             <y>190</y>
-            <width>201</width>
+            <width>226</width>
             <height>41</height>
            </rect>
           </property>
@@ -5513,7 +5486,7 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>50</x>
             <y>40</y>
-            <width>171</width>
+            <width>174</width>
             <height>31</height>
            </rect>
           </property>
@@ -5560,8 +5533,8 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>30</x>
             <y>120</y>
-            <width>210</width>
-            <height>111</height>
+            <width>254</width>
+            <height>119</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_26">
@@ -5645,7 +5618,7 @@ color: rgb(255, 255, 255);</string>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -5820,13 +5793,13 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;5000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>110</x>
             <y>110</y>
             <width>371</width>
-            <height>22</height>
+            <height>24</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -5913,7 +5886,7 @@ color: rgb(255, 255, 255);</string>
             <x>110</x>
             <y>110</y>
             <width>371</width>
-            <height>22</height>
+            <height>24</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -6026,7 +5999,7 @@ color: rgb(255, 255, 255);</string>
             <x>110</x>
             <y>110</y>
             <width>371</width>
-            <height>22</height>
+            <height>24</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -6139,7 +6112,7 @@ color: rgb(255, 255, 255);</string>
             <x>110</x>
             <y>110</y>
             <width>371</width>
-            <height>22</height>
+            <height>24</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -6202,7 +6175,7 @@ color: rgb(255, 255, 255);</string>
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>560</x>
@@ -9703,7 +9676,7 @@ color: rgb(255, 255, 255);</string>
      <rect>
       <x>190</x>
       <y>25</y>
-      <width>441</width>
+      <width>561</width>
       <height>31</height>
      </rect>
     </property>
@@ -9801,7 +9774,7 @@ color: rgb(72, 189, 207);</string>
      <rect>
       <x>180</x>
       <y>55</y>
-      <width>501</width>
+      <width>621</width>
       <height>21</height>
      </rect>
     </property>

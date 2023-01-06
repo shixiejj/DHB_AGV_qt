@@ -15,6 +15,8 @@ int  k1 = 0 ;
 int  i1 = 0;
 int  jj1 = 0;
 
+int ui_num = 0;
+
 double x2  = -100;
 double yy2  = 0;
 double theta2 = 0  ;

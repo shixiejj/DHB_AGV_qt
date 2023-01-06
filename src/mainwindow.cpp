@@ -146,6 +146,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->stackedWidget->setCurrentIndex(ui_num);
+
     //系统时间更新于label显示
     timer6 = new QTimer(this);
     timer6->start(1000);
@@ -163,6 +165,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //网络连接相关函数
     connect_test();
+
     /*
     本主进程共有三个线程 线程1为实现通信以及四两小车位置更新
                      线程2为实现任务管理界面，以及发布指令相关的功能
@@ -1705,15 +1708,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTest->setSelectionMode(QAbstractItemView::SingleSelection);
 
     ui->offerConfirmTable->horizontalHeader()->setVisible(true);
-//    ui->offerConfirmTable->setColumnWidth(0,51);
-//    ui->offerConfirmTable->setColumnWidth(1,120);
-//    ui->offerConfirmTable->setColumnWidth(2,120);
-//    ui->offerConfirmTable->setColumnWidth(3,60);
     ui->offerConfirmTable->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");
     ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //行高自动适配表格大小
     ui->offerConfirmTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
+
 
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
