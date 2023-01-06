@@ -30,7 +30,7 @@
      <string notr="true">background-color:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QGroupBox" name="netCar_1">
@@ -2218,7 +2218,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
         </property>
         <property name="font">
          <font>
-          <family>宋体 12</family>
+          <family>宋体 13</family>
           <pointsize>14</pointsize>
           <weight>50</weight>
           <italic>false</italic>
@@ -2744,6 +2744,15 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
+                 <colorrole role="PlaceholderText">
+                  <brush brushstyle="NoBrush">
+                   <color alpha="128">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
                 </active>
                 <inactive>
                  <colorrole role="WindowText">
@@ -2800,6 +2809,15 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
+                 <colorrole role="PlaceholderText">
+                  <brush brushstyle="NoBrush">
+                   <color alpha="128">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
                 </inactive>
                 <disabled>
                  <colorrole role="WindowText">
@@ -2853,6 +2871,15 @@ color: rgb(255, 255, 255);</string>
                     <red>55</red>
                     <green>111</green>
                     <blue>167</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="PlaceholderText">
+                  <brush brushstyle="NoBrush">
+                   <color alpha="128">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
                    </color>
                   </brush>
                  </colorrole>
@@ -3586,9 +3613,9 @@ color: rgb(200, 200, 200);</string>
      <widget class="QGroupBox" name="groupBox_35">
       <property name="geometry">
        <rect>
-        <x>1130</x>
-        <y>390</y>
-        <width>471</width>
+        <x>1170</x>
+        <y>480</y>
+        <width>431</width>
         <height>371</height>
        </rect>
       </property>
@@ -3598,7 +3625,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QLabel" name="label_230">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>160</x>
          <y>30</y>
          <width>121</width>
          <height>31</height>
@@ -3616,7 +3643,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QPushButton" name="pushButton_76">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>300</y>
          <width>97</width>
          <height>29</height>
@@ -3637,7 +3664,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QLineEdit" name="lineEdit_168">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>120</y>
          <width>111</width>
          <height>22</height>
@@ -3650,7 +3677,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QLineEdit" name="lineEdit_170">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>160</y>
          <width>111</width>
          <height>22</height>
@@ -3663,7 +3690,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QLabel" name="label_238">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>70</x>
          <y>70</y>
          <width>121</width>
          <height>41</height>
@@ -3676,7 +3703,7 @@ color: rgb(200, 200, 200);</string>
       <widget class="QComboBox" name="comboBox_23">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>80</y>
          <width>111</width>
          <height>21</height>
@@ -3705,7 +3732,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_251">
        <property name="geometry">
         <rect>
-         <x>80</x>
+         <x>60</x>
          <y>110</y>
          <width>161</width>
          <height>41</height>
@@ -3718,7 +3745,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_271">
        <property name="geometry">
         <rect>
-         <x>80</x>
+         <x>60</x>
          <y>150</y>
          <width>161</width>
          <height>41</height>
@@ -3731,7 +3758,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="pushButton_75">
        <property name="geometry">
         <rect>
-         <x>130</x>
+         <x>100</x>
          <y>300</y>
          <width>97</width>
          <height>29</height>
@@ -3752,7 +3779,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QComboBox" name="comboBox_9">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>200</y>
          <width>111</width>
          <height>21</height>
@@ -3786,7 +3813,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_280">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>90</x>
          <y>200</y>
          <width>91</width>
          <height>31</height>
@@ -3799,7 +3826,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_281">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>90</x>
          <y>240</y>
          <width>91</width>
          <height>31</height>
@@ -3812,7 +3839,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QComboBox" name="comboBox_21">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>240</y>
          <width>111</width>
          <height>21</height>
@@ -3842,9 +3869,9 @@ color: rgb(255, 255, 255);</string>
      <widget class="QGroupBox" name="groupBox_36">
       <property name="geometry">
        <rect>
-        <x>1130</x>
-        <y>140</y>
-        <width>471</width>
+        <x>1170</x>
+        <y>200</y>
+        <width>431</width>
         <height>231</height>
        </rect>
       </property>
@@ -3854,7 +3881,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_236">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>170</x>
          <y>20</y>
          <width>111</width>
          <height>31</height>
@@ -3867,7 +3894,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="pushButton_109">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>260</x>
          <y>170</y>
          <width>97</width>
          <height>29</height>
@@ -3888,7 +3915,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="pushButton_110">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>90</x>
          <y>170</y>
          <width>97</width>
          <height>29</height>
@@ -3909,7 +3936,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>70</x>
          <y>70</y>
          <width>321</width>
          <height>71</height>
@@ -3988,9 +4015,9 @@ color: rgb(255, 255, 255);</string>
      <widget class="DRAWmap" name="paintMap2" native="true">
       <property name="geometry">
        <rect>
-        <x>-180</x>
-        <y>-20</y>
-        <width>1311</width>
+        <x>-190</x>
+        <y>70</y>
+        <width>1341</width>
         <height>1001</height>
        </rect>
       </property>
@@ -5179,8 +5206,8 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}</string>
           <rect>
            <x>10</x>
            <y>20</y>
-           <width>261</width>
-           <height>191</height>
+           <width>271</width>
+           <height>201</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -5192,7 +5219,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}</string>
          <widget class="QLabel" name="label_240">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>90</x>
             <y>15</y>
             <width>111</width>
             <height>21</height>
@@ -5261,13 +5288,19 @@ color: rgb(255, 255, 255);</string>
          <widget class="QWidget" name="layoutWidget_9">
           <property name="geometry">
            <rect>
-            <x>30</x>
-            <y>90</y>
+            <x>20</x>
+            <y>100</y>
             <width>242</width>
             <height>81</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_21">
+           <property name="leftMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>15</number>
+           </property>
            <property name="horizontalSpacing">
             <number>30</number>
            </property>
@@ -5326,8 +5359,8 @@ color: rgb(255, 255, 255);</string>
           <rect>
            <x>10</x>
            <y>540</y>
-           <width>261</width>
-           <height>241</height>
+           <width>271</width>
+           <height>251</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -5352,7 +5385,7 @@ color: rgb(255, 255, 255);</string>
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>30</x>
             <y>50</y>
             <width>221</width>
             <height>131</height>
@@ -5428,6 +5461,12 @@ color: rgb(255, 255, 255);</string>
            <property name="spacing">
             <number>30</number>
            </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
            <item>
             <widget class="QPushButton" name="pushButton_91">
              <property name="styleSheet">
@@ -5458,8 +5497,8 @@ color: rgb(255, 255, 255);</string>
           <rect>
            <x>10</x>
            <y>260</y>
-           <width>261</width>
-           <height>241</height>
+           <width>271</width>
+           <height>251</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -5471,7 +5510,7 @@ color: rgb(255, 255, 255);</string>
          <widget class="QLabel" name="label_248">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>90</x>
             <y>10</y>
             <width>131</width>
             <height>31</height>
@@ -5531,7 +5570,7 @@ color: rgb(255, 255, 255);</string>
          <widget class="QWidget" name="layoutWidget_7">
           <property name="geometry">
            <rect>
-            <x>30</x>
+            <x>10</x>
             <y>120</y>
             <width>254</width>
             <height>119</height>
@@ -5539,10 +5578,10 @@ color: rgb(255, 255, 255);</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_26">
            <property name="leftMargin">
-            <number>10</number>
+            <number>15</number>
            </property>
            <property name="rightMargin">
-            <number>10</number>
+            <number>15</number>
            </property>
            <property name="horizontalSpacing">
             <number>40</number>

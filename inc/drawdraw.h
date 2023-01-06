@@ -11,6 +11,7 @@ class DRAWmap : public QWidget
 
 public:
     DRAWmap(QWidget *parent = 0);
+    void GainChange(double scale);
     ~DRAWmap();
 
 protected:
@@ -19,6 +20,7 @@ protected:
 private:
     QPen m_drawPen;
     QPainter* m_painter;
+    double gain;    //不同页面不同比例地图
 };
 
 #endif // DRAWMAP_H

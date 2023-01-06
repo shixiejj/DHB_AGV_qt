@@ -12,6 +12,11 @@ DRAWmap::DRAWmap(QWidget *parent) : QWidget(parent)
     this->setMouseTracking(true);
 }
 
+void DRAWmap::GainChange(double scale)
+{
+    gain = scale;
+}
+
 DRAWmap::~DRAWmap()
 {
     if(m_painter != NULL)
@@ -25,7 +30,7 @@ void DRAWmap::paintEvent(QPaintEvent* event)
 {
     m_painter = new QPainter(this);
     m_painter->translate(220,115);      //偏移坐标系
-    m_painter->scale(0.9,0.9);        //缩放地图
+    m_painter->scale(gain,gain);        //缩放地图
 
     int map_l=1224;
     int map_w=800;

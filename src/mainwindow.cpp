@@ -1727,6 +1727,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->debug_show->setCurrentIndex(1);
 
+    ui->paintMap->GainChange(1);
+    ui->paintMap2->GainChange(0.9);
+    ui->managePaint->GainChange(0.9);
+
 }
 
 
