@@ -1687,12 +1687,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_221->setAlignment(Qt::AlignCenter);
 
 
-    ui->subOrder_6->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //自动适配表格大小
-    ui->subOrder_6->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->subOrder_6->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");
-    ui->subOrder_6->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
-
-
     //tabWidget相关设置
     ui->tabWidget->removeTab(2);        //隐藏任务编辑栏
     ui->TabAMRManage->removeTab(2);
@@ -1714,22 +1708,34 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
 
-
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->tableTest_2->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
 
+    ui->carView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->carView->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
+    ui->carView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
+
     //为状态监控界面的AMR状态表添加电量条
-    ui->subOrder_6->setCellWidget(0, 2, ui->powerLeft_1);
-    ui->subOrder_6->setCellWidget(1, 2, ui->powerLeft_2);
-    ui->subOrder_6->setCellWidget(2, 2, ui->powerLeft_3);
-    ui->subOrder_6->setCellWidget(3, 2, ui->powerLeft_4);
+//    ui->subOrder_6->setCellWidget(0, 2, ui->powerLeft_1);
+//    ui->subOrder_6->setCellWidget(1, 2, ui->powerLeft_2);
+//    ui->subOrder_6->setCellWidget(2, 2, ui->powerLeft_3);
+//    ui->subOrder_6->setCellWidget(3, 2, ui->powerLeft_4);
+
+
+    ui->carView->setIndexWidget(qryModel6->index(0,2),ui->powerLeft_1);
+    ui->carView->setIndexWidget(qryModel6->index(1,2),ui->powerLeft_2);
+    ui->carView->setIndexWidget(qryModel6->index(2,2),ui->powerLeft_3);
+    ui->carView->setIndexWidget(qryModel6->index(3,2),ui->powerLeft_4);
+
 
     ui->debug_show->setCurrentIndex(1);
 
     ui->paintMap->GainChange(1);
     ui->paintMap2->GainChange(0.9);
     ui->managePaint->GainChange(0.9);
+
 
 }
 
@@ -2754,6 +2760,7 @@ void MainWindow::openTable()
     qryModel=new CustomSqlQueryModel(this);
     qryModel4=new CustomSqlQueryModel(this);
     qryModel5=new CustomSqlQueryModel(this);
+    qryModel6=new CustomSqlQueryModel(this);
     theSelection=new QItemSelectionModel(qryModel);
 
     qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test LIMIT 1,11");
@@ -2768,6 +2775,8 @@ void MainWindow::openTable()
     qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
     ui->offerNum->setText(QString::number(qryModel5->rowCount()));
     qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+    qryModel6->setQuery("SELECT carID, carState, carPower FROM carManage");
+
 
 
     qryModel->setHeaderData(0,Qt::Horizontal,"任务ID");
@@ -2786,10 +2795,17 @@ void MainWindow::openTable()
     qryModel5->setHeaderData(2,Qt::Horizontal,"优先级");
     qryModel5->setHeaderData(3,Qt::Horizontal,"接收时间");
 
+    qryModel6->setHeaderData(0,Qt::Horizontal,"AMR");
+    qryModel6->setHeaderData(1,Qt::Horizontal,"状态");
+    qryModel6->setHeaderData(2,Qt::Horizontal,"电量");
+
     ui->tableTest->setModel(qryModel);
     ui->tableTest->setSelectionModel(theSelection);
     ui->tableTest_2->setModel(qryModel4);
+    ui->carView->setModel(qryModel6);
     ui->offerConfirmTable->setModel(qryModel5);
+
+
 
 }
 
@@ -3042,4 +3058,38 @@ void MainWindow::on_acceptOffer_clicked()
          qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
      }
 
+}
+
+void MainWindow::on_maxVelocity_valueChanged(int value)
+{
+    ui->show_maxVelocity->setText(QString::number(value));
+}
+
+void MainWindow::on_maxAcceleration_valueChanged(int value)
+{
+    ui->show_maxAcceleration->setText(QString::number(value));
+}
+
+void MainWindow::on_maxAngleVelocity_valueChanged(int value)
+{
+    ui->show_maxAngleVelocity->setText(QString::number(value));
+}
+
+void MainWindow::on_maxAngleAcceleration_valueChanged(int value)
+{
+    ui->show_maxAngleAcceleration->setText(QString::number(value));
+}
+
+void MainWindow::on_pushButton_108_clicked()
+{
+    amr_d_1.set_motionPar(ui->show_maxVelocity->text().toDouble(), ui->show_maxAngleVelocity->text().toDouble(),
+                          ui->show_maxAcceleration->text().toDouble(), ui->show_maxAngleAcceleration->text().toDouble());
+}
+
+void MainWindow::on_pushButton_80_clicked()
+{
+   ui->maxVelocity->setValue(amr_d_1.max_speed);
+   ui->maxAngleVelocity->setValue(amr_d_1.max_wspeed);
+   ui->maxAcceleration->setValue(amr_d_1.max_acc);
+   ui->maxAngleAcceleration->setValue(amr_d_1.max_wacc);
 }

@@ -30,7 +30,7 @@
      <string notr="true">background-color:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QGroupBox" name="netCar_1">
@@ -4091,7 +4091,7 @@ color: rgb(255, 255, 255);</string>
         <x>1290</x>
         <y>80</y>
         <width>331</width>
-        <height>931</height>
+        <height>971</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -4701,148 +4701,11 @@ color: rgb(255, 255, 255);</string>
        </widget>
       </widget>
       <widget class="QWidget" name="page_2">
-       <widget class="QTableWidget" name="subOrder_6">
-        <property name="geometry">
-         <rect>
-          <x>5</x>
-          <y>410</y>
-          <width>311</width>
-          <height>211</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">gridline-color: rgb(255, 255, 255);
-border-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="rowCount">
-         <number>4</number>
-        </property>
-        <property name="columnCount">
-         <number>3</number>
-        </property>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <column>
-         <property name="text">
-          <string>AMR</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>状态</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>电量</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-        </column>
-        <item row="0" column="1">
-         <property name="text">
-          <string>空闲</string>
-         </property>
-         <property name="textAlignment">
-          <set>AlignCenter</set>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>0</red>
-            <green>173</green>
-            <blue>0</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-        <item row="1" column="1">
-         <property name="text">
-          <string>充电</string>
-         </property>
-         <property name="textAlignment">
-          <set>AlignCenter</set>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>170</green>
-            <blue>0</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-        <item row="2" column="1">
-         <property name="text">
-          <string>忙碌</string>
-         </property>
-         <property name="textAlignment">
-          <set>AlignCenter</set>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>244</red>
-            <green>244</green>
-            <blue>0</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-        <item row="3" column="1">
-         <property name="text">
-          <string>故障</string>
-         </property>
-         <property name="textAlignment">
-          <set>AlignCenter</set>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>203</red>
-            <green>0</green>
-            <blue>0</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-       </widget>
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
-          <x>7</x>
-          <y>660</y>
+          <x>10</x>
+          <y>650</y>
           <width>311</width>
           <height>221</height>
          </rect>
@@ -4918,7 +4781,7 @@ color: rgb(255, 255, 255);</string>
              <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>8</string>
+             <string>4</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -4950,7 +4813,7 @@ color: rgb(255, 255, 255);</string>
              <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>8</string>
+             <string>4</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -4982,7 +4845,7 @@ color: rgb(255, 255, 255);</string>
              <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>2</string>
+             <string>0</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -5096,7 +4959,7 @@ color: rgb(255, 255, 255);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>60</y>
+          <y>80</y>
           <width>301</width>
           <height>321</height>
          </rect>
@@ -5108,6 +4971,25 @@ color: rgb(255, 255, 255);</string>
           <italic>false</italic>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">gridline-color: rgb(255, 255, 255);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+font: bold 11pt ;</string>
+        </property>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+       <widget class="QTableView" name="carView">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>301</width>
+          <height>165</height>
+         </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">gridline-color: rgb(255, 255, 255);
@@ -5787,7 +5669,7 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;最大速度设定&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QSlider" name="horizontalSlider_2">
+         <widget class="QSlider" name="maxVelocity">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -5804,6 +5686,9 @@ color: rgb(255, 255, 255);</string>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::NoTicks</enum>
           </property>
          </widget>
          <widget class="QLabel" name="label_313">
@@ -5853,7 +5738,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_200">
+            <widget class="QLineEdit" name="show_maxVelocity">
              <property name="styleSheet">
               <string notr="true">color: rgb(255, 255, 255);</string>
              </property>
@@ -5900,7 +5785,7 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;最大角速度设定&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QSlider" name="horizontalSlider_4">
+         <widget class="QSlider" name="maxAngleVelocity">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -5940,7 +5825,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_202">
+            <widget class="QLineEdit" name="show_maxAngleVelocity">
              <property name="styleSheet">
               <string notr="true">color: rgb(255, 255, 255);</string>
              </property>
@@ -6013,7 +5898,7 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;最大加速度设定&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QSlider" name="horizontalSlider_5">
+         <widget class="QSlider" name="maxAcceleration">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -6053,7 +5938,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_203">
+            <widget class="QLineEdit" name="show_maxAcceleration">
              <property name="styleSheet">
               <string notr="true">color: rgb(255, 255, 255);</string>
              </property>
@@ -6126,7 +6011,7 @@ color: rgb(255, 255, 255);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;最大角加速度设定&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QSlider" name="horizontalSlider_6">
+         <widget class="QSlider" name="maxAngleAcceleration">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -6156,7 +6041,7 @@ color: rgb(255, 255, 255);</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_18">
            <property name="spacing">
-            <number>30</number>
+            <number>25</number>
            </property>
            <item>
             <widget class="QLabel" name="label_310">
@@ -6166,7 +6051,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_217">
+            <widget class="QLineEdit" name="show_maxAngleAcceleration">
              <property name="styleSheet">
               <string notr="true">color: rgb(255, 255, 255);</string>
              </property>

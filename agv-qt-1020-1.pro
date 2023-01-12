@@ -17,6 +17,7 @@ DESTDIR = $$PWD/bin
 INCLUDEPATH += ./inc
 
 SOURCES += src/main.cpp\
+    src/car.cpp \
     src/communicate.cpp \
     src/customClass.cpp \
     src/drawdraw.cpp \

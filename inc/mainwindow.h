@@ -22,6 +22,7 @@
 
 #include "XStateClient.h"
 #include "showunitywindowsinqt.h"
+#include "car.h"
 
 
 
@@ -41,6 +42,7 @@ private:
     CustomSqlQueryModel *qryModel3;
     CustomSqlQueryModel *qryModel4;
     CustomSqlQueryModel *qryModel5;
+    CustomSqlQueryModel *qryModel6;
     QSqlQueryModel *qryModel2;
     QItemSelectionModel *theSelection;
     QSqlRecord newRecord;
@@ -173,6 +175,18 @@ private slots:
 
     void on_acceptOffer_clicked();
     
+    void on_maxVelocity_valueChanged(int value);
+
+    void on_maxAcceleration_valueChanged(int value);
+
+    void on_maxAngleVelocity_valueChanged(int value);
+
+    void on_maxAngleAcceleration_valueChanged(int value);
+
+    void on_pushButton_108_clicked();
+
+    void on_pushButton_80_clicked();
+
 signals:
     void startConnectSend(unsigned short,QString);
 
@@ -243,6 +257,14 @@ private:
      QTimer *timer4;//接受数据库任务的刷新
      QTimer *timer5;//用于定时查询仙工小车状态
      QTimer *timer6;//用于定时更新系统时间
+
+     //用车类创建测试所用的4辆车对象
+     //TODO:后期可以根据网络管理页面动态管理车类对象
+     car amr_d_1;
+     car amr_d_2;
+     car amr_s_1;
+     car amr_s_2;
+
 
 };
 
