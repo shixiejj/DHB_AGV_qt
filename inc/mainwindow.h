@@ -60,6 +60,7 @@ private:
     void test4_1(int x, int y);
     void test4_2(int x, int y);
     QSqlRecord getRecordData(QSqlQuery quer);
+    void on_tabWidget_tabBarClicked(int index);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -186,6 +187,8 @@ private slots:
     void on_pushButton_108_clicked();
 
     void on_pushButton_80_clicked();
+
+    void on_tabWidget_currentChanged(int index);
 
 signals:
     void startConnectSend(unsigned short,QString);

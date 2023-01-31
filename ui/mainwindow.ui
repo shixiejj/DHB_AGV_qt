@@ -169,7 +169,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string>AMR_W_1</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -347,7 +347,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string>AMR_W_2</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -703,7 +703,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string>AMR_D_2</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -881,7 +881,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -913,7 +913,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1059,7 +1059,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>XianGongCar</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1091,7 +1091,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.120</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1237,7 +1237,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1269,7 +1269,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1415,7 +1415,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1447,7 +1447,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1593,7 +1593,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1625,7 +1625,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1771,7 +1771,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1803,7 +1803,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1949,7 +1949,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1981,7 +1981,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -2127,7 +2127,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>AMR_D_1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -2159,7 +2159,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>192.168.3.2</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -2201,7 +2201,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -2210,15 +2210,15 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
        <widget class="QTableView" name="tableTest">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>50</y>
+          <x>150</x>
+          <y>100</y>
           <width>1291</width>
           <height>715</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>宋体 13</family>
+          <family>宋体 12</family>
           <pointsize>14</pointsize>
           <weight>50</weight>
           <italic>false</italic>
@@ -2246,8 +2246,8 @@ border-color: rgb(255, 255, 255);</string>
        <widget class="QPushButton" name="xiugai">
         <property name="geometry">
          <rect>
-          <x>1440</x>
-          <y>120</y>
+          <x>660</x>
+          <y>40</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -2271,8 +2271,8 @@ background-color: rgb(0, 127, 190);</string>
        <widget class="QPushButton" name="shanchu">
         <property name="geometry">
          <rect>
-          <x>1440</x>
-          <y>60</y>
+          <x>490</x>
+          <y>40</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -2296,8 +2296,8 @@ background-color: rgb(0, 127, 190);</string>
        <widget class="QPushButton" name="starttBtn">
         <property name="geometry">
          <rect>
-          <x>1440</x>
-          <y>180</y>
+          <x>820</x>
+          <y>40</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -2321,8 +2321,8 @@ background-color: rgb(0, 127, 190);</string>
        <widget class="QPushButton" name="starttBtn_2">
         <property name="geometry">
          <rect>
-          <x>1440</x>
-          <y>240</y>
+          <x>980</x>
+          <y>40</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -2342,253 +2342,6 @@ background-color: rgb(0, 127, 190);</string>
         <property name="text">
          <string>终止任务</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="widget_14" native="true">
-        <property name="geometry">
-         <rect>
-          <x>1300</x>
-          <y>270</y>
-          <width>341</width>
-          <height>472</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QWidget" name="widget" native="true">
-           <layout class="QGridLayout" name="gridLayout_7">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_26">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;入库任务1时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="intask11">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLineEdit" name="intask12">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_3" native="true">
-           <layout class="QGridLayout" name="gridLayout_8">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="intask21">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_30">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;入库任务2时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLineEdit" name="intask22">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_6" native="true">
-           <layout class="QGridLayout" name="gridLayout_13">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_88">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;出库任务1时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="outtask11">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLineEdit" name="outtask12">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_7" native="true">
-           <layout class="QGridLayout" name="gridLayout_14">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="outtask21">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_89">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;出库任务2时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLineEdit" name="outtask22">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_8" native="true">
-           <layout class="QGridLayout" name="gridLayout_15">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_90">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;移库任务时间 ：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="yitask1">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLineEdit" name="yitask2">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_9" native="true">
-           <layout class="QGridLayout" name="gridLayout_16">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="outTaskf">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_91">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;出库任务执行时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_10" native="true">
-           <layout class="QGridLayout" name="gridLayout_17">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="outTasks">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_97">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;出库任务执行时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_11" native="true">
-           <layout class="QGridLayout" name="gridLayout_18">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="inTaskf">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_98">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;入库任务执行时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_12" native="true">
-           <layout class="QGridLayout" name="gridLayout_19">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="inTasks">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_99">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;入库任务执行时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_13" native="true">
-           <layout class="QGridLayout" name="gridLayout_20">
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="yiTask">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_100">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;移库任务执行时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
@@ -2744,15 +2497,6 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
                 </active>
                 <inactive>
                  <colorrole role="WindowText">
@@ -2809,15 +2553,6 @@ color: rgb(255, 255, 255);</string>
                    </color>
                   </brush>
                  </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
                 </inactive>
                 <disabled>
                  <colorrole role="WindowText">
@@ -2871,15 +2606,6 @@ color: rgb(255, 255, 255);</string>
                     <red>55</red>
                     <green>111</green>
                     <blue>167</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="PlaceholderText">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="128">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
                    </color>
                   </brush>
                  </colorrole>
@@ -3608,6 +3334,35 @@ color: rgb(200, 200, 200);</string>
        </widget>
       </widget>
      </widget>
+     <widget class="QPushButton" name="Exit_2">
+      <property name="geometry">
+       <rect>
+        <x>1380</x>
+        <y>30</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>宋体</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border-color: rgb(255, 255, 255);
+color: rgb(72, 189, 207);</string>
+      </property>
+      <property name="text">
+       <string> 切换登录</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_7">
      <widget class="QGroupBox" name="groupBox_35">
@@ -4043,6 +3798,33 @@ color: rgb(255, 255, 255);</string>
           <height>980</height>
          </rect>
         </property>
+        <widget class="QCheckBox" name="mapSwitch">
+         <property name="geometry">
+          <rect>
+           <x>1330</x>
+           <y>40</y>
+           <width>121</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>3D视图</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="d3">
@@ -4058,39 +3840,12 @@ color: rgb(255, 255, 255);</string>
        </widget>
       </widget>
      </widget>
-     <widget class="QCheckBox" name="mapSwitch">
-      <property name="geometry">
-       <rect>
-        <x>1110</x>
-        <y>80</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>3D视图</string>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>18</width>
-        <height>18</height>
-       </size>
-      </property>
-     </widget>
      <widget class="QStackedWidget" name="debug_show">
       <property name="geometry">
        <rect>
         <x>1290</x>
         <y>80</y>
-        <width>331</width>
+        <width>351</width>
         <height>971</height>
        </rect>
       </property>
@@ -5026,8 +4781,9 @@ font: bold 11pt ;</string>
      </widget>
      <zorder>debug_show</zorder>
      <zorder>mapChange</zorder>
-     <zorder>mapSwitch</zorder>
      <zorder>debugSwitch</zorder>
+     <zorder>label_4</zorder>
+     <zorder>label_10</zorder>
     </widget>
     <widget class="QWidget" name="page_6">
      <widget class="QTabWidget" name="TabAMRManage">
@@ -5172,7 +4928,7 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>20</x>
             <y>100</y>
-            <width>242</width>
+            <width>270</width>
             <height>81</height>
            </rect>
           </property>
@@ -5335,7 +5091,7 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>30</x>
             <y>190</y>
-            <width>226</width>
+            <width>244</width>
             <height>41</height>
            </rect>
           </property>
@@ -5454,7 +5210,7 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>10</x>
             <y>120</y>
-            <width>254</width>
+            <width>264</width>
             <height>119</height>
            </rect>
           </property>
@@ -9594,30 +9350,14 @@ color: rgb(255, 255, 255);</string>
       <string>2022年11月20日</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>25</y>
-      <width>561</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>21</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(72, 189, 207);</string>
-    </property>
-    <property name="text">
-     <string>中国电子科技集团公司第二研究所</string>
-    </property>
+    <zorder>layoutWidget</zorder>
+    <zorder>Time</zorder>
+    <zorder>Date</zorder>
+    <zorder>widget</zorder>
+    <zorder>widget</zorder>
+    <zorder>widget</zorder>
+    <zorder>widget</zorder>
+    <zorder>widget</zorder>
    </widget>
    <widget class="QPushButton" name="Exit">
     <property name="geometry">
@@ -9642,62 +9382,17 @@ border-color: rgb(255, 255, 255);
 color: rgb(72, 189, 207);</string>
     </property>
     <property name="text">
-     <string>退出系统</string>
+     <string>退出登录</string>
     </property>
     <property name="flat">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>1650</x>
-      <y>30</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:transparent;
-border-color: rgb(255, 255, 255);
-color: rgb(72, 189, 207);</string>
-    </property>
-    <property name="text">
-     <string>个人信息</string>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>29</x>
-      <y>10</y>
-      <width>151</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/res/logo.png);</string>
-    </property>
-    <property name="text">
-     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>55</y>
+      <x>40</x>
+      <y>60</y>
       <width>621</width>
       <height>21</height>
      </rect>
@@ -9714,6 +9409,51 @@ color: rgb(72, 189, 207);</string>
      <string>THE 2ND RESEARCH INSTITUTE OF CHINA ELECTRONICS TECHNOLOGY GROUP CORPORATION</string>
     </property>
    </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>601</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_14">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="styleSheet">
+        <string notr="true">image: url(:/res/logo.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <family>宋体</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(72, 189, 207);</string>
+       </property>
+       <property name="text">
+        <string>中国电子科技集团公司第二研究所</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>stackedWidget</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>Exit</zorder>
+   <zorder>label_10</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

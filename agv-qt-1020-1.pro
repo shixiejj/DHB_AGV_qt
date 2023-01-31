@@ -27,7 +27,6 @@ SOURCES += src/main.cpp\
        src/mainwindow.cpp \
     src/device_con.cpp \
     src/login2.cpp \
-    src/firstwindow2.cpp \
     src/mythread.cpp \
     src/mythread2.cpp \
     src/mythread3.cpp \
@@ -48,7 +47,6 @@ HEADERS  += inc/mainwindow.h \
     inc/editdialog.h \
     inc/editwidget.h \
     inc/login2.h \
-    inc/firstwindow2.h \
     inc/mythread.h \
     inc/mythread2.h \
     inc/mythread3.h \
@@ -65,7 +63,6 @@ FORMS    += ui/mainwindow.ui \
     ui/editdialog.ui \
     ui/editwidget.ui \
     ui/login2.ui \
-    ui/firstwindow2.ui \
 
 //win32:RC_FILE = ICO.rc
 

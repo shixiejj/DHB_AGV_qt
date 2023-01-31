@@ -38,6 +38,10 @@ void DRAWmap::paintEvent(QPaintEvent* event)
     //给对应节点做标记
      QPen pend(QColor(255,255,255));
      m_painter->setPen(pend);
+
+     m_painter->drawText(QRect(45,map_w-780,120,100),"充电位");
+     m_painter->drawText(QRect(600,map_w-715,120,100),"充电位");
+
      m_painter->drawText(QRect(50,map_w-750,120,20),"u1");
      m_painter->drawText(QRect(50,map_w-494,120,20),"t1");
      m_painter->drawText(QRect(50,map_w-388,120,20),"a1");
@@ -78,6 +82,17 @@ void DRAWmap::paintEvent(QPaintEvent* event)
      m_painter->drawText(QRect(470,map_w-132,120,20),"s3");
      m_painter->drawText(QRect(603,map_w-132,120,20),"s4");
 
+     QFont font2;//
+     font2.setFamily("Times New Roman");
+     font2.setPointSize(8);
+     font2.setBold(false);
+     m_painter->setFont(font2);
+     m_painter->drawText(QRect(105,map_w-500,120,20),"工作台1");
+     m_painter->drawText(QRect(734,map_w-500,120,20),"工作台2");
+     m_painter->drawText(QRect(526,map_w-311,120,20),"接驳台1");
+     m_painter->drawText(QRect(526,map_w-139,120,20),"接驳台2");
+
+
      //绘制地图上实物
      pend.setWidth(1);
 //     m_painter->setBrush(Qt::NoBrush);
@@ -99,31 +114,51 @@ void DRAWmap::paintEvent(QPaintEvent* event)
 
      m_painter->drawRect(QRect(0,map_w-282,195,282));
 
-     m_painter->drawText(QRect(85,map_w-39,100,48),"参观区");
-     m_painter->drawRect(QRect(95,map_w-272,80,48));
-     m_painter->drawText(QRect(95,map_w-272,80,48),"服务器");
-     m_painter->drawRect(QRect(115,map_w-214,60,120));
+
+     //货架
+     m_painter->drawRect(QRect(688,map_w-355,135,105));
+     m_painter->drawRect(QRect(953,map_w-355,135,105));
+     m_painter->drawRect(QRect(688,map_w-166,135,50));
+     m_painter->drawRect(QRect(953,map_w-166,135,50));
 
      m_painter->setBrush(Qt::BDiagPattern);
+
      //货架1
-     m_painter->drawRect(QRect(688,map_w-355,135,100));
+     m_painter->drawRect(QRect(694,map_w-355,38,50));
+     m_painter->drawRect(QRect(737,map_w-355,38,50));
+     m_painter->drawRect(QRect(780,map_w-355,38,50));
+     m_painter->drawRect(QRect(694,map_w-300,38,50));
+     m_painter->drawRect(QRect(737,map_w-300,38,50));
+     m_painter->drawRect(QRect(780,map_w-300,38,50));
+
 
      //货架2
-     m_painter->drawRect(QRect(953,map_w-355,135,100));
+     m_painter->drawRect(QRect(959,map_w-355,38,50));
+     m_painter->drawRect(QRect(1002,map_w-355,38,50));
+     m_painter->drawRect(QRect(1045,map_w-355,38,50));
+     m_painter->drawRect(QRect(959,map_w-300,38,50));
+     m_painter->drawRect(QRect(1002,map_w-300,38,50));
+     m_painter->drawRect(QRect(1045,map_w-300,38,50));
 
      //货架3
-     m_painter->drawRect(QRect(688,map_w-166,135,52));
+     m_painter->drawRect(QRect(694,map_w-166,38,50));
+     m_painter->drawRect(QRect(737,map_w-166,38,50));
+     m_painter->drawRect(QRect(780,map_w-166,38,50));
+
 
      //货架4
-     m_painter->drawRect(QRect(953,map_w-166,135,52));
+     m_painter->drawRect(QRect(959,map_w-166,38,50));
+     m_painter->drawRect(QRect(1002,map_w-166,38,50));
+     m_painter->drawRect(QRect(1045,map_w-166,38,50));
 
      QFont font;
-     font.setFamily("Microsoft YaHei");
+     font.setFamily("Times New Roman");
      font.setPointSize(20);
      font.setBold(false);
      m_painter->setFont(font);
-     m_painter->drawText(QRect(277,map_w-632,120,100),"设备1");
-     m_painter->drawText(QRect(925,map_w-632,120,100),"设备2");
+     m_painter->drawText(QRect(277,map_w-632,140,100),"设备台1");
+     m_painter->drawText(QRect(915,map_w-632,140,100),"设备台2");
+     m_painter->drawText(QRect(45,map_w-150,200,48),"参观区");
 
 
     QPen pen1(QColor(100,200,200));
@@ -201,15 +236,6 @@ void DRAWmap::paintEvent(QPaintEvent* event)
      m_painter->drawLine(QPoint((p_a1_x+p_b1_x)/2,(p_a1_y+p_b1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
      m_painter->drawLine(QPoint((p_c1_x+p_d1_x)/2,(p_c1_y+p_d1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
 
-
-//     QBrush brush1;
-//     m_painter->setBrush(Qt::Dense3Pattern);
-//     m_painter->setPen(Qt::black);
-//     m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_b1_x,p_b1_y));
-//     m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_d1_x,p_d1_y));
-//     m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_b1_x,p_b1_y));
-//     m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_d1_x,p_d1_y));
-
      QBrush brush;
 
      if(p1 == 0)
@@ -257,17 +283,6 @@ void DRAWmap::paintEvent(QPaintEvent* event)
       m_painter->drawLine(QPoint((p_a2_x+p_b2_x)/2,(p_a2_y+p_b2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
       m_painter->drawLine(QPoint((p_c2_x+p_d2_x)/2,(p_c2_y+p_d2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
 
-
-//      QBrush brush2;
-//      m_painter->setBrush(Qt::Dense3Pattern);
-//      m_painter->setPen(Qt::black);
-//      m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_b2_x,p_b2_y));
-//      m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_d2_x,p_d2_y));
-//      m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_b2_x,p_b2_y));
-//      m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_d2_x,p_d2_y));
-
-
-
       QBrush brush3;
 
 
@@ -311,17 +326,6 @@ void DRAWmap::paintEvent(QPaintEvent* event)
        m_painter->setPen(line3);
        m_painter->drawLine(QPoint((p_a3_x+p_b3_x)/2,(p_a3_y+p_b3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
        m_painter->drawLine(QPoint((p_c3_x+p_d3_x)/2,(p_c3_y+p_d3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
-
-
-//       QBrush brush5;
-//       m_painter->setBrush(Qt::Dense3Pattern);
-//       m_painter->setPen(Qt::black);
-//       m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_b3_x,p_b3_y));
-//       m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_d3_x,p_d3_y));
-//       m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_b3_x,p_b3_y));
-//       m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_d3_x,p_d3_y));
-
-
 
        QBrush brush6;
 
@@ -367,17 +371,6 @@ void DRAWmap::paintEvent(QPaintEvent* event)
         m_painter->drawLine(QPoint((p_a4_x+p_b4_x)/2,(p_a4_y+p_b4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
         m_painter->drawLine(QPoint((p_c4_x+p_d4_x)/2,(p_c4_y+p_d4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
 
-
-//        QBrush brush9;
-//        m_painter->setBrush(Qt::Dense3Pattern);
-//        m_painter->setPen(Qt::black);
-//        m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_b4_x,p_b4_y));
-//        m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_d4_x,p_d4_y));
-//        m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_b4_x,p_b4_y));
-//        m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_d4_x,p_d4_y));
-
-
-
         QBrush brush10;
 
 
@@ -392,6 +385,31 @@ void DRAWmap::paintEvent(QPaintEvent* event)
         m_painter->setPen(Qt::green);
         }
         m_painter->drawEllipse(QPoint(x4,yy4),15,15);
+
+        QFont font3;//
+        font3.setFamily("宋体");
+        font3.setPointSize(8);
+        font3.setBold(false);
+        m_painter->setFont(font3);
+        m_painter->setBrush(Qt::red);
+        m_painter->setPen(Qt::darkRed);
+        m_painter->drawEllipse(QPoint(105,map_w-750),8,8);
+        m_painter->drawText(QRect(115,map_w-756,120,20),"故障");
+        m_painter->setBrush(Qt::green);
+        m_painter->setPen(Qt::darkGreen);
+        m_painter->drawEllipse(QPoint(645,map_w-686),8,8);
+        m_painter->drawText(QRect(655,map_w-692,120,20),"空闲");
+        m_painter->drawEllipse(QPoint(531,map_w-170),8,8);
+        m_painter->drawText(QRect(541,map_w-176,120,20),"空闲");
+        m_painter->drawEllipse(QPoint(739,map_w-530),8,8);
+        m_painter->drawText(QRect(750,map_w-536,120,20),"空闲");
+
+        m_painter->setBrush(Qt::yellow);
+        m_painter->setPen(Qt::darkYellow);
+        m_painter->drawEllipse(QPoint(531,map_w-340),8,8);
+        m_painter->drawText(QRect(541,map_w-346,120,20),"忙碌");
+        m_painter->drawEllipse(QPoint(110,map_w-530),8,8);
+        m_painter->drawText(QRect(120,map_w-536,120,20),"忙碌");
 
         update();
 

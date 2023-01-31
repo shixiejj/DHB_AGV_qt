@@ -146,7 +146,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->stackedWidget->setCurrentIndex(ui_num);
+    ui->stackedWidget->setCurrentIndex(3);
 
     //系统时间更新于label显示
     timer6 = new QTimer(this);
@@ -1307,7 +1307,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
        double ssse = D_Dispatch_function(con_delay);
        qDebug()<<"出库任务中料箱式小车任务规划时间： "<<ssse;
-       ui->outtask21->setText(QString("%1ms").arg(ssse));//
+
 
                 int D1_size = 0;
                 int D2_size = 0;
@@ -1393,7 +1393,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 sc_wait_task_02 = 0;
                double ssse = D_Dispatch_function(con_delay);//先运行一遍李伟编写的调度函数程序，获取字符串命令
                qDebug()<<"出库任务中料箱式小车规划时间： "<<ssse;
-               ui->outtask22->setText(QString("%1ms").arg(ssse));//显示小车坐标信息
+
 
                 int D1_size = 0;
                 int D2_size = 0;
@@ -1479,7 +1479,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
                 double ssss = b_Dispatch_function(con_delay);
                 qDebug()<<"入库任务配送式规划时间： "<<ssss;
-                ui->intask21->setText(QString("%1ms").arg(ssss));//显示小车坐标信息
 
                 int B1_size = 0;
                 int B2_size = 0;
@@ -1566,7 +1565,6 @@ MainWindow::MainWindow(QWidget *parent) :
                 sc_wait_task_03 = 0;
                int ssss = b_Dispatch_function(con_delay);
                qDebug()<<"入库任务配送式规划时间： "<<ssss;
-               ui->intask22->setText(QString("%1").arg(ssss));//显示小车坐标信息
 
                 int B1_size = 0;
                 int B2_size = 0;
@@ -1708,27 +1706,23 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
 
-    ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableTest_2->setColumnWidth(0,180);
+    ui->tableTest_2->setColumnWidth(1,95);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->tableTest_2->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
+
 
     ui->carView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->carView->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->carView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
 
-    //为状态监控界面的AMR状态表添加电量条
-//    ui->subOrder_6->setCellWidget(0, 2, ui->powerLeft_1);
-//    ui->subOrder_6->setCellWidget(1, 2, ui->powerLeft_2);
-//    ui->subOrder_6->setCellWidget(2, 2, ui->powerLeft_3);
-//    ui->subOrder_6->setCellWidget(3, 2, ui->powerLeft_4);
-
 
     ui->carView->setIndexWidget(qryModel6->index(0,2),ui->powerLeft_1);
     ui->carView->setIndexWidget(qryModel6->index(1,2),ui->powerLeft_2);
     ui->carView->setIndexWidget(qryModel6->index(2,2),ui->powerLeft_3);
     ui->carView->setIndexWidget(qryModel6->index(3,2),ui->powerLeft_4);
-
 
     ui->debug_show->setCurrentIndex(1);
 
@@ -1748,7 +1742,10 @@ MainWindow::~MainWindow()
     send->deleteLater();
     send_task->deleteLater();
 }
-
+void MainWindow::on_tabWidget_tabBarClicked(int index)
+{
+    qDebug()<<"按下了按钮"<<index;
+}
 void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int QgePointX,int QgePointY)
 {
     Task = task_info;
@@ -1868,7 +1865,6 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
        // 4-发送第一串代码，提取每一段代码的最后一个字符用于下一步终点判断，
         if(AMR_B1_size == 3)
             {
-            ui->outtask11->setText(QString("%1ms").arg(ssss));
 
                 //不是长久之计
                 b1_deliver_x = B_Deliver_x;
@@ -1908,7 +1904,6 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
             }
         else if(AMR_B2_size == 3)
             {
-              ui->outtask12->setText(QString("%1ms").arg(ssss));
                 b2_deliver_x = B_Deliver_x;
                 b2_deliver_y = B_Deliver_y;
                 b2_destination_x = Deliver_x;
@@ -1981,8 +1976,6 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
          // 4-发送第一串代码，提取每一段代码的最后一个字符用于下一步终点判断，
         if(AMR_D2_size == 3)
         {
-            ui->intask21->setText(QString("%1ms").arg(ssse));//显示小车坐标信息
-
             d2_deliver_x = D_Deliver_x;
             d2_deliver_y = D_Deliver_y;
             d2_destination_x = Deliver_x;
@@ -2017,8 +2010,6 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
         // 4-发送第一串代码，提取每一段代码的最后一个字符用于下一步终点判断，
         else if(AMR_D1_size == 3)
         {
-            ui->intask22->setText(QString("%1ms").arg(ssse));//显示小车坐标信息
-
             d1_deliver_x = D_Deliver_x;
             d1_deliver_y = D_Deliver_y;
             d1_destination_x = Deliver_x;
@@ -3092,4 +3083,23 @@ void MainWindow::on_pushButton_80_clicked()
    ui->maxAngleVelocity->setValue(amr_d_1.max_wspeed);
    ui->maxAcceleration->setValue(amr_d_1.max_acc);
    ui->maxAngleAcceleration->setValue(amr_d_1.max_wacc);
+}
+
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    if(index == 0)
+    {
+
+        qDebug()<<"选中了0";
+    }
+    if(index == 1)
+    {
+      //ui->tabWidget->setTabIcon(1,"");
+      qDebug()<<"选中了1";
+    }
+    if(index == 2)
+    {
+        qDebug()<<"选中了2";
+    }
 }

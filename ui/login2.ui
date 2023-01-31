@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>519</height>
+    <height>528</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset resource="../res.qrc">
     <normaloff>:/res/1.png</normaloff>:/res/1.png</iconset>
   </property>
   <property name="styleSheet">
@@ -99,6 +99,9 @@ background-color: rgb(109, 192, 232);</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="text">
+    <string>1111</string>
+   </property>
   </widget>
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
@@ -123,7 +126,7 @@ background-color: rgb(109, 192, 232);</string>
    </item>
    <item>
     <property name="text">
-     <string>参观</string>
+     <string>管理员</string>
     </property>
    </item>
   </widget>
@@ -147,7 +150,7 @@ background-color: rgb(109, 192, 232);</string>
     <string notr="true">background-color: rgb(109, 192, 232);</string>
    </property>
    <property name="text">
-    <string>重置</string>
+    <string>忘记密码</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_user">
@@ -166,10 +169,13 @@ background-color: rgb(109, 192, 232);</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="text">
+    <string>20000001</string>
+   </property>
   </widget>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>
