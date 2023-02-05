@@ -8,13 +8,14 @@
 #include <QSqlQuery>
 #include <QDebug>
 
+bool temp::optEnable = false;
+
  login2::login2(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::login2)
 {
     ui->setupUi(this);
     this->setWindowTitle("登录界面");
-
 
 
 //    //新建数据库
@@ -58,11 +59,23 @@ login2::~login2()
 }
 void login2::on_pushButton_clicked()
 {
+      if (ui->lineEdit_user->text().trimmed() == tr("20000001")
+              && ui->lineEdit_passward->text() == tr("1111"))
+      {
+          temp::optEnable = true;
+//        accept();
 
        m = new MainWindow;
        m->show();
        this->hide();
+      }
 
-      // QMessageBox::information(this,"提示","用户名或密码输入错误");
+      else
+      {
+          QMessageBox::warning(this,"提示","用户名或密码输入错误");
+//         QMessageBox message(QMessageBox::warning("提示", " <font size = '10' color = 'white' > 用户名或密码输入错误</font>", QMessageBox::Yes | QMessageBox::No, NULL );
+//         message.exec();
+
+      }
 
 }

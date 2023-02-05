@@ -11,21 +11,30 @@
 #include "mythread2.h"
 #include "mythread3.h"
 #include "mythread4.h"
+#include <QTableWidget>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QSqlDatabase>
+#include <QChartView>
+#include <QtCharts>
+#include <QChart>
+#include "ui_mainwindow.h"
 
 //sql实现表刷新更改
 #include <QtSql>
 #include <QDataWidgetMapper>
 //重定义模型实现表格居中
 #include "customClass.h"
-
 #include "XStateClient.h"
 #include "showunitywindowsinqt.h"
 #include "car.h"
 
+QT_CHARTS_BEGIN_NAMESPACE
+class QChartView;
+class QChart;
+QT_CHARTS_END_NAMESPACE
 
-
+QT_CHARTS_USE_NAMESPACE
 
 
 namespace Ui {
@@ -46,6 +55,16 @@ private:
     QSqlQueryModel *qryModel2;
     QItemSelectionModel *theSelection;
     QSqlRecord newRecord;
+
+    QValueAxis *m_axisX;
+    QValueAxis *m_axisY;
+    QLineSeries *m_lineSeries;
+    QPieSeries *series2;
+    QChart *m_chart;
+    QChart *m_chart2;
+    QChart *chart1;
+    QChartView *chartView2;
+
     ShowUnityWindowsInQt* util;
 
     void updateRecord(int recNo); //更新记录
@@ -62,14 +81,35 @@ private:
     QSqlRecord getRecordData(QSqlQuery quer);
     void on_tabWidget_tabBarClicked(int index);
 
+signals:
+    void  outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+    void  SendDeleteUserInfo(QString userName,QString userPassword);  //发送删除信号
+    void  SendModifyUserInfo(QString userName,QString userPassword);   //发送修改信号，带2个参数
+    void  SendModifyUserInfo(QString userName,QString userPassword,int permission);//发送修改信号，带3个参数
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void setStatusLed(QLabel* label, int color);
+    void DisplayUserInfo(QList<QString> userName,QList<QString> userPassword);
+    void DisplayUserInfo(QList<QString> userName,QList<QString> userPassword,QList<int> permission);
+    void InitTalbeWidget();
+    void deleteButtons();
+    void displayBtnVec();
+    void showTableData();
 
     device_con *deviceqt;
+    QChart * createBarChart() const;
 
     //void paintEvent(QPaintEvent *);
+
+public slots:
+    void on_BtnDel_clicked();
+    void on_BtnUpdate_clicked();
+    void close();
+    void slotBtnClear();
+    void slotBtnStartAndStop();
+    void slotTimeout();
 
 private slots:
 
@@ -122,7 +162,6 @@ private slots:
     //void slotTime();//表格刷新函数
 
 
-
     //void on_newTask_Button_clicked();
     
     void on_netManage_toggled(bool checked);
@@ -153,6 +192,26 @@ private slots:
     void on_xiugai_clicked();
 
     void on_tableTest_doubleClicked(const QModelIndex &index);
+
+    //log+user
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pbt_5_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_11_clicked();
+
+//    void on_pushButton_18_clicked();
+
+//    void on_pushButton_19_clicked();
+
+    void on_pushButton_20_clicked();
 
     void on_newOk_clicked();
 
@@ -202,6 +261,8 @@ signals:
     void writeTcpData(quint16, const QByteArray&, quint16);
 
 private:
+
+    int pointCount = 0;
     double tro_num = 1;//小车编号
     double tro_net = 0;//小车网络
     double tro_ele = 9;//小车电压
@@ -210,6 +271,7 @@ private:
     double ay1  = 0;
     double atheta1 = 0 ;
     int ap1  = 0;//小车取货，送货，回城状态
+     const int AXIS_MAX_X = 10, AXIS_MAX_Y = 10;
 
     //小车2
     double tro_num2 = 1;//小车编号
@@ -253,7 +315,6 @@ private:
     NetThread* send;
     RecvThread recv_task;
 
-
      QTimer *timer1;//定时器
      QTimer *timer2;//代码定时器
      QTimer *timer3;//数据刷新
@@ -261,12 +322,37 @@ private:
      QTimer *timer5;//用于定时查询仙工小车状态
      QTimer *timer6;//用于定时更新系统时间
 
+     QTimer *m_timer;
+     QTimer *timer11;
+     QTimer *timer12;
+     QTimer *timer13;
+     QTimer *timer14;
+     QTimer *timer21;
+     QTimer *timer22;
+
+     QSqlDatabase db;
+
+     QString log_carnum;
+     QString log_tasktype;
+     QString log_start;
+     QString log_end;
+
+     QString log_in;
+     QString log_move;
+     QString log_out;
+     QString log_complete;
+
      //用车类创建测试所用的4辆车对象
      //TODO:后期可以根据网络管理页面动态管理车类对象
      car amr_d_1;
      car amr_d_2;
      car amr_s_1;
      car amr_s_2;
+
+     QTableWidget* table_user;
+     QVector<QTableWidgetItem*> listTem;
+     QFont nullFont;
+     QVector<QPushButton*> btnVec;
 
 
 };

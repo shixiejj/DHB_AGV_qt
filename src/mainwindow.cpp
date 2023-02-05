@@ -9,6 +9,8 @@
 #include <QPainter>
 #include <QTableWidget>
 #include <QDebug>
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QStringList>
 #include <QThread>
 #include <QPushButton>
@@ -23,7 +25,21 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <math.h>
+#include "XStateClient.h"
+#include <QChartView>
+#include <QtCharts>
+#include <QChart>
+#include <QValueAxis>
+#include <QLineSeries>
+#include "QChartView"
+#include <QPieSeries>
+#include <QSplineSeries>
+#include <QtCharts>
+#include "login2.h"
+
 using namespace std;
+
+extern bool vilidatePwd(QString str);
 
 //表格刷新数据部分
 int etask_ip[5]   = {0,0,0,0,0};
@@ -146,7 +162,200 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //未登录不能修改 日志 & 用户管理 & AMR参数
+    ui->workData->setEnabled(temp::optEnable);
+    ui->userManage->setEnabled(temp::optEnable);
+     ui->TabAMRManage->setEnabled(temp::optEnable);
+
+    QString path = QFileDialog::getOpenFileName(
+                                                this,
+                                                tr("打开报警日志"),
+                                                "G:\\DHBLAB research\\QTcode\\build-11_log-Desktop_Qt_5_9_5_MinGW_32bit-Debug",
+                                                tr("md(*.md);;All files(*.*)"));
+    QFile file0(path);
+    //            QFile file0("G:\\DHBLAB research\\QTcode\\build-11_log-Desktop_Qt_5_9_5_MinGW_32bit-Debug\\2022.12.04.md");
+    file0.open(QIODevice::ReadOnly);
+    QString string1;
+    string1 = file0.readAll();
+    QString str(string1);
+    ui->textEdit->setText(str);
+
+//    QFont front = QFont("宋体",12);
+    QFont front1 = QFont("宋体",12);
+    QFont front2 = QFont("宋体",8);
+    ui->textEdit->setFont(front1);
+    ui->textEdit_2->setFont(front1);
+    ui->tableWidget_3->setFont(front1);
+
+    ui->pushButton_2->setFont(front1);
+    ui->pushButton_4->setFont(front1);
+    ui->pushButton_17->setFont(front1);
+    ui->pushButton_3->setFont(front1);
+    ui->pushButton_5->setFont(front1);
+    ui->pushButton_16->setFont(front1);
+    ui->pushButton_18->setFont(front2);
+    ui->pushButton_19->setFont(front2);
+    ui->pushButton_20->setFont(front1);
+    ui->pushButton_21->setFont(front1);
+    ui->pbt_5->setFont(front1);
+    ui->pushButton_8->setFont(front1);
+    ui->pushButton_9->setFont(front1);
+
+    ui->textEdit->setStyleSheet(QLatin1String("color: rgb(255,255,255)"));
+    ui->textEdit_2->setStyleSheet(QLatin1String("color: rgb(255,255,255)"));
+    ui->tableWidget_3->setStyleSheet("color:rgb(255,255,255);gridline-color:rgb(255,255,255)");
+
+    ui->pushButton_2->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_4->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_17->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_3->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_5->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_16->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_18->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_19->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_20->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_21->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pbt_5->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_8->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->pushButton_9->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+
+    ui->dateTimeEdit_start_1->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_start_2->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_end_1->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_end_2->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_start_3->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_start_4->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_end_3->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+    ui->dateTimeEdit_end_4->setStyleSheet("background-color: rgb(0,85,127); color: rgb(255,255,255);");
+
     ui->stackedWidget->setCurrentIndex(3);
+
+    InitTalbeWidget();
+
+    //charts
+    //
+    // 创建横纵坐标轴并设置显示范围
+    //
+    m_timer = new QTimer(this);
+    m_timer->setSingleShot(false);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
+    connect(ui->pushButton_18, SIGNAL(clicked(bool)), this, SLOT(slotBtnClear()));
+    connect(ui->pushButton_19, SIGNAL(clicked(bool)), this, SLOT(slotBtnStartAndStop()));
+
+    m_axisX = new QValueAxis();
+    m_axisY = new QValueAxis();
+    m_axisX->setTitleText("完成量");
+    m_axisY->setTitleText("时间");
+
+    m_axisX->setTitleBrush(QColor(255,255,255));
+    m_axisY->setTitleBrush(QColor(255,255,255));
+
+    m_axisX->setMin(0);
+    m_axisY->setMax(0);
+    m_axisX->setMax(AXIS_MAX_X);
+    m_axisY->setMax(AXIS_MAX_Y);
+
+    m_lineSeries = new QLineSeries();
+    m_lineSeries->setPointsVisible(true);                         // 设置数据点可见
+    m_lineSeries->setName("任务统计");
+
+    m_chart = new QChart();
+    m_chart->addAxis(m_axisX, Qt::AlignLeft);
+    m_chart->addAxis(m_axisY, Qt::AlignBottom);
+
+    m_chart->addSeries(m_lineSeries);
+    m_chart->setAnimationOptions(QChart::SeriesAnimations);
+
+//    m_chart->setTitleBrush(QColor(255,255,255));
+//    m_chart->setBackgroundBrush(QColor(0,85,127));
+    //图例的文字颜色设置
+
+    m_chart->setBackgroundVisible(false);
+    m_axisY->setLabelsColor(QColor(255,255,255));
+    m_axisX->setLabelsColor(QColor(255,255,255));
+
+    m_lineSeries->attachAxis(m_axisX);
+    m_lineSeries->attachAxis(m_axisY);
+    m_lineSeries->setColor(QColor(255,0,255));
+
+    ui->graphicsView1->setChart(m_chart);
+//    QColor  color= ui->graphicsView1->chart()->legend()->labelColor();
+//    color=QColorDialog::getColor(color);
+//    if (color.isValid())
+//    ui->graphicsView1->chart()->legend()->setLabelColor(color);
+    ui->graphicsView1->chart()->legend()->setLabelColor(QColor(255,255,255));
+
+    //直方图
+    QChart *chart1 = new QChart();
+    chart1->setTitle("月任务统计直方图");
+    QBarSet *set0 = new QBarSet("ARM_D_1");
+    QBarSet *set1 = new QBarSet("ARM_D_2");
+
+    *set0 << 2010 << 1200 << 860 << 3104 << 1322 << 4532;
+    *set1 << 766 << 435 << 3225 << 1348 << 4883 << 233;
+
+    QBarSeries  *series1 = new QBarSeries (chart1);
+    series1->append(set0);
+    series1->append(set1);
+
+    chart1->addSeries(series1);
+    chart1->setAnimationOptions(QChart::SeriesAnimations);
+
+    QStringList categories;
+    categories << "出库" << "入库" << "移库" ;  //保存横坐标字符串的列表
+    QBarCategoryAxis *axis = new QBarCategoryAxis();
+    axis->append(categories);
+    chart1->createDefaultAxes();
+    chart1->setAxisX(axis, series1);
+    chart1->axes(Qt::Vertical).first()->setRange(0,5000);
+
+    //在标签和轴之间加空格
+    QValueAxis *axisY = qobject_cast<QValueAxis*>(chart1->axes(Qt::Vertical).first());
+    Q_ASSERT(axisY);
+    axisY->setLabelFormat("%d");
+
+    series1->setLabelsPosition(QAbstractBarSeries::LabelsInsideEnd);  //设置标签显示的位置
+    series1->setLabelsVisible(true);  //设置数据标签可见
+
+    //设置主题
+    chart1->setBackgroundVisible(false);
+    chart1->setTheme(QChart::ChartThemeBlueCerulean);
+
+    ui->graphicsView2->setChart(chart1);
+
+
+
+    //数据统计饼状图
+    QChart *m_chart2 = new QChart();
+    QPieSeries *series2 = new QPieSeries();
+    series2->append("ARM_D_1",2);
+    series2->append("ARM_D_2",4);
+    series2->append("ARM_S_1",1);
+    series2->append("ARM_S_2",3);
+
+    series2->setLabelsVisible(true);
+    series2->setUseOpenGL(true);
+    series2->slices().at(0)->setColor(QColor(170,170,255));
+    series2->slices().at(0)->setLabelColor(QColor(170,170,255));
+
+    series2->slices().at(1)->setColor(QColor(96,183,223));
+    series2->slices().at(1)->setLabelColor(QColor(96,183,223));
+
+    series2->slices().at(2)->setColor(QColor(126,193,107));
+    series2->slices().at(2)->setLabelColor(QColor(126,193,107));
+
+    series2->slices().at(3)->setColor(QColor(232,134,155));
+    series2->slices().at(3)->setLabelColor(QColor(232,134,155));
+
+    m_chart2->setBackgroundVisible(false);  //去背景
+    m_chart2->addSeries(series2);
+
+    QChartView *chartView = new QChartView(m_chart2);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView3->setChart(m_chart2);
+    ui->graphicsView3->chart()->legend()->setLabelColor(QColor(255,255,255));
+
+
 
     //系统时间更新于label显示
     timer6 = new QTimer(this);
@@ -2823,6 +3032,15 @@ void MainWindow::on_shanchu_clicked()
             qryModel->query().exec();//数据模型重新查询数据，更新tableView显示
         }
     }
+    QString text = ui->textEdit_2->toPlainText();
+    ui->textEdit_2->insertPlainText(text +='\n');
+    QString strtime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    ui->textEdit_2->insertPlainText(strtime + "  " + "删除任务" + '\n');
+
+    QTextCursor cursor=ui->textEdit_2->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    ui->textEdit_2->setTextCursor(cursor);
+
 }
 
 //读取数据库任务并进行下发
@@ -2834,7 +3052,7 @@ void MainWindow::task_timeinfo()
     {
         QMessageBox::information(this, "错误", "数据表查询错误,错误信息\n"+qryModel2->lastError().text(),
                                  QMessageBox::Ok,QMessageBox::NoButton);
-        return;
+        return;     
     }
 
 //    if(D1_task_percent == 0)
@@ -2916,6 +3134,15 @@ void MainWindow::on_xiugai_clicked()
 {
     int curRecNo=theSelection->currentIndex().row();
     updateRecord(curRecNo);
+
+    QString text = ui->textEdit_2->toPlainText();
+    ui->textEdit_2->insertPlainText(text +='\n');
+    QString strtime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    ui->textEdit_2->insertPlainText(strtime + "  " + "修改任务" + '\n');
+
+    QTextCursor cursor=ui->textEdit_2->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    ui->textEdit_2->setTextCursor(cursor);
 }
 
 void MainWindow::on_tableTest_doubleClicked(const QModelIndex &index)
@@ -3103,3 +3330,625 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         qDebug()<<"选中了2";
     }
 }
+
+void LogMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg){
+    static QMutex mutex;
+    mutex.lock();
+    QString text;
+    switch(type){
+    case QtDebugMsg:    text = QString("Debug:");   break;
+    case QtWarningMsg:  text = QString("Warning:"); break;
+    case QtCriticalMsg: text = QString("Critical:");break;
+    case QtFatalMsg:    text = QString("Fatal:");   break;
+    default:                                        break;
+    }
+
+    QString context_info = QString("File:(%1) Line:(%2)").arg(QString(context.file)).arg(context.line);
+    QString current_date_time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+    QString message = QString("%1 %2").arg(current_date_time).arg(msg);
+    QString timestr=QDateTime::currentDateTime().toString("yyyy.MM.dd");
+    QString fileName = timestr + ".md";
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream text_stream(&file);
+    text_stream << message << "\r\n";
+    file.flush();
+    file.close();
+    mutex.unlock();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->textEdit->clear();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
+}
+
+
+void MainWindow::on_pbt_5_clicked()
+{
+    timer13 = new QTimer(this);
+    timer13->start(5000);
+    connect(timer13,&QTimer::timeout,this,[=](){
+
+    QFile file("G://DHBLAB research//log_test.txt");
+    file.open(QIODevice::ReadOnly);
+    QString string2;
+    string2 = file.readAll();
+    QStringList strList1 = string2.split(",",QString::SkipEmptyParts);
+
+     log_carnum = strList1[0];
+     log_tasktype  = strList1[1];
+     log_start  = strList1[2];
+     log_end  = strList1[3];
+     qDebug() << "ok";
+
+});
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("G://DHBLAB research//log_test.db");
+    if(!db.open())
+    {
+    qDebug()<<"失败原因： "<<db.lastError().text();
+    }
+    else
+    {
+    qDebug()<<"连接成功!!!";
+    }
+
+    timer14 = new QTimer(this);
+    timer14->start(10000);
+    connect(timer14,&QTimer::timeout,this,[=](){
+
+    QSqlQuery query(db);
+    if (query.next())
+    {
+        log_carnum  = query.value(0).toString();
+        log_tasktype  = query.value(1).toString();
+        log_start      = query.value(2).toString();
+        log_end      = query.value(3).toString();
+    }
+
+    QString v1 = QString("INSERT INTO log1 (carnum,tasktype,start,end,dateTime)"
+                          "VALUES ('%1','%2','%3','%4','%5')").arg(log_carnum)
+                                                              .arg(log_tasktype)
+                                                              .arg(log_start)
+                                                              .arg(log_end)
+                                                              .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    bool isAddData = query.exec(v1);
+    if(isAddData)
+        {
+            qDebug() << "log1插入数据成功";
+        }
+        else {
+            qDebug() << "log1插入数据失败";
+            qDebug() << query.lastError().text();
+        }
+    });
+
+    QString startTime1 = ui->dateTimeEdit_start_2->text();
+    QString endTime1 = ui->dateTimeEdit_end_2->text();
+
+    qDebug()<<"startTime = "<<startTime1;
+    qDebug()<<"endTime = "<<endTime1;
+
+    QSqlQuery  query;
+    QString strSql1 = QString("select * from log1 where dateTime BETWEEN '"+startTime1+"' AND '"+endTime1+"'");
+
+    if(! query.exec(strSql1))
+   {
+       qDebug()<<"Error:Failed!!"<< query.lastError();
+   }
+   else{
+       qDebug()<<"read successfully!";
+       while(query.next())
+       {
+           qDebug()<< query.value("dateTime").toString();
+           ui->tableWidget_3->setRowCount(20);
+           ui->tableWidget_3->setColumnCount(5);
+           QFont font =  ui->tableWidget_3->horizontalHeader()->font();
+           font.setBold(true);
+
+           ui->tableWidget_3->horizontalHeader()->setFont(font);
+           ui->tableWidget_3->horizontalHeader()->setDefaultSectionSize(200);  //设置默认宽度
+           ui->tableWidget_3->verticalHeader()->setDefaultSectionSize(40);
+//           ui->tableWidget_3->setAlternatingRowColors(true);
+//           ui->tableWidget_3->setStyleSheet("alternate-background-color:rgb(0,85,127);background-color:rgb(3,16,71)");
+           ui->tableWidget_3->horizontalHeader()->setStyleSheet("QHeaderView::section{background:rgb(3,16,71); color:white;selection-background-color:lightblue;gridline-color:rgb(255,255,255)}");
+           ui->tableWidget_3->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+           ui->tableWidget_3->horizontalHeader()->setFont(QFont("宋体",14));
+           ui->tableWidget_3->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
+           ui->tableWidget_3->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);
+
+           QStringList strList1;
+           ui->tableWidget_3->verticalHeader()->hide();
+           strList1 <<tr("小车编号")<< tr("任务类型")<< tr("起点")<< tr("终点")<< tr("时间");
+           ui->tableWidget_3->setHorizontalHeaderLabels(strList1);
+
+           QTableWidgetItem*pItem0 = NULL;
+           QTableWidgetItem*pItem1 = NULL;
+           QTableWidgetItem*pItem2 = NULL;
+           QTableWidgetItem*pItem3 = NULL;
+           QTableWidgetItem*pItem4 = NULL;
+
+           int RowCont=i;
+           this->ui->tableWidget_3->insertRow(RowCont);
+           pItem0 = new QTableWidgetItem;
+           pItem0->setText(query.value(0).toString());
+
+           pItem1 = new QTableWidgetItem;
+           pItem1->setText(query.value(1).toString());
+
+           pItem2 = new QTableWidgetItem;
+           pItem2->setText(query.value(2).toString());
+
+           pItem3 = new QTableWidgetItem;
+           pItem3->setText(query.value(3).toString());
+
+           pItem4 = new QTableWidgetItem;
+           pItem4->setText(query.value(4).toString());
+
+           ui->tableWidget_3->setItem(RowCont,0,pItem0);
+           ui->tableWidget_3->setItem(RowCont,1,pItem1);
+           ui->tableWidget_3->setItem(RowCont,2,pItem2);
+           ui->tableWidget_3->setItem(RowCont,3,pItem3);
+           ui->tableWidget_3->setItem(RowCont,4,pItem4);
+           i++;
+
+//           for(int i = 0; i <= 4; i++)
+//           {
+//               for(int j = 0; j <= 4; j++)
+//               {
+//                   QTableWidgetItem* item = new QTableWidgetItem();
+//                   item->setTextAlignment(Qt::AlignJustify|Qt::AlignCenter);
+//                   ui->tableWidget_3->item(i,j)->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+//                   ui->tableWidget_3->setItem(i,j,new QTableWidgetItem(query.value(i*5+j).toString()));
+//                   ui->tableWidget_3->setItem(i,j,new QTableWidgetItem(strSql1.at(i)));
+//               }
+//           }
+
+       }
+    }
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    ui->textEdit_2->clear();
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+     ui->tableWidget_3->clear();
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+//    int rowcount = ui->tableWidget_2->rowCount();
+//    ui->tableWidget_2->insertRow(rowcount);
+//    ui->tableWidget_2->setItem(rowcount,0,new QTableWidgetItem("新建任务"));
+
+    QString text = ui->textEdit_2->toPlainText();
+    ui->textEdit_2->insertPlainText(text +='\n');
+    QString strtime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    ui->textEdit_2->insertPlainText(strtime + "  " + "新建任务" + '\n');
+
+    QTextCursor cursor=ui->textEdit_2->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    ui->textEdit_2->setTextCursor(cursor);
+}
+
+
+void MainWindow::InitTalbeWidget()
+{
+    table_user=ui->tableWidget;
+    table_user->setColumnCount(5);
+    QStringList strs={"用户名","密码","权限","删除","更新"};
+    table_user->setHorizontalHeaderLabels(strs);
+
+    QFont font = table_user->horizontalHeader()->font();
+    font.setBold(true);
+    font.setPixelSize(14);
+    table_user->horizontalHeader()->setFont(font);
+//    table_user->horizontalHeader()->setStyleSheet("background-color:rgb(0,85,127)");
+    table_user->setStyleSheet(QLatin1String("color: rgb(255,255,255)"));
+    table_user->horizontalHeader()->setFont(QFont("宋体",14));
+    table_user->horizontalHeader()->setStyleSheet("QHeaderView::section{background:rgb(2,20,130);color: white;selection-background-color:lightblue;}");
+//    table_user->horizontalHeader()->setStretchLastSection(true);             //均分各列
+    table_user->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
+    table_user->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    table_user->setColumnWidth(0,300);
+    table_user->setColumnWidth(1,300);
+    table_user->setColumnWidth(2,300);
+    table_user->setColumnWidth(3,300);
+    table_user->setColumnWidth(4,300);
+    table_user->setGeometry(50,160,width(),height());
+    table_user->verticalHeader()->setVisible(false);
+
+}
+void MainWindow::DisplayUserInfo(QList<QString> userName,QList<QString> userPassword)
+{
+    table_user->clearContents();
+    if(!btnVec.isEmpty())
+        btnVec.clear();
+
+    int rows=userName.size();
+    int rowsPwd=userPassword.size();
+
+    if(rows!=rowsPwd)                                                                               //如果用户数量和密码数量不相等，则退出循环调用
+        return;
+
+    table_user->setRowCount(rows);
+
+    for(int i=0;i<rows;i++)
+    {
+        QTableWidgetItem *nameItem = new QTableWidgetItem(tr("%1")
+                                                          .arg(userName.at(i)));
+        nameItem->setFlags(nameItem->flags() & (~Qt::ItemIsEditable));                              //第一列不可编辑
+        nameItem->setFont(nullFont);
+        nameItem->setTextAlignment(Qt::AlignCenter);
+        table_user->setItem(i, 0, nameItem);
+
+        QTableWidgetItem *pwdItem = new QTableWidgetItem(tr("%1")
+                                                         .arg(userPassword.at(i)));
+        pwdItem->setTextAlignment(Qt::AlignCenter);
+        pwdItem->setFont(nullFont);
+        table_user->setItem(i, 1, pwdItem);
+
+        QPushButton* btnDel=new QPushButton("删除");
+        btnDel->setFont(nullFont);
+        btnDel->setObjectName(QString::number(i));
+        table_user->setCellWidget(i,3,btnDel);
+        btnVec.push_back(btnDel);
+
+        QPushButton* btnUpdate=new QPushButton("修改");
+        btnUpdate->setFont(nullFont);
+        table_user->setCellWidget(i,4,btnUpdate);
+        btnVec.push_back(btnUpdate);
+
+        connect(btnDel,SIGNAL(clicked()),this,SLOT(on_BtnDel_clicked()));
+        connect(btnUpdate,SIGNAL(clicked()),this,SLOT(on_BtnUpdate_clicked()));
+    }
+    table_user->show();
+}
+void MainWindow::DisplayUserInfo(QList<QString> userName,QList<QString> userPassword,QList<int> permission)
+{
+    table_user->clearContents();                                                                             //再次显示前先清理掉表格中上次的数据
+    qDebug()<<"before deletButtons():"<<btnVec.size();
+    displayBtnVec();
+    deleteButtons();                                                                                         //再次显示前先清理掉向量中上次动态申请的内存
+    if(!btnVec.isEmpty())                                                                                    //再次显示前先清理掉向量中上次记录的按钮的地址数据
+        btnVec.clear();
+    qDebug()<<"after deletButtons():"<<btnVec.size();
+    int rows=userName.size();
+    int rowsPwd=userPassword.size();
+    int rowsPermission=permission.size();
+    //如果传入的参数个数不相等，就不再显示数据
+    if(rows!=rowsPwd || rows!=rowsPermission || rowsPwd != rowsPermission)
+        return;
+
+    table_user->setRowCount(rows);                                                                          //设置表格的行数为出入的参数向量的元素个数
+
+    for(int i=0;i<rows;i++)
+    {
+        QTableWidgetItem *nameItem = new QTableWidgetItem(tr("%1").arg(userName.at(i)));
+        nameItem->setFlags(nameItem->flags() & (~Qt::ItemIsEditable));                                     //第一列不可编辑
+        nameItem->setFont(nullFont);
+        nameItem->setTextAlignment(Qt::AlignCenter);
+        table_user->setItem(i, 0, nameItem);
+
+        QTableWidgetItem *pwdItem = new QTableWidgetItem(tr("%1").arg(userPassword.at(i)));
+        pwdItem->setTextAlignment(Qt::AlignCenter);
+        pwdItem->setFont(nullFont);
+        table_user->setItem(i, 1, pwdItem);
+
+        QTableWidgetItem *permissionItem = new QTableWidgetItem(tr("%1").arg(permission.at(i)));
+        permissionItem->setTextAlignment(Qt::AlignCenter);
+        permissionItem->setFont(nullFont);
+        table_user->setItem(i, 2, permissionItem);
+
+
+        QPushButton* btnDel=new QPushButton("删除");
+        btnDel->setFont(nullFont);
+        btnDel->setObjectName(QString::number(i));
+        table_user->setCellWidget(i,3,btnDel);
+        btnVec.push_back(btnDel);
+
+        QPushButton* btnUpdate=new QPushButton("修改");
+        btnUpdate->setFont(nullFont);
+        table_user->setCellWidget(i,4,btnUpdate);
+        btnVec.push_back(btnUpdate);
+
+        connect(btnDel,SIGNAL(clicked()),this,SLOT(on_BtnDel_clicked()));
+        connect(btnUpdate,SIGNAL(clicked()),this,SLOT(on_BtnUpdate_clicked()));
+
+        userName<<"dhblab"<<"罗佳"<<"甲方"<<"Alice";
+        userPassword<<"123"<<"456"<<"456"<<"456";
+        QList<int> permission={1,0,0,0};
+
+    }
+        table_user->show();
+}
+
+void MainWindow::on_BtnDel_clicked()
+{
+    QPushButton* obj=qobject_cast<QPushButton*>(sender());
+    int x=obj->frameGeometry().x();
+    int y=obj->frameGeometry().y();
+
+    QModelIndex index=table_user->indexAt(QPoint(x,y));
+
+    int row=index.row();
+    int column=index.column();
+    qDebug()<<"on_BtnDel_clicked()11"<<row<<column;
+    QString name;
+    QString password;
+    name=table_user->item(row,0)->text();
+    password=table_user->item(row,1)->text();
+    qDebug()<<"on_BtnDel_clicked()11"<<row<<column<<name<<password;
+    if(QMessageBox::question(this,"确认删除","是否真的删除",QMessageBox::Yes|QMessageBox::No)==QMessageBox::Yes)
+    {
+        emit SendDeleteUserInfo(name,password);                                   //删除信号
+        qDebug()<<"success";
+        table_user->removeRow(row);
+    }
+}
+
+void MainWindow::on_BtnUpdate_clicked()
+{
+    QPushButton* obj=qobject_cast<QPushButton*>(sender());
+    int x=obj->frameGeometry().x();
+    int y=obj->frameGeometry().y();
+
+    QModelIndex index=table_user->indexAt(QPoint(x,y));
+
+    int row=index.row();
+
+
+    QString name;
+    QString password;
+    int permission;
+    name=table_user->item(row,0)->text();
+    password=table_user->item(row,1)->text();
+    permission=table_user->item(row,2)->text().toUInt();
+
+    if(QMessageBox::question(this,"确认修改","是否真的修改？",QMessageBox::Yes|QMessageBox::No)==QMessageBox::Yes)
+    {
+        emit SendModifyUserInfo(name,password,permission);                          //发送修改信号
+        qDebug()<<"success";
+    }
+}
+
+void MainWindow::close()
+{
+    deleteButtons();
+    table_user->clearContents();
+}
+
+void MainWindow::deleteButtons()
+{
+    //释放table_user表格中动态申请的QPushButton
+    int len=btnVec.length();
+    for(int i=0;i<len;i++)
+    {
+        QPushButton* btnPtr=btnVec.at(i);
+        if(btnPtr!=nullptr)
+        {
+            delete btnPtr;
+            btnPtr=nullptr;
+        }
+    }
+}
+
+void MainWindow::displayBtnVec()
+{
+    int len=btnVec.size();
+    for(int i=0;i<len;i++)
+    {
+        QPushButton* btnPtr=btnVec.at(i);
+        if(btnPtr!=nullptr)
+        {
+            qDebug()<<btnPtr;
+        }
+    }
+}
+
+//输出表格中的数据
+void MainWindow::showTableData()
+{
+    QString name;
+    QString pwd;
+    int permission;
+//    qDebug()<<"测试表格中的数据是否正确?";
+    int row=table_user->model()->rowCount();
+    qDebug()<<row;
+//    int row = 4;
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("user.db");
+    if(!db.open())
+    {
+    qDebug()<<"失败原因： "<<db.lastError().text();
+    }
+    else
+    {
+    qDebug()<<"连接成功!!!";
+    }
+
+    for(int i=0;i<row;i++)
+    {
+        name=table_user->item(i,0)->text();
+        pwd=table_user->item(i,1)->text();
+        permission=table_user->item(i,2)->text().toUInt();
+        qDebug()<<name<<pwd<<permission;
+
+        QSqlQuery query(db);
+        if (query.next())
+        {
+            name       = query.value(0).toString();
+            pwd        = query.value(1).toString();
+            permission = query.value(2).toDouble();
+        }
+
+        QString val = QString("INSERT INTO user1 (用户,密码,权限)"
+                              "VALUES (%1,%2,%3)").arg(name)
+                                                  .arg(pwd)
+                                                  .arg(permission);
+    }
+}
+
+
+//void MainWindow::slotTimeout()
+//{
+//    if(pointCount > AXIS_MAX_X)
+//        {
+//            m_lineSeries->remove(0);
+//            m_chart->axisX()->setMin(pointCount - AXIS_MAX_X);
+//            m_chart->axisX()->setMax(pointCount);                    // 更新X轴范围
+//        }
+//        m_lineSeries->append(QPointF(pointCount, rand() % AXIS_MAX_Y));  // 更新显示（随机生成10以内的一个数）
+//        pointCount++;
+//}
+
+void MainWindow::slotTimeout()
+{
+    static int count = 0;
+    if(count > AXIS_MAX_X)
+    {
+        m_lineSeries->remove(0);
+        m_chart->axisX()->setMin(count - AXIS_MAX_X);
+        m_chart->axisX()->setMax(count);                    // 更新X轴范围
+    }
+    m_lineSeries->append(QPointF(count, rand() % AXIS_MAX_Y));  // 更新显示
+    count++;
+}
+
+void MainWindow::slotBtnClear()
+{
+    m_lineSeries->clear();
+    m_chart->axisX()->setMin(0);
+    m_chart->axisX()->setMax(AXIS_MAX_X);
+    pointCount = 0;
+}
+
+
+void MainWindow::slotBtnStartAndStop()
+{
+    if(m_timer->isActive())
+        {
+            m_timer->stop();
+            ui->pushButton_19->setText("启动");
+        }else
+        {
+            pointCount = 0;
+            m_timer->start(200);
+            ui->pushButton_19->setText("停止");
+        }
+}
+
+QChart *MainWindow::createBarChart() const
+{
+     QChart *chart1 = new QChart();
+     chart1->setTitleBrush(Qt::white);
+     chart1->setTitle("直方图演示");
+
+     QBarSet *set0 = new QBarSet("A日常开支");
+     QBarSet *set1 = new QBarSet("B日常开支");
+
+     *set0 << 2010 << 1200 << 860 << 3104 << 1322 << 4532;
+     *set1 << 766 << 435 << 3225 << 1348 << 4883 << 233;
+
+     QBarSeries  *series1 = new QBarSeries (chart1);
+     series1->append(set0);
+     series1->append(set1);
+
+     chart1->addSeries(series1);
+     chart1->setAnimationOptions(QChart::SeriesAnimations);
+
+     QStringList categories;
+     categories << "饮食开支" << "交通开支" << "教育开支" << "购物开支" << "生活缴费" << "娱乐开支";  //保存横坐标字符串的列表
+     QBarCategoryAxis *axis = new QBarCategoryAxis();
+     axis->append(categories);
+     chart1->createDefaultAxes();
+     chart1->setAxisX(axis, series1);
+     chart1->axes(Qt::Vertical).first()->setRange(0,5000);
+
+     // Add space to label to add space between labels and axis在标签和轴之间加空格
+     QValueAxis *axisY = qobject_cast<QValueAxis*>(chart1->axes(Qt::Vertical).first());
+     Q_ASSERT(axisY);
+     axisY->setLabelFormat("%.2f  ");
+
+     series1->setLabelsPosition(QAbstractBarSeries::LabelsInsideEnd);  //设置标签显示的位置
+     series1->setLabelsVisible(true);  //设置数据标签可见
+
+     //设置主题
+     chart1->setBackgroundVisible(false);
+     chart1->setTheme(QChart::ChartThemeBlueCerulean);
+
+     return chart1;
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    timer21 = new QTimer(this);
+    timer21->start(4000);
+    connect(timer21,&QTimer::timeout,this,[=](){
+
+    QFile file("G://DHBLAB research//charts_test.txt");
+    file.open(QIODevice::ReadOnly);
+    QString string3;
+    string3 = file.readAll();
+    QStringList strList2 = string3.split(",",QString::SkipEmptyParts);
+
+     log_in = strList2[0];
+     log_move  = strList2[1];
+     log_out  = strList2[2];
+     log_complete  = strList2[3];
+     qDebug() << "ok";
+
+});
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("G://DHBLAB research//log_test.db");
+    if(!db.open())
+    {
+    qDebug()<<"失败原因： "<<db.lastError().text();
+    }
+    else
+    {
+    qDebug()<<"连接成功!!!";
+    }
+
+    timer22 = new QTimer(this);
+    timer22->start(8000);
+    connect(timer22,&QTimer::timeout,this,[=](){
+
+    QSqlQuery query(db);
+    if (query.next())
+    {
+        log_in        =    query.value(0).toString();
+        log_move      =    query.value(1).toString();
+        log_out       =    query.value(2).toString();
+        log_complete  =    query.value(3).toString();
+    }
+
+    QString v2 = QString("INSERT INTO log2 (in,move,out,complete,dateTime)"
+                          "VALUES ('%1','%2','%3','%4','%5')").arg(log_in)
+                                                              .arg(log_move)
+                                                              .arg(log_out)
+                                                              .arg(log_complete)
+                                                              .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    bool isAddData = query.exec(v2);
+    if(isAddData)
+        {
+            qDebug() << "任务2插入数据成功";
+        }
+        else {
+            qDebug() << "任务2插入数据失败";
+            qDebug() << query.lastError().text();
+        }
+    });
+}
+
