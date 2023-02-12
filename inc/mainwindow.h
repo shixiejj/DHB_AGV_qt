@@ -52,6 +52,7 @@ private:
     CustomSqlQueryModel *qryModel4;
     CustomSqlQueryModel *qryModel5;
     CustomSqlQueryModel *qryModel6;
+    CustomSqlQueryModel *qryModel7;     //调度算法页面
     QSqlQueryModel *qryModel2;
     QItemSelectionModel *theSelection;
     QSqlRecord newRecord;
@@ -80,6 +81,7 @@ private:
     void test4_2(int x, int y);
     QSqlRecord getRecordData(QSqlQuery quer);
     void on_tabWidget_tabBarClicked(int index);
+    //void paintEvent(QPaintEvent *event);
 
 signals:
     void  outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
@@ -88,6 +90,7 @@ signals:
     void  SendModifyUserInfo(QString userName,QString userPassword,int permission);//发送修改信号，带3个参数
 
 public:
+    friend class DRAWmap;   //便于画图时使用AMR对象
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void setStatusLed(QLabel* label, int color);
@@ -100,6 +103,12 @@ public:
 
     device_con *deviceqt;
     QChart * createBarChart() const;
+    //用车类创建测试所用的4辆车对象
+    //TODO:后期可以根据网络管理页面动态管理车类对象
+    static car amr_d_1;
+    static car amr_d_2;
+    static car amr_s_1;
+    static car amr_s_2;
 
     //void paintEvent(QPaintEvent *);
 
@@ -183,8 +192,6 @@ private slots:
     void on_workData_toggled(bool checked);
 
     void on_userManage_toggled(bool checked);
-
-    void on_mapSwitch_stateChanged(int arg1);
 
 
     void on_shanchu_clicked();
@@ -312,6 +319,7 @@ private:
     QThread* send_task;
     QThread* unity_task;
 
+
     NetThread* send;
     RecvThread recv_task;
 
@@ -342,18 +350,12 @@ private:
      QString log_out;
      QString log_complete;
 
-     //用车类创建测试所用的4辆车对象
-     //TODO:后期可以根据网络管理页面动态管理车类对象
-     car amr_d_1;
-     car amr_d_2;
-     car amr_s_1;
-     car amr_s_2;
+
 
      QTableWidget* table_user;
      QVector<QTableWidgetItem*> listTem;
      QFont nullFont;
      QVector<QPushButton*> btnVec;
-
 
 };
 

@@ -1,4 +1,5 @@
 #include "car.h"
+#include "mainwindow.h"
 
 void car::set_motionPar(double speed, double wspeed, double acc, double wacc)
 {

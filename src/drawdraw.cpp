@@ -1,9 +1,16 @@
 #include "drawdraw.h"
 #include "global_variables.h"
+#include "mainwindow.h"
 #include "mythread.h"
 #include "mythread2.h"
 #include "mythread3.h"
 #include "mythread4.h"
+
+
+car MainWindow::amr_d_1;
+car MainWindow::amr_d_2;
+car MainWindow::amr_s_1;
+car MainWindow::amr_s_2;
 
 DRAWmap::DRAWmap(QWidget *parent) : QWidget(parent)
 {
@@ -29,7 +36,7 @@ DRAWmap::~DRAWmap()
 void DRAWmap::paintEvent(QPaintEvent* event)
 {
     m_painter = new QPainter(this);
-    m_painter->translate(220,115);      //偏移坐标系
+    m_painter->translate(0,0);      //偏移坐标系
     m_painter->scale(gain,gain);        //缩放地图
 
     int map_l=1224;
@@ -208,185 +215,191 @@ void DRAWmap::paintEvent(QPaintEvent* event)
 
     //状态监控页面
     //1号车车身绘画
-    QPen cardraw1(QColor(255,255,255));
-    m_painter->setPen(cardraw1);
-    cardraw1.setWidth(2);
-    m_painter->setBrush(Qt::NoBrush);
-    m_painter->setPen(cardraw1);
+    if(MainWindow::amr_d_1.online_status == 1){
+        QPen cardraw1(QColor(255,255,255));
+        m_painter->setPen(cardraw1);
+        cardraw1.setWidth(2);
+        m_painter->setBrush(Qt::NoBrush);
+        m_painter->setPen(cardraw1);
 
-    int p_a1_x,p_a1_y,p_b1_x,p_b1_y,p_c1_x,p_c1_y,p_d1_x,p_d1_y,L2 = 60, W2 = 40;
+        int p_a1_x,p_a1_y,p_b1_x,p_b1_y,p_c1_x,p_c1_y,p_d1_x,p_d1_y,L2 = 60, W2 = 40;
 
-     p_a1_x=x1+(-L2/2)*cos(theta1)-(W2/2)*sin(theta1);
-     p_a1_y=yy1+(-L2/2)*sin(theta1)+(W2/2)*cos(theta1);
-     p_b1_x=x1+(L2/2)*cos(theta1)-(W2/2)*sin(theta1);
-     p_b1_y=yy1+(L2/2)*sin(theta1)+(W2/2)*cos(theta1);
-     p_c1_x=x1+(L2/2)*cos(theta1)-(-W2/2)*sin(theta1);
-     p_c1_y=yy1+(L2/2)*sin(theta1)+(-W2/2)*cos(theta1);
-     p_d1_x=x1+(-L2/2)*cos(theta1)-(-W2/2)*sin(theta1);
-     p_d1_y=yy1+(-L2/2)*sin(theta1)+(-W2/2)*cos(theta1);
+         p_a1_x=x1+(-L2/2)*cos(theta1)-(W2/2)*sin(theta1);
+         p_a1_y=yy1+(-L2/2)*sin(theta1)+(W2/2)*cos(theta1);
+         p_b1_x=x1+(L2/2)*cos(theta1)-(W2/2)*sin(theta1);
+         p_b1_y=yy1+(L2/2)*sin(theta1)+(W2/2)*cos(theta1);
+         p_c1_x=x1+(L2/2)*cos(theta1)-(-W2/2)*sin(theta1);
+         p_c1_y=yy1+(L2/2)*sin(theta1)+(-W2/2)*cos(theta1);
+         p_d1_x=x1+(-L2/2)*cos(theta1)-(-W2/2)*sin(theta1);
+         p_d1_y=yy1+(-L2/2)*sin(theta1)+(-W2/2)*cos(theta1);
 
-     m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_b1_x,p_b1_y));
-     m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_d1_x,p_d1_y));
-     m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_b1_x,p_b1_y));
-     m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_d1_x,p_d1_y));
+         m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_b1_x,p_b1_y));
+         m_painter->drawLine(QPoint(p_a1_x,p_a1_y) , QPoint(p_d1_x,p_d1_y));
+         m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_b1_x,p_b1_y));
+         m_painter->drawLine(QPoint(p_c1_x,p_c1_y) , QPoint(p_d1_x,p_d1_y));
 
-     QPen line1(QColor(20,100,20));
-     line1.setWidth(3);
-     m_painter->setPen(line1);
-     m_painter->drawLine(QPoint((p_a1_x+p_b1_x)/2,(p_a1_y+p_b1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
-     m_painter->drawLine(QPoint((p_c1_x+p_d1_x)/2,(p_c1_y+p_d1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
+         QPen line1(QColor(20,100,20));
+         line1.setWidth(3);
+         m_painter->setPen(line1);
+         m_painter->drawLine(QPoint((p_a1_x+p_b1_x)/2,(p_a1_y+p_b1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
+         m_painter->drawLine(QPoint((p_c1_x+p_d1_x)/2,(p_c1_y+p_d1_y)/2) , QPoint((p_b1_x+p_c1_x)/2,(p_b1_y+p_c1_y)/2));
 
-     QBrush brush;
+         QBrush brush;
 
-     if(p1 == 0)
-     {
-     m_painter->setBrush(Qt::yellow);
-     m_painter->setPen(Qt::darkYellow);
+         if(p1 == 0)
+         {
+         m_painter->setBrush(Qt::yellow);
+         m_painter->setPen(Qt::darkYellow);
+         }
+         else if(p1 == 1)
+         {
+         m_painter->setBrush(Qt::red);
+         m_painter->setPen(Qt::darkRed);
+         }
+         else if(p1 == 2)
+         {
+         m_painter->setBrush(Qt::green);
+         m_painter->setPen(Qt::green);
+         }
+         m_painter->drawEllipse(QPoint(x1,yy1),15,15);
      }
-     else if(p1 == 1)
-     {
-     m_painter->setBrush(Qt::red);
-     m_painter->setPen(Qt::darkRed);
-     }
-     else if(p1 == 2)
-     {
-     m_painter->setBrush(Qt::green);
-     m_painter->setPen(Qt::green);
-     }
-     m_painter->drawEllipse(QPoint(x1,yy1),15,15);
 
      //2号车车身绘画
-     QPen cardraw2(QColor(255,255,255));
-     m_painter->setPen(cardraw2);
-     cardraw2.setWidth(2);
-     m_painter->setBrush(Qt::NoBrush);
-     m_painter->setPen(cardraw2);
-     int p_a2_x,p_a2_y,p_b2_x,p_b2_y,p_c2_x,p_c2_y,p_d2_x,p_d2_y,L3 = 60, W3 = 40;
+    if(MainWindow::amr_d_2.online_status == 1){
+         QPen cardraw2(QColor(255,255,255));
+         m_painter->setPen(cardraw2);
+         cardraw2.setWidth(2);
+         m_painter->setBrush(Qt::NoBrush);
+         m_painter->setPen(cardraw2);
+         int p_a2_x,p_a2_y,p_b2_x,p_b2_y,p_c2_x,p_c2_y,p_d2_x,p_d2_y,L3 = 60, W3 = 40;
 
-      p_a2_x=x2 + (-L3/2) * cos(theta2) - (W3/2)  * sin(theta2);
-      p_a2_y=yy2 + (-L3/2) * sin(theta2) + (W3/2)  * cos(theta2);
-      p_b2_x=x2 + (L3/2)  * cos(theta2) - (W3/2)  * sin(theta2);
-      p_b2_y=yy2 + (L3/2)  * sin(theta2) + (W3/2)  * cos(theta2);
-      p_c2_x=x2 + (L3/2)  * cos(theta2) - (-W3/2) * sin(theta2);
-      p_c2_y=yy2 + (L3/2)  * sin(theta2) + (-W3/2) * cos(theta2);
-      p_d2_x=x2 + (-L3/2) * cos(theta2) - (-W3/2) * sin(theta2);
-      p_d2_y=yy2 + (-L3/2) * sin(theta2) + (-W3/2) * cos(theta2);
-
-
-      m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_b2_x,p_b2_y));
-      m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_d2_x,p_d2_y));
-      m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_b2_x,p_b2_y));
-      m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_d2_x,p_d2_y));
-      QPen line2(QColor(100,10,10));
-      line2.setWidth(3);
-      m_painter->setPen(line2);
-      m_painter->drawLine(QPoint((p_a2_x+p_b2_x)/2,(p_a2_y+p_b2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
-      m_painter->drawLine(QPoint((p_c2_x+p_d2_x)/2,(p_c2_y+p_d2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
-
-      QBrush brush3;
+          p_a2_x=x2 + (-L3/2) * cos(theta2) - (W3/2)  * sin(theta2);
+          p_a2_y=yy2 + (-L3/2) * sin(theta2) + (W3/2)  * cos(theta2);
+          p_b2_x=x2 + (L3/2)  * cos(theta2) - (W3/2)  * sin(theta2);
+          p_b2_y=yy2 + (L3/2)  * sin(theta2) + (W3/2)  * cos(theta2);
+          p_c2_x=x2 + (L3/2)  * cos(theta2) - (-W3/2) * sin(theta2);
+          p_c2_y=yy2 + (L3/2)  * sin(theta2) + (-W3/2) * cos(theta2);
+          p_d2_x=x2 + (-L3/2) * cos(theta2) - (-W3/2) * sin(theta2);
+          p_d2_y=yy2 + (-L3/2) * sin(theta2) + (-W3/2) * cos(theta2);
 
 
-      if(p2 == 1)
-      {
-      m_painter->setBrush(Qt::red);
-      m_painter->setPen(Qt::darkRed);
+          m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_b2_x,p_b2_y));
+          m_painter->drawLine(QPoint(p_a2_x,p_a2_y) , QPoint(p_d2_x,p_d2_y));
+          m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_b2_x,p_b2_y));
+          m_painter->drawLine(QPoint(p_c2_x,p_c2_y) , QPoint(p_d2_x,p_d2_y));
+          QPen line2(QColor(100,10,10));
+          line2.setWidth(3);
+          m_painter->setPen(line2);
+          m_painter->drawLine(QPoint((p_a2_x+p_b2_x)/2,(p_a2_y+p_b2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
+          m_painter->drawLine(QPoint((p_c2_x+p_d2_x)/2,(p_c2_y+p_d2_y)/2) , QPoint((p_b2_x+p_c2_x)/2,(p_b2_y+p_c2_y)/2));
+
+          QBrush brush3;
+
+
+          if(p2 == 1)
+          {
+          m_painter->setBrush(Qt::red);
+          m_painter->setPen(Qt::darkRed);
+          }
+          else
+          {
+          m_painter->setBrush(Qt::green);
+          m_painter->setPen(Qt::green);
+          }
+          m_painter->drawEllipse(QPoint(x2,yy2),15,15);
       }
-      else
-      {
-      m_painter->setBrush(Qt::green);
-      m_painter->setPen(Qt::green);
-      }
-      m_painter->drawEllipse(QPoint(x2,yy2),15,15);
-
 
       //3号车车身绘画
-      QPen cardraw3(QColor(255,255,255));
-      m_painter->setPen(cardraw3);
-      cardraw3.setWidth(2);
-      m_painter->setBrush(Qt::NoBrush);
-      m_painter->setPen(cardraw3);
-      int p_a3_x,p_a3_y,p_b3_x,p_b3_y,p_c3_x,p_c3_y,p_d3_x,p_d3_y,L4 = 60, W4 = 40;
+    if(MainWindow::amr_s_1.online_status == 1){
+          QPen cardraw3(QColor(255,255,255));
+          m_painter->setPen(cardraw3);
+          cardraw3.setWidth(2);
+          m_painter->setBrush(Qt::NoBrush);
+          m_painter->setPen(cardraw3);
+          int p_a3_x,p_a3_y,p_b3_x,p_b3_y,p_c3_x,p_c3_y,p_d3_x,p_d3_y,L4 = 60, W4 = 40;
 
-       p_a3_x=x3 + (-L4/2) * cos(theta3) - (W4/2)  * sin(theta3);
-       p_a3_y=yy3 + (-L4/2) * sin(theta3) + (W4/2)  * cos(theta3);
-       p_b3_x=x3 + (L4/2)  * cos(theta3) - (W4/2)  * sin(theta3);
-       p_b3_y=yy3 + (L4/2)  * sin(theta3) + (W4/2)  * cos(theta3);
-       p_c3_x=x3 + (L4/2)  * cos(theta3) - (-W4/2) * sin(theta3);
-       p_c3_y=yy3 + (L4/2)  * sin(theta3) + (-W4/2) * cos(theta3);
-       p_d3_x=x3 + (-L4/2) * cos(theta3) - (-W4/2) * sin(theta3);
-       p_d3_y=yy3 + (-L4/2) * sin(theta3) + (-W4/2) * cos(theta3);
-
-
-       m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_b3_x,p_b3_y));
-       m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_d3_x,p_d3_y));
-       m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_b3_x,p_b3_y));
-       m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_d3_x,p_d3_y));
-       QPen line3(QColor(60,200,120));
-       line3.setWidth(3);
-       m_painter->setPen(line3);
-       m_painter->drawLine(QPoint((p_a3_x+p_b3_x)/2,(p_a3_y+p_b3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
-       m_painter->drawLine(QPoint((p_c3_x+p_d3_x)/2,(p_c3_y+p_d3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
-
-       QBrush brush6;
+           p_a3_x=x3 + (-L4/2) * cos(theta3) - (W4/2)  * sin(theta3);
+           p_a3_y=yy3 + (-L4/2) * sin(theta3) + (W4/2)  * cos(theta3);
+           p_b3_x=x3 + (L4/2)  * cos(theta3) - (W4/2)  * sin(theta3);
+           p_b3_y=yy3 + (L4/2)  * sin(theta3) + (W4/2)  * cos(theta3);
+           p_c3_x=x3 + (L4/2)  * cos(theta3) - (-W4/2) * sin(theta3);
+           p_c3_y=yy3 + (L4/2)  * sin(theta3) + (-W4/2) * cos(theta3);
+           p_d3_x=x3 + (-L4/2) * cos(theta3) - (-W4/2) * sin(theta3);
+           p_d3_y=yy3 + (-L4/2) * sin(theta3) + (-W4/2) * cos(theta3);
 
 
-       if(p3 == 1)
-       {
-       m_painter->setBrush(Qt::red);
-       m_painter->setPen(Qt::darkRed);
-       }
-       else
-       {
-       m_painter->setBrush(Qt::green);
-       m_painter->setPen(Qt::green);
-       }
-       m_painter->drawEllipse(QPoint(x3,yy3),15,15);
+           m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_b3_x,p_b3_y));
+           m_painter->drawLine(QPoint(p_a3_x,p_a3_y) , QPoint(p_d3_x,p_d3_y));
+           m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_b3_x,p_b3_y));
+           m_painter->drawLine(QPoint(p_c3_x,p_c3_y) , QPoint(p_d3_x,p_d3_y));
+           QPen line3(QColor(60,200,120));
+           line3.setWidth(3);
+           m_painter->setPen(line3);
+           m_painter->drawLine(QPoint((p_a3_x+p_b3_x)/2,(p_a3_y+p_b3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
+           m_painter->drawLine(QPoint((p_c3_x+p_d3_x)/2,(p_c3_y+p_d3_y)/2) , QPoint((p_b3_x+p_c3_x)/2,(p_b3_y+p_c3_y)/2));
 
+           QBrush brush6;
+
+
+           if(p3 == 1)
+           {
+           m_painter->setBrush(Qt::red);
+           m_painter->setPen(Qt::darkRed);
+           }
+           else
+           {
+           m_painter->setBrush(Qt::green);
+           m_painter->setPen(Qt::green);
+           }
+           m_painter->drawEllipse(QPoint(x3,yy3),15,15);
+        }
 
        //4号小车绘画
-       QPen cardraw4(QColor(255,255,255));
-       m_painter->setPen(cardraw4);
-       cardraw4.setWidth(2);
-       m_painter->setBrush(Qt::NoBrush);
-       m_painter->setPen(cardraw4);
-        int p_a4_x,p_a4_y,p_b4_x,p_b4_y,p_c4_x,p_c4_y,p_d4_x,p_d4_y,L8 = 60, W8 = 40;
+        if(MainWindow::amr_s_2.online_status == 1){
+           QPen cardraw4(QColor(255,255,255));
+           m_painter->setPen(cardraw4);
+           cardraw4.setWidth(2);
+           m_painter->setBrush(Qt::NoBrush);
+           m_painter->setPen(cardraw4);
+            int p_a4_x,p_a4_y,p_b4_x,p_b4_y,p_c4_x,p_c4_y,p_d4_x,p_d4_y,L8 = 60, W8 = 40;
 
-        p_a4_x=x4 + (-L8/2) * cos(theta4) - (W8/2)  * sin(theta4);
-        p_a4_y=yy4 + (-L8/2) * sin(theta4) + (W8/2)  * cos(theta4);
-        p_b4_x=x4 + (L8/2)  * cos(theta4) - (W8/2)  * sin(theta4);
-        p_b4_y=yy4 + (L8/2)  * sin(theta4) + (W8/2)  * cos(theta4);
-        p_c4_x=x4 + (L8/2)  * cos(theta4) - (-W8/2) * sin(theta4);
-        p_c4_y=yy4 + (L8/2)  * sin(theta4) + (-W8/2) * cos(theta4);
-        p_d4_x=x4 + (-L8/2) * cos(theta4) - (-W8/2) * sin(theta4);
-        p_d4_y=yy4 + (-L8/2) * sin(theta4) + (-W8/2) * cos(theta4);
-
-
-        m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_b4_x,p_b4_y));
-        m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_d4_x,p_d4_y));
-        m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_b4_x,p_b4_y));
-        m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_d4_x,p_d4_y));
-        QPen line4(QColor(20,100,120));
-        line4.setWidth(3);
-        m_painter->setPen(line4);
-        m_painter->drawLine(QPoint((p_a4_x+p_b4_x)/2,(p_a4_y+p_b4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
-        m_painter->drawLine(QPoint((p_c4_x+p_d4_x)/2,(p_c4_y+p_d4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
-
-        QBrush brush10;
+            p_a4_x=x4 + (-L8/2) * cos(theta4) - (W8/2)  * sin(theta4);
+            p_a4_y=yy4 + (-L8/2) * sin(theta4) + (W8/2)  * cos(theta4);
+            p_b4_x=x4 + (L8/2)  * cos(theta4) - (W8/2)  * sin(theta4);
+            p_b4_y=yy4 + (L8/2)  * sin(theta4) + (W8/2)  * cos(theta4);
+            p_c4_x=x4 + (L8/2)  * cos(theta4) - (-W8/2) * sin(theta4);
+            p_c4_y=yy4 + (L8/2)  * sin(theta4) + (-W8/2) * cos(theta4);
+            p_d4_x=x4 + (-L8/2) * cos(theta4) - (-W8/2) * sin(theta4);
+            p_d4_y=yy4 + (-L8/2) * sin(theta4) + (-W8/2) * cos(theta4);
 
 
-        if(p4 == 1)
-        {
-        m_painter->setBrush(Qt::red);
-        m_painter->setPen(Qt::darkRed);
-        }
-        else
-        {
-        m_painter->setBrush(Qt::green);
-        m_painter->setPen(Qt::green);
-        }
-        m_painter->drawEllipse(QPoint(x4,yy4),15,15);
+            m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_b4_x,p_b4_y));
+            m_painter->drawLine(QPoint(p_a4_x,p_a4_y) , QPoint(p_d4_x,p_d4_y));
+            m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_b4_x,p_b4_y));
+            m_painter->drawLine(QPoint(p_c4_x,p_c4_y) , QPoint(p_d4_x,p_d4_y));
+            QPen line4(QColor(20,100,120));
+            line4.setWidth(3);
+            m_painter->setPen(line4);
+            m_painter->drawLine(QPoint((p_a4_x+p_b4_x)/2,(p_a4_y+p_b4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
+            m_painter->drawLine(QPoint((p_c4_x+p_d4_x)/2,(p_c4_y+p_d4_y)/2) , QPoint((p_b4_x+p_c4_x)/2,(p_b4_y+p_c4_y)/2));
 
-        QFont font3;//
+            QBrush brush10;
+
+            if(p4 == 1)
+            {
+            m_painter->setBrush(Qt::red);
+            m_painter->setPen(Qt::darkRed);
+            }
+            else
+            {
+            m_painter->setBrush(Qt::green);
+            m_painter->setPen(Qt::green);
+            }
+            m_painter->drawEllipse(QPoint(x4,yy4),15,15);
+         }
+
+        //绘画站点的工作状态
+        QFont font3;
         font3.setFamily("宋体");
         font3.setPointSize(8);
         font3.setBold(false);

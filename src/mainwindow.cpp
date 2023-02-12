@@ -36,6 +36,8 @@
 #include <QSplineSeries>
 #include <QtCharts>
 #include "login2.h"
+#include "map_read.h"
+#include "qcustomplot.h"
 
 using namespace std;
 
@@ -77,7 +79,6 @@ int d2_deliver_x = 0;
 int d2_deliver_y = 0;
 int d2_destination_x = 0;
 int d2_destination_y = 0;
-
 
 
 //代码发送需要用到的变量
@@ -154,18 +155,48 @@ float time41 = 0;
 float time42 = 0;
 
 
-
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    map_read map;
+    map.get_json();
+    map.get_size();
+    QTime startTime = QTime::currentTime();
+    map.map_draw();
+    QTime stopTime = QTime::currentTime();
+    int elapsed = startTime.msecsTo(stopTime);
+    qDebug()<<"QTime.currentTime ="<<elapsed<<"ms";
+    QVector<double> x(map.sum_plot),y(map.sum_plot);
+    for(int i=0;i<map.sum_plot;i++){
+        x[i]=map.Mypoints.back().x;
+        y[i]=map.Mypoints.back().y;
+        map.Mypoints.pop_back();
+    }
+    QPen mypen;
+    mypen.setWidth(1);
+    mypen.setColor(Qt::black);
+    QCPGraph * curGraph = ui->widget_4->addGraph();
+    //ui->widget->graph(0)->setPen(QPen(Qt::black));
+    curGraph->setPen(mypen);
+    curGraph->setLineStyle(QCPGraph::lsNone);
+    curGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ScatterShape::ssDisc, 1));
+    ui->widget_4->legend->setBrush(QColor(255,255,255,0));//设置图例背景
+    curGraph->addData(x,y);
+    curGraph->setAdaptiveSampling(true);
+    ui->widget_4->xAxis->setLabel("x");
+    ui->widget_4->yAxis->setLabel("y");
+    ui->widget_4->xAxis->setRange(0,map.size_x);
+    ui->widget_4->yAxis->setRange(0,map.size_y);
+    ui->widget_4->replot();
+
+
     //未登录不能修改 日志 & 用户管理 & AMR参数
     ui->workData->setEnabled(temp::optEnable);
     ui->userManage->setEnabled(temp::optEnable);
-     ui->TabAMRManage->setEnabled(temp::optEnable);
+    ui->TabAMRManage->setEnabled(temp::optEnable);
 
     QString path = QFileDialog::getOpenFileName(
                                                 this,
@@ -1883,19 +1914,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->newOfferStart->lineEdit()->setAlignment(Qt::AlignCenter);
     ui->newstartHigh->lineEdit()->setAlignment(Qt::AlignCenter);
     ui->newendHigh->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_206->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_207->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_208->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_209->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_210->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_211->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->comboBox_212->lineEdit()->setAlignment(Qt::AlignCenter);
     ui->newPriority->lineEdit()->setAlignment(Qt::AlignCenter);
-    ui->lineEdit_221->setAlignment(Qt::AlignCenter);
 
 
     //tabWidget相关设置
-    ui->tabWidget->removeTab(2);        //隐藏任务编辑栏
     ui->TabAMRManage->removeTab(2);
 
     ui->tableTest->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -1903,27 +1925,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTest->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->tableTest->setColumnWidth(0,300);                               //设置第一列宽度
     ui->tableTest->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
-    ui->tableTest->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");       //设置表头字体格式
+    ui->tableTest->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;color:black;font-weight:bold;}");       //设置表头字体格式
     ui->tableTest->setAlternatingRowColors(true);
     ui->tableTest->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableTest->setSelectionMode(QAbstractItemView::SingleSelection);
 
     ui->offerConfirmTable->horizontalHeader()->setVisible(true);
-    ui->offerConfirmTable->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");
+    ui->offerConfirmTable->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;color:black;font-weight:bold;}");
     ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //行高自动适配表格大小
     ui->offerConfirmTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //ui->offerConfirmTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
 
-    //ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->diaodulist->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;color:black;font-weight:bold;}");
+    ui->diaodulist->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->diaodulist->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->diaodulist->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
+    ui->diaodulist->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Custom);    //自定义第一列宽度
+    ui->diaodulist->setColumnWidth(0,180);                               //设置第一列宽度
+    ui->diaodulist->setColumnWidth(2,170);                               //设置第一列宽度
+    ui->diaodulist->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
+
+    ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableTest_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->setColumnWidth(0,180);
-    ui->tableTest_2->setColumnWidth(1,95);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->tableTest_2->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
 
 
     ui->carView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->carView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->carView->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->carView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
 
@@ -1936,8 +1967,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->debug_show->setCurrentIndex(1);
 
     ui->paintMap->GainChange(1);
-    ui->paintMap2->GainChange(0.9);
-    ui->managePaint->GainChange(0.9);
+    ui->paintMap2->GainChange(0.7);
 
 
 }
@@ -2354,11 +2384,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
 
 }
 
-
 //下列四个槽函数为小车地图上四个小车位置更新的进程连接按钮的功能实现，点击链接，槽函数会触发相应的进程开启。
 void MainWindow::on_startButton_clicked()
 {
     thread.start();
+    amr_d_1.online_status = 1;
     ui->startButton->setEnabled(false);
     ui->stopButton->setEnabled(true);
 }
@@ -2367,6 +2397,7 @@ void MainWindow::on_stopButton_clicked()
     if(thread.isRunning())
     {
         thread.stop();
+        amr_d_1.online_status = 0;
 
         ui->startButton->setEnabled(true);
         ui->stopButton->setEnabled(false);
@@ -2376,6 +2407,7 @@ void MainWindow::on_stopButton_clicked()
 void MainWindow::on_startButton_2_clicked()
 {
     thread2.start();
+    amr_d_2.online_status = 1;
     //thread2.start();
     ui->startButton_2->setEnabled(false);
     ui->stopButton_2->setEnabled(true);
@@ -2387,6 +2419,7 @@ void MainWindow::on_stopButton_2_clicked()
     if(thread2.isRunning())
     {
         thread2.stop();
+        amr_d_2.online_status = 0;
 
         ui->startButton_2->setEnabled(true);
         ui->stopButton_2->setEnabled(false);
@@ -2397,6 +2430,8 @@ void MainWindow::on_stopButton_2_clicked()
 void MainWindow::on_startButton_3_clicked()
 {
     thread3.start();
+    amr_s_1.online_status = 1;
+
     //thread2.start();
     ui->startButton_3->setEnabled(false);
     ui->stopButton_3->setEnabled(true);
@@ -2408,6 +2443,7 @@ void MainWindow::on_stopButton_3_clicked()
     if(thread3.isRunning())
     {
         thread3.stop();
+        amr_s_1.online_status = 0;
 
         ui->startButton_3->setEnabled(true);
         ui->stopButton_3->setEnabled(false);
@@ -2417,6 +2453,8 @@ void MainWindow::on_stopButton_3_clicked()
 void MainWindow::on_startButton_4_clicked()
 {
     thread4.start();
+    amr_s_2.online_status = 1;
+
     ui->startButton_4->setEnabled(false);
     ui->stopButton_4->setEnabled(true);
 }
@@ -2427,6 +2465,8 @@ void MainWindow::on_stopButton_4_clicked()
     if(thread4.isRunning())
     {
         thread4.stop();
+        amr_s_2.online_status = 0;
+
         ui->startButton_4->setEnabled(true);
         ui->stopButton_4->setEnabled(false);
 
@@ -2892,18 +2932,6 @@ void MainWindow::on_userManage_toggled(bool checked)
     }
 }
 
-void MainWindow::on_mapSwitch_stateChanged(int arg1)
-{
-    bool status = ui->mapSwitch->isChecked();
-    if(status == true)
-    {
-       ui->mapChange->setCurrentIndex(1);
-    }
-    else
-    {
-        ui->mapChange->setCurrentIndex(0);
-    }
-}
 
 /*************************************************数据库部分*********************************************************/
 //编辑对话框显示相应记录条
@@ -2961,23 +2989,17 @@ void MainWindow::openTable()
     qryModel4=new CustomSqlQueryModel(this);
     qryModel5=new CustomSqlQueryModel(this);
     qryModel6=new CustomSqlQueryModel(this);
+    qryModel7=new CustomSqlQueryModel(this);
     theSelection=new QItemSelectionModel(qryModel);
 
     qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test LIMIT 1,11");
-    if (qryModel->lastError().isValid())
-    {
-        QMessageBox::information(this, "错误", "数据表查询错误,错误信息\n"+qryModel->lastError().text(),
-                                 QMessageBox::Ok,QMessageBox::NoButton);
-        return;
-    }
     qryModel4->setQuery("SELECT offerID, offerState FROM test");
 
     qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
     ui->offerNum->setText(QString::number(qryModel5->rowCount()));
     qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
     qryModel6->setQuery("SELECT carID, carState, carPower FROM carManage");
-
-
+    qryModel7->setQuery("SELECT offerID, executeAMR, algorithm, dispatchTime, offerState FROM test Limit 0,9");
 
     qryModel->setHeaderData(0,Qt::Horizontal,"任务ID");
     qryModel->setHeaderData(1,Qt::Horizontal,"任务类型");
@@ -2999,12 +3021,18 @@ void MainWindow::openTable()
     qryModel6->setHeaderData(1,Qt::Horizontal,"状态");
     qryModel6->setHeaderData(2,Qt::Horizontal,"电量");
 
+    qryModel7->setHeaderData(0,Qt::Horizontal,"任务ID");
+    qryModel7->setHeaderData(1,Qt::Horizontal,"执行AMR");
+    qryModel7->setHeaderData(2,Qt::Horizontal,"调度算法");
+    qryModel7->setHeaderData(3,Qt::Horizontal,"调度时间");
+    qryModel7->setHeaderData(4,Qt::Horizontal,"任务状态");
+
     ui->tableTest->setModel(qryModel);
     ui->tableTest->setSelectionModel(theSelection);
     ui->tableTest_2->setModel(qryModel4);
     ui->carView->setModel(qryModel6);
     ui->offerConfirmTable->setModel(qryModel5);
-
+    ui->diaodulist->setModel(qryModel7);
 
 
 }
@@ -3951,4 +3979,3 @@ void MainWindow::on_pushButton_20_clicked()
         }
     });
 }
-

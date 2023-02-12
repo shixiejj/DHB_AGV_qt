@@ -20,7 +20,7 @@ protected:
 private:
     QPen m_drawPen;
     QPainter* m_painter;
-    double gain;    //不同页面不同比例地图
+    double gain;    //不同页面不同比例地
 };
 
 #endif // DRAWMAP_H

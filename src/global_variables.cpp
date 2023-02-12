@@ -4,6 +4,7 @@ using namespace std;
 
 
 //冲突区域全局变量
+bool car_online1 = 0;
 double x1  = -100;
 double yy1  = 0;
 double theta1 = 0  ;
@@ -17,11 +18,13 @@ int  jj1 = 0;
 
 int ui_num = 0;
 
+bool car_online2 = 0;
 double x2  = -100;
 double yy2  = 0;
 double theta2 = 0  ;
 int p2  = 0 ;//小车取货，送货，回城状态
 
+bool car_online3 = 0;
 double x3  = -1000;
 double yy3  = 0;
 double theta3 = 0  ;

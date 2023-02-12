@@ -1,5 +1,6 @@
 #ifndef MYTHREAD4_H
 #define MYTHREAD4_H
+extern bool car_online4;
 extern double x4;
 extern double yy4;
 extern double theta4;

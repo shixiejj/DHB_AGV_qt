@@ -7,7 +7,7 @@
 QT       += core gui sql network charts
 CONFIG += c++11
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = agv-qt-1020-1
 TEMPLATE = app
@@ -17,6 +17,7 @@ DESTDIR = $$PWD/bin
 INCLUDEPATH += ./inc
 
 SOURCES += src/main.cpp\
+    src/cJSON.c \
     src/car.cpp \
     src/communicate.cpp \
     src/customClass.cpp \
@@ -27,6 +28,7 @@ SOURCES += src/main.cpp\
        src/mainwindow.cpp \
     src/device_con.cpp \
     src/login2.cpp \
+    src/map_read.cpp \
     src/mythread.cpp \
     src/mythread2.cpp \
     src/mythread3.cpp \
@@ -36,9 +38,11 @@ SOURCES += src/main.cpp\
     src/mythread4.cpp \
     src/XStateClient.cpp \
     src/XData.cpp \
+    src/qcustomplot.cpp \
     src/showunitywindowsinqt.cpp
 
 HEADERS  += inc/mainwindow.h \
+    inc/cJSON.h \
     inc/car.h \
     inc/communicate.h \
     inc/customClass.h \
@@ -47,6 +51,7 @@ HEADERS  += inc/mainwindow.h \
     inc/editdialog.h \
     inc/editwidget.h \
     inc/login2.h \
+    inc/map_read.h \
     inc/mythread.h \
     inc/mythread2.h \
     inc/mythread3.h \
@@ -56,6 +61,7 @@ HEADERS  += inc/mainwindow.h \
     inc/mythread4.h \
     inc/XData.h \
     inc/XStateClient.h \
+    inc/qcustomplot.h \
     inc/showunitywindowsinqt.h
 
 FORMS    += ui/mainwindow.ui \

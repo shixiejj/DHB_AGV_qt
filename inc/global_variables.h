@@ -181,6 +181,7 @@ extern QString pot_sta_code3_character;*/
 #define u2_x 622
 #define u2_y 686
 
+extern bool car_online1;
 extern double x1;
 extern double yy1;
 extern double theta1;
@@ -195,11 +196,13 @@ extern int jj1;
 extern double test_x;
 extern double test_y;
 
+extern bool car_online2;
 extern double x2;
 extern double yy2;
 extern double theta2;
 extern int p2;
 
+extern bool car_online3;
 extern double x3;
 extern double yy3;
 extern double theta3;
