@@ -254,7 +254,10 @@ private slots:
 
     void on_pushButton_80_clicked();
 
-    void on_tabWidget_currentChanged(int index);
+
+    void on_starttBtn_clicked();
+
+    void on_starttBtn_2_clicked();
 
 signals:
     void startConnectSend(unsigned short,QString);

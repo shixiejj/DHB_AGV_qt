@@ -43,20 +43,14 @@ using namespace std;
 
 extern bool vilidatePwd(QString str);
 
-//表格刷新数据部分
-int etask_ip[5]   = {0,0,0,0,0};
-int etask_type[5] = {0,0,0,0,0};
-int etask_list[5] = {0,0,0,0,0};
-int etask_sta[5]  = {0,0,0,0,0};
-int etask_percent[5] = {0,0,0,0,0};
-int etask_source[5] = {0,0,0,0,0};
-int etask_time[5] = {0,0,0,0,0};
-
 int  button_clicked_sta = 0;//任务按钮按键按下
 
 int con_delay = 0;//判断是否需要往调度函数中加入延时
 
 int curent = 0;//数据库索引
+int taskbnum = 6;//出库任务数量
+int taskanum = 1;//入库任务数量
+int taskcnum = 4;//移库任务数量
 
 int task_num = 0;
 
@@ -433,14 +427,6 @@ MainWindow::MainWindow(QWidget *parent) :
      为实现任务管理界面中的核心内部功能-获取数据库中的任务信息之后，
      顺序执行数据库中的任务信息
     */
-//   timer4 = new QTimer(this);
-//   timer4->start(5000);
-//   connect(ui->starttBtn,ui->starttBtn->click(),this,[=](){
-//       connect(timer4,SIGNAL(timeout()),this,SLOT(DB_task()));
-//   });
-//   connect(ui->starttBtn_2,ui->starttBtn_2->click(),this,[=](){
-//      timer4->stop();
-//   });
 
     /* 线程1-位置刷新
      * 代码tsx01
@@ -1938,16 +1924,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->offerConfirmTable->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
 
     ui->diaodulist->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;color:black;font-weight:bold;}");
-    ui->diaodulist->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->diaodulist->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//3-
     ui->diaodulist->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->diaodulist->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
-    ui->diaodulist->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Custom);    //自定义第一列宽度
-    ui->diaodulist->setColumnWidth(0,180);                               //设置第一列宽度
-    ui->diaodulist->setColumnWidth(2,170);                               //设置第一列宽度
+    /*ui->diaodulist->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
+    ui->diaodulist->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Custom);  */  //自定义第一列宽度
+    /*ui->diaodulist->setColumnWidth(0,200);                               //设置第一列宽度
+    ui->diaodulist->setColumnWidth(2,190); */                      //设置第一列宽度
+
     ui->diaodulist->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
 
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableTest_2->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);
     ui->tableTest_2->setColumnWidth(0,180);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
     ui->tableTest_2->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
@@ -3027,6 +3015,7 @@ void MainWindow::openTable()
     qryModel7->setHeaderData(3,Qt::Horizontal,"调度时间");
     qryModel7->setHeaderData(4,Qt::Horizontal,"任务状态");
 
+
     ui->tableTest->setModel(qryModel);
     ui->tableTest->setSelectionModel(theSelection);
     ui->tableTest_2->setModel(qryModel4);
@@ -3074,6 +3063,7 @@ void MainWindow::on_shanchu_clicked()
 //读取数据库任务并进行下发
 void MainWindow::task_timeinfo()
 {
+    qDebug()<<"程序成功运行一遍";
     qryModel2 = new QSqlQueryModel(this);
     qryModel2->setQuery("SELECT Task_type, SPointx, SPointy, EPointx, EPointy FROM test");
     if (qryModel2->lastError().isValid())
@@ -3185,13 +3175,13 @@ QSqlRecord MainWindow::getRecordData(QSqlQuery quer)
     //newRecord获得空记录
     newRecord = quer.record();
     //为记录赋值
+    newRecord.setValue("offerID","A-230201-000002");
     newRecord.setValue("offerKind",ui->newOfferKind->currentText());
     newRecord.setValue("offerStart",ui->newOfferStart->currentText());
     newRecord.setValue("startHigh",ui->newstartHigh->currentText());
     newRecord.setValue("offerEnd",ui->newOfferEnd->currentText());
     newRecord.setValue("endHigh",ui->newendHigh->currentText());
     newRecord.setValue("offerPriority",ui->newPriority->currentText());
-
     return  newRecord; //以记录作为返回值
 }
 
@@ -3202,7 +3192,28 @@ void MainWindow::on_newOk_clicked()
     query.exec("select * from test where offerID =-1"); //实际不查询出记录，只查询字段信息
     //获取新建任务的具体信息
     QSqlRecord  recData = getRecordData(query);
-    recData.setValue("offerID","dlkeqw");
+    QString taskkind = ui->newOfferKind->currentText();
+    if(taskkind == "入库")
+    {
+        taskbnum += 1;
+        QString btk = tr("B-230201-00000%1").arg(taskbnum);
+        recData.setValue("offerID",btk);
+    }
+    else if(taskkind == "出库")
+    {
+        taskanum += 1;
+        QString atk = tr("A-230201-00000%1").arg(taskanum);
+        recData.setValue("offerID",atk);
+    }
+    else if(taskkind == "移库")
+    {
+        taskcnum += 1;
+        QString ctk = tr("C-230201-00000%1").arg(taskcnum);
+        recData.setValue("offerID",ctk);
+    }
+
+
+    qDebug()<<"任务类型："<<ui->newOfferKind->currentText()<<"任务起点:"<<ui->newOfferStart->currentText()<<"起点层高："<<ui->newstartHigh->currentText();
 
     //新建query对象以实现插入记录操作
     query.prepare("INSERT INTO test (offerID, offerState, offerProcess, offerSourse, recieveTime, offerKind, offerStart, startHigh, offerEnd, endHigh, offerPriority) "
@@ -3341,23 +3352,7 @@ void MainWindow::on_pushButton_80_clicked()
 }
 
 
-void MainWindow::on_tabWidget_currentChanged(int index)
-{
-    if(index == 0)
-    {
 
-        qDebug()<<"选中了0";
-    }
-    if(index == 1)
-    {
-      //ui->tabWidget->setTabIcon(1,"");
-      qDebug()<<"选中了1";
-    }
-    if(index == 2)
-    {
-        qDebug()<<"选中了2";
-    }
-}
 
 void LogMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg){
     static QMutex mutex;
@@ -3978,4 +3973,16 @@ void MainWindow::on_pushButton_20_clicked()
             qDebug() << query.lastError().text();
         }
     });
+}
+
+void MainWindow::on_starttBtn_clicked()
+{
+   timer4 = new QTimer(this);
+   timer4->start(5000);
+   connect(timer4,SIGNAL(timeout()),this,SLOT(task_timeinfo()));
+}
+
+void MainWindow::on_starttBtn_2_clicked()
+{
+       timer4->stop();
 }
