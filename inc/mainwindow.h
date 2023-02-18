@@ -54,6 +54,7 @@ private:
     CustomSqlQueryModel *qryModel6;
     CustomSqlQueryModel *qryModel7;     //调度算法页面
     QSqlQueryModel *qryModel2;
+    QSqlQueryModel *qryModel9; //删除功能
     QItemSelectionModel *theSelection;
     QSqlRecord newRecord;
 
@@ -109,6 +110,8 @@ public:
     static car amr_d_2;
     static car amr_s_1;
     static car amr_s_2;
+    QString DATE;
+    QString TIME;
 
     //void paintEvent(QPaintEvent *);
 
@@ -256,8 +259,60 @@ private slots:
 
 
     void on_starttBtn_clicked();
+    void on_delete_2_clicked();
+
 
     void on_starttBtn_2_clicked();
+
+    void on_startButton_8_clicked();
+
+    void on_delete_8_clicked();
+
+    void on_delete_1_clicked();
+
+    void on_delete_3_clicked();
+
+    void on_delete_4_clicked();
+
+    void on_startButton_9_clicked();
+
+    void on_delete_9_clicked();
+
+    void on_startButton_7_clicked();
+
+    void on_delete_7_clicked();
+
+    void on_startButton_13_clicked();
+
+    void on_delete_13_clicked();
+
+    void on_startButton_12_clicked();
+
+    void on_delete_12_clicked();
+
+    void on_startButton_14_clicked();
+
+    void on_delete_14_clicked();
+
+    void on_startButton_11_clicked();
+
+    void on_delete_11_clicked();
+
+    void on_delete_10_clicked();
+
+    void on_stopButton_8_clicked();
+
+    void on_stopButton_9_clicked();
+
+    void on_stopButton_7_clicked();
+
+    void on_stopButton_13_clicked();
+
+    void on_stopButton_12_clicked();
+
+    void on_stopButton_14_clicked();
+
+    void on_stopButton_11_clicked();
 
 signals:
     void startConnectSend(unsigned short,QString);
@@ -314,6 +369,8 @@ private:
 
     int DB_current = 0;
 
+    int offerNUM = 0;
+
     Ui::MainWindow *ui;
     MyThread   thread;
     MyThread2  thread2;
@@ -336,6 +393,7 @@ private:
      QTimer *m_timer;
      QTimer *timer11;
      QTimer *timer12;
+     QTimer *timercarsta;
      QTimer *timer13;
      QTimer *timer14;
      QTimer *timer21;

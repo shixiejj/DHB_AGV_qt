@@ -769,7 +769,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_12">
+                    <widget class="QLabel" name="status_10">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -819,7 +819,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -851,7 +851,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -986,7 +986,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_14">
+                    <widget class="QLabel" name="status_11">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -1036,7 +1036,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -1068,7 +1068,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -1253,7 +1253,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -1285,7 +1285,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -1420,7 +1420,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_8">
+                    <widget class="QLabel" name="status_5">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -1445,13 +1445,6 @@ color: rgb(255, 255, 255);</string>
                    <property name="verticalSpacing">
                     <number>20</number>
                    </property>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_135">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;设备名称：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="0" column="1">
                     <widget class="QLineEdit" name="netDevice_8">
                      <property name="sizePolicy">
@@ -1470,10 +1463,17 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_135">
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;设备名称：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                     </widget>
                    </item>
@@ -1502,7 +1502,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2071,7 +2071,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_13">
+                    <widget class="QLabel" name="status_9">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2121,7 +2121,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2153,7 +2153,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2288,7 +2288,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_7">
+                    <widget class="QLabel" name="status_8">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2338,7 +2338,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2370,7 +2370,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2555,7 +2555,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2587,7 +2587,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2722,7 +2722,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_9">
+                    <widget class="QLabel" name="status_6">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2772,7 +2772,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2804,7 +2804,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -2939,7 +2939,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_10">
+                    <widget class="QLabel" name="status_7">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2989,7 +2989,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -3021,7 +3021,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -3156,7 +3156,7 @@ color: rgb(255, 255, 255);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="status_11">
+                    <widget class="QLabel" name="status_12">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -3206,7 +3206,7 @@ color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="text">
-                      <string>AMR_W_1</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -3238,7 +3238,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
-                      <string>192.168.3.2</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -3368,7 +3368,7 @@ QTabBar::tab:selected{background-color: rgb(0, 85, 127);color:white;border:1px s
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -3854,17 +3854,72 @@ color: rgb(255, 255, 255);</string>
                   </property>
                   <item>
                    <property name="text">
-                    <string>c1</string>
+                    <string>l1</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>c2</string>
+                    <string>l2</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>c3</string>
+                    <string>l3</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l4</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l5</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l6</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l7</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l8</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l9</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l10</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l11</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l12</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>t1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>t2</string>
                    </property>
                   </item>
                  </widget>
@@ -3933,17 +3988,72 @@ color: rgb(255, 255, 255);</string>
                   </property>
                   <item>
                    <property name="text">
-                    <string>a1</string>
+                    <string>l1</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>a2</string>
+                    <string>l2</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>a3</string>
+                    <string>l3</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l4</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l5</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l6</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l7</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l8</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l9</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l10</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l11</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>l12</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>t1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>t2</string>
                    </property>
                   </item>
                  </widget>
@@ -4615,10 +4725,10 @@ border-color: rgb(255, 255, 255);</string>
          <widget class="QStackedWidget" name="debug_show">
           <property name="geometry">
            <rect>
-            <x>1270</x>
-            <y>0</y>
-            <width>361</width>
-            <height>971</height>
+            <x>1280</x>
+            <y>90</y>
+            <width>341</width>
+            <height>851</height>
            </rect>
           </property>
           <property name="currentIndex">
@@ -4749,9 +4859,9 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLabel" name="label_277">
              <property name="geometry">
               <rect>
-               <x>10</x>
+               <x>0</x>
                <y>120</y>
-               <width>60</width>
+               <width>81</width>
                <height>18</height>
               </rect>
              </property>
@@ -4768,9 +4878,9 @@ color: rgb(255, 255, 255);</string>
              <property name="geometry">
               <rect>
                <x>160</x>
-               <y>120</y>
+               <y>110</y>
                <width>41</width>
-               <height>16</height>
+               <height>21</height>
               </rect>
              </property>
              <property name="font">
@@ -5228,111 +5338,11 @@ color: rgb(255, 255, 255);</string>
            </widget>
           </widget>
           <widget class="QWidget" name="page_2">
-           <widget class="QProgressBar" name="powerLeft_1">
-            <property name="geometry">
-             <rect>
-              <x>220</x>
-              <y>430</y>
-              <width>121</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="value">
-             <number>90</number>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QProgressBar" name="powerLeft_2">
-            <property name="geometry">
-             <rect>
-              <x>220</x>
-              <y>460</y>
-              <width>121</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="value">
-             <number>30</number>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QProgressBar" name="powerLeft_3">
-            <property name="geometry">
-             <rect>
-              <x>220</x>
-              <y>490</y>
-              <width>121</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="value">
-             <number>30</number>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QProgressBar" name="powerLeft_4">
-            <property name="geometry">
-             <rect>
-              <x>220</x>
-              <y>520</y>
-              <width>121</width>
-              <height>23</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="value">
-             <number>30</number>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
            <widget class="QTableView" name="tableTest_2">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>70</y>
+              <x>0</x>
+              <y>0</y>
               <width>331</width>
               <height>291</height>
              </rect>
@@ -5355,33 +5365,11 @@ font: bold 11pt ;</string>
              <bool>false</bool>
             </attribute>
            </widget>
-           <widget class="QTableView" name="carView">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>380</y>
-              <width>331</width>
-              <height>241</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">gridline-color: rgb(255, 255, 255);
-border-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);
-font: bold 11pt ;</string>
-            </property>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderDefaultSectionSize">
-             <number>45</number>
-            </attribute>
-           </widget>
            <widget class="QGroupBox" name="groupBox">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>640</y>
+              <x>0</x>
+              <y>590</y>
               <width>331</width>
               <height>251</height>
              </rect>
@@ -5396,24 +5384,6 @@ font: bold 11pt ;</string>
              <item>
               <widget class="QWidget" name="widget_7" native="true">
                <layout class="QGridLayout" name="gridLayout_8">
-                <item row="0" column="1">
-                 <widget class="QLabel" name="label_12">
-                  <property name="font">
-                   <font>
-                    <pointsize>19</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
-                  </property>
-                  <property name="text">
-                   <string>设备统计</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="2">
                  <spacer name="horizontalSpacer_10">
                   <property name="orientation">
@@ -5439,6 +5409,24 @@ font: bold 11pt ;</string>
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_12">
+                  <property name="font">
+                   <font>
+                    <pointsize>19</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>设备统计</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -5578,6 +5566,28 @@ font: bold 11pt ;</string>
              </item>
             </layout>
            </widget>
+           <widget class="QTableView" name="carView">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>320</y>
+              <width>331</width>
+              <height>241</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">gridline-color: rgb(255, 255, 255);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+font: bold 11pt ;</string>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderDefaultSectionSize">
+             <number>45</number>
+            </attribute>
+           </widget>
           </widget>
          </widget>
          <widget class="QCheckBox" name="debugSwitch">
@@ -5626,7 +5636,7 @@ QTabBar::tab{background-color: rgb(0, 32, 83);}
 QTabBar::tab:selected{background-color: rgb(0, 85, 127);color:white;border:1px solid white;}</string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="elideMode">
            <enum>Qt::ElideLeft</enum>
@@ -5653,8 +5663,8 @@ QTabBar::tab:selected{background-color: rgb(0, 85, 127);color:white;border:1px s
            <widget class="QWidget" name="unity" native="true">
             <property name="geometry">
              <rect>
-              <x>-180</x>
-              <y>-100</y>
+              <x>10</x>
+              <y>10</y>
               <width>1253</width>
               <height>841</height>
              </rect>

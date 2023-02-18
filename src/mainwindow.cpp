@@ -48,9 +48,10 @@ int  button_clicked_sta = 0;//任务按钮按键按下
 int con_delay = 0;//判断是否需要往调度函数中加入延时
 
 int curent = 0;//数据库索引
-int taskbnum = 6;//出库任务数量
-int taskanum = 1;//入库任务数量
-int taskcnum = 4;//移库任务数量
+
+int taskbnum = 0;//出库任务数量
+int taskanum = 0;//入库任务数量
+int taskcnum = 0;//移库任务数量
 
 int task_num = 0;
 
@@ -388,8 +389,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer6,&QTimer::timeout,[=](){
            QDateTime current_time = QDateTime::currentDateTime();
            //显示时间，格式为：年-月-日 时：分：秒 周几
-           QString DATE = current_time.toString("yyyy-MM-dd");
-           QString TIME = current_time.toString("hh:mm:ss");
+           DATE = current_time.toString("yyyy-MM-dd");
+           TIME = current_time.toString("hh:mm:ss");
            //时间显示格式可自由设定，如hh:mm ddd 显示 时：分 周几
            //具体格式见函数QString QDateTime::​toString(const QString & format) const
             ui->Date->setText(DATE);
@@ -1458,20 +1459,28 @@ MainWindow::MainWindow(QWidget *parent) :
         }
 
         //1车任务执行结束检测
-        if((x1 - 714 < 30 && x1 - 714 > -30) && (yy1 - 400 < 30 && yy1 - 400 > -30) && end_pot_sta_g1 == 1)
+        if((x1 - 755 < 30 && x1 - 755 > -30) && (yy1 - 400 < 30 && yy1 - 400 > -30) && end_pot_sta_g1 == 1)
           {
             end_pot_sta_g1 = 0;
             B1_task_percent = 0;
             qDebug()<<"1车到达终点";
-//            time41 =(double)mstimer41.nsecsElapsed()/(double)1000000;
-//            time42 =(double)mstimer42.nsecsElapsed()/(double)1000000;
+            QString first_car_sta = "空闲";
+            QSqlQuery query;
+            QString temp = QString("update carManage set carState = '%1' where number = 1 ").arg(first_car_sta);
+            query.exec(temp);//执行修改信息的操作
+            qryModel6->query().exec();
           }
 
-        if((x2 - 714 < 30 && x2 - 714 > -30) && (yy2 - 590 < 30 && yy2 - 590 > -30) && end_pot_sta_g2 == 1)
+        if((x2 - 755 < 30 && x2 - 755 > -30) && (yy2 - 590 < 30 && yy2 - 590 > -30) && end_pot_sta_g2 == 1)
           {
              B2_task_percent = 0;
              end_pot_sta_g2  = 0;
              qDebug()<<"2车到达终点";
+             QString first_car_sta = "空闲";
+             QSqlQuery query;
+             QString temp = QString("update carManage set carState = '%1' where number = 2 ").arg(first_car_sta);
+             query.exec(temp);//执行修改信息的操作
+             qryModel6->query().exec();
 //             time31 =(double)mstimer31.nsecsElapsed()/(double)1000000;
 //             time32 =(double)mstimer32.nsecsElapsed()/(double)1000000;
 //             int whole_time3z = max(time41,time42)/60000;
@@ -1491,6 +1500,11 @@ MainWindow::MainWindow(QWidget *parent) :
             qDebug()<<"3车到达终点";
             time13 =(double)mstimer13.nsecsElapsed()/(double)1000000;
             time23 =(double)mstimer23.nsecsElapsed()/(double)1000000;
+            QString first_car_sta = "空闲";
+            QSqlQuery query;
+            QString temp = QString("update carManage set carState = '%1' where number = 3 ").arg(first_car_sta);
+            query.exec(temp);//执行修改信息的操作
+            qryModel6->query().exec();
 
           }
 
@@ -1500,6 +1514,11 @@ MainWindow::MainWindow(QWidget *parent) :
             end_pot_sta_c1 = 0;
             D2_task_percent = 0;
             qDebug()<<"4车到达终点";
+            QString first_car_sta = "空闲";
+            QSqlQuery query;
+            QString temp = QString("update carManage set carState = '%1' where number = 4 ").arg(first_car_sta);
+            query.exec(temp);//执行修改信息的操作
+            qryModel6->query().exec();
 //            time14 =(double)mstimer14.nsecsElapsed()/(double)1000000;
 //            time24 =(double)mstimer24.nsecsElapsed()/(double)1000000;
 //            int whole_time1z = max(time13,time14)/60000;
@@ -1546,6 +1565,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     D1_size = AMR_D1_code.size();
                     D1_task_percent = 1;
                     qDebug()<<"安排3车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 3 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
                 }
                 else if(Path_AMR_D2.size() > 8)
                 {
@@ -1555,6 +1579,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     D2_size = AMR_D2_code.size();
                     D2_task_percent = 1;
                     qDebug()<<"安排4车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 4 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
                 }
 
                 if(D2_size == 3)//检测到四车指令的长度
@@ -1632,6 +1661,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     D1_size = AMR_D1_code.size();
                     D1_task_percent = 1;
                     qDebug()<<"安排3车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 3 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
 
                 }
                 else if(Path_AMR_D2.size() > 8)
@@ -1642,6 +1676,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     D2_size = AMR_D2_code.size();
                     D2_task_percent = 1;
                     qDebug()<<"安排4车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 4 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
                 }
                 if(D2_size == 3)
                 {
@@ -1717,6 +1756,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     B1_size = AMR_B1_code.size();
                     B1_task_percent = 1;
                     qDebug()<<"安排1车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 1 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
 
                 }
                 else if(Path_AMR_B2.size() > 8)
@@ -1727,6 +1771,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     B2_size = AMR_B2_code.size();
                     B2_task_percent = 1;
                     qDebug()<<"安排2车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 2 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
                 }
 
                 if( B1_size == 3)
@@ -1803,6 +1852,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     B1_size = AMR_B1_code.size();
                     B1_task_percent = 1;
                     qDebug()<<"安排1车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 1 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
 
                 }
                 else if(Path_AMR_B2.size() > 8)
@@ -1813,6 +1867,11 @@ MainWindow::MainWindow(QWidget *parent) :
                     B2_size = AMR_B2_code.size();
                     B2_task_percent = 1;
                     qDebug()<<"安排2车执行任务";
+                    QString first_car_sta = "忙碌";
+                    QSqlQuery query;
+                    QString temp = QString("update carManage set carState = '%1' where number = 2 ").arg(first_car_sta);
+                    query.exec(temp);//执行修改信息的操作
+                    qryModel6->query().exec();
                 }
 
                 if( B1_size == 3)
@@ -1877,7 +1936,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //        util->setWindowParent((HWND)ui->unity->winId(), titleName);
 //    });
 //    // start your unity program
-//    QString unityExePath(R"(G:\QT\projects\DHBLAB(4files)\DHBLAB\My project.exe)");
+//    QString unityExePath(R"(D:\unity\DHBLAB\DHBLAB\My project.exe)");
 //    util->startUnityProgram(unityExePath);
 
 
@@ -1907,7 +1966,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->TabAMRManage->removeTab(2);
 
     ui->tableTest->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //ui->tableTest->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);    //自定义第一列宽度
     ui->tableTest->setColumnWidth(0,300);                               //设置第一列宽度
     ui->tableTest->horizontalHeader()->setMinimumHeight(50);            //设置表头行高
@@ -1934,7 +1993,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->diaodulist->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
 
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableTest_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //ui->tableTest_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableTest_2->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Custom);
     ui->tableTest_2->setColumnWidth(0,180);
     ui->tableTest_2->horizontalHeader()->setMinimumHeight(40);            //设置表头行高
@@ -1947,10 +2006,102 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->carView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(0,67,98);}");       //设置表头字体格式
 
 
-    ui->carView->setIndexWidget(qryModel6->index(0,2),ui->powerLeft_1);
-    ui->carView->setIndexWidget(qryModel6->index(1,2),ui->powerLeft_2);
-    ui->carView->setIndexWidget(qryModel6->index(2,2),ui->powerLeft_3);
-    ui->carView->setIndexWidget(qryModel6->index(3,2),ui->powerLeft_4);
+    QProgressBar *powerLeft_1 = new QProgressBar(this);
+    powerLeft_1->setOrientation(Qt::Horizontal);  // 水平方向
+    powerLeft_1->setAlignment(Qt::AlignVCenter | Qt::AlignVCenter);
+    powerLeft_1->setMinimum(0);  // 最小值
+    powerLeft_1->setMaximum(100);  // 最大值
+    powerLeft_1->setValue(90);  // 当前进度
+
+    QProgressBar *powerLeft_2 = new QProgressBar(this);
+    powerLeft_2->setOrientation(Qt::Horizontal);  // 水平方向
+     powerLeft_2->setAlignment(Qt::AlignVCenter | Qt::AlignVCenter);
+    powerLeft_2->setMinimum(0);  // 最小值
+    powerLeft_2->setMaximum(100);  // 最大值
+    powerLeft_2->setValue(30);  // 当前进度
+
+//    QProgressBar *powerLeft_3 = new QProgressBar(this);
+//    powerLeft_3->setOrientation(Qt::Horizontal);  // 水平方向
+//    powerLeft_3->setAlignment(Qt::AlignVCenter);
+//    powerLeft_3->setMinimum(0);  // 最小值
+//    powerLeft_3->setMaximum(100);  // 最大值
+//    powerLeft_3->setValue(50);  // 当前进度
+
+//    QProgressBar *powerLeft_4 = new QProgressBar(this);
+//    powerLeft_4->setOrientation(Qt::Horizontal);  // 水平方向
+//    powerLeft_4->setAlignment(Qt::AlignVCenter);
+//    powerLeft_4->setMinimum(0);  // 最小值
+//    powerLeft_4->setMaximum(100);  // 最大值
+//    powerLeft_4->setValue(20);  // 当前进度
+
+
+
+
+    ui->carView->setIndexWidget(qryModel6->index(0,2),powerLeft_1);
+    ui->carView->setIndexWidget(qryModel6->index(1,2),powerLeft_2);
+    //ui->carView->setIndexWidget(qryModel6->index(2,2),powerLeft_3);
+    //ui->carView->setIndexWidget(qryModel6->index(3,2),powerLeft_4);
+
+    timercarsta = new QTimer(this);
+    timercarsta->start(3000);
+//    connect(timercarsta,&QTimer::timeout,this,[=](){
+//        if(B1_task_percent == 0)
+//        {
+
+//        }
+//        else if(B1_task_percent == 1)
+//        {
+//            QString first_car_sta = "忙碌";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 1 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        if(B2_task_percent == 0)
+//        {
+//            QString first_car_sta = "空闲";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = :state where number = 2 ");
+//            query.bindValue(":state",first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        else if(B2_task_percent == 1)
+//        {
+//            QString first_car_sta = "忙碌";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 2 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        if(D1_task_percent == 0)
+//        {
+//            QString first_car_sta = "空闲";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 3 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        else if(D1_task_percent == 1)
+//        {
+//            QString first_car_sta = "忙碌";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 3 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        if(D2_task_percent == 0)
+//        {
+//            QString first_car_sta = "空闲";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 4 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        else if(D2_task_percent == 1)
+//        {
+//            QString first_car_sta = "忙碌";
+//            QSqlQuery query;
+//            QString temp = QString("update carManager set carState = '%1' where number = 4 ").arg(first_car_sta);
+//            query.exec(temp);//执行修改信息的操作
+//        }
+//        qryModel6->query().exec();
+
+//    });
 
     ui->debug_show->setCurrentIndex(1);
 
@@ -1975,6 +2126,7 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 }
 void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int QgePointX,int QgePointY)
 {
+    qDebug()<<"任务执行";
     Task = task_info;
     Take_x = QgsPointX;
     Take_y = QgsPointY;
@@ -2064,6 +2216,7 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
     //3-将任务分配好后的字符串进行处理，分成三段，提供给下一步进行识别发送
     if(aaa == 1)//如果选择的为出库任务--（先执行1 2车的程序，也就是料箱式小车的任务）
     {
+        qDebug()<<"出库任务执行";
         //3-将任务分配好后的字符串进行处理，分成三段，提供给下一步进行识别发送
 
        double ssss = b_Dispatch_function(con_delay);//先运行一遍李伟编写的调度函数程序，获取字符串命令
@@ -2080,6 +2233,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
         AMR_B1_code = AMR_B1_ncode.split("|",QString::SkipEmptyParts);
         AMR_B1_size = AMR_B1_code.size();
         qDebug()<<"B1车";
+        QString first_car_sta = "忙碌";
+        QSqlQuery query;
+        QString temp = QString("update carManage set carState = '%1' where number = 1 ").arg(first_car_sta);
+        query.exec(temp);//执行修改信息的操作
+        qryModel6->query().exec();
         }
         else if(Path_AMR_B2.size()!=0)
         {
@@ -2087,6 +2245,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
         AMR_B2_code = AMR_B2_ncode.split("|",QString::SkipEmptyParts);
         AMR_B2_size = AMR_B2_code.size();
         qDebug()<<"B2车";
+        QString first_car_sta = "忙碌";
+        QSqlQuery query;
+        QString temp = QString("update carManage set carState = '%1' where number = 2 ").arg(first_car_sta);
+        query.exec(temp);//执行修改信息的操作
+        qryModel6->query().exec();
         }
 
        // 4-发送第一串代码，提取每一段代码的最后一个字符用于下一步终点判断，
@@ -2189,6 +2352,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
             AMR_D1_size = AMR_D1_code.size();
 
             qDebug()<<"D1车";
+            QString first_car_sta = "忙碌";
+            QSqlQuery query;
+            QString temp = QString("update carManage set carState = '%1' where number = 3 ").arg(first_car_sta);
+            query.exec(temp);//执行修改信息的操作
+            qryModel6->query().exec();
 
         }
         else if(Path_AMR_D2.size()!=0)
@@ -2197,6 +2365,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
             AMR_D2_code = AMR_D2_ncode.split("|",QString::SkipEmptyParts);
             AMR_D2_size = AMR_D2_code.size();
             qDebug()<<"D2车";
+            QString first_car_sta = "忙碌";
+            QSqlQuery query;
+            QString temp = QString("update carManage set carState = '%1' where number = 4 ").arg(first_car_sta);
+            query.exec(temp);//执行修改信息的操作
+            qryModel6->query().exec();
 
         }
 
@@ -2291,6 +2464,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
         AMR_B1_code = AMR_B1_ncode.split("|",QString::SkipEmptyParts);
         AMR_B1_size = AMR_B1_code.size();
         qDebug()<<"B1车";
+        QString first_car_sta = "忙碌";
+        QSqlQuery query;
+        QString temp = QString("update carManage set carState = '%1' where number = 1 ").arg(first_car_sta);
+        query.exec(temp);//执行修改信息的操作
+        qryModel6->query().exec();
         }
         else if(Path_AMR_B2.size()!=0)
         {
@@ -2298,6 +2476,11 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
         AMR_B2_code = AMR_B2_ncode.split("|",QString::SkipEmptyParts);
         AMR_B2_size = AMR_B2_code.size();
         qDebug()<<"B2车";
+        QString first_car_sta = "忙碌";
+        QSqlQuery query;
+        QString temp = QString("update carManage set carState = '%1' where number = 2 ").arg(first_car_sta);
+        query.exec(temp);//执行修改信息的操作
+        qryModel6->query().exec();
         }
 
        // 4-发送第一串代码，提取每一段代码的最后一个字符用于下一步终点判断，
@@ -2371,7 +2554,13 @@ void MainWindow::cfunction_string(int task_info,int QgsPointX,int QgsPointY,int 
 
 
 }
+//void MainWindow::possure(QString start,QString end)
+//{
 
+
+
+
+//}
 //下列四个槽函数为小车地图上四个小车位置更新的进程连接按钮的功能实现，点击链接，槽函数会触发相应的进程开启。
 void MainWindow::on_startButton_clicked()
 {
@@ -2379,6 +2568,16 @@ void MainWindow::on_startButton_clicked()
     amr_d_1.online_status = 1;
     ui->startButton->setEnabled(false);
     ui->stopButton->setEnabled(true);
+    setStatusLed(ui->status_1,1);
+    QString DeviceName = ui->net1_text_devnm1->text();
+    QString DeviceIp = ui->net1_text_devip1->text();
+    QString sta = "空闲";
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 1").arg(DeviceName).arg(DeviceIp);
+    QString temp1 = QString("update carManage set carID = '%1',carState = '%2' where number = 1 ").arg(DeviceName).arg(sta);
+    query.exec(temp1);//执行修改信息的操作
+    query.exec(temp);//执行修改信息的操作
+    qryModel6->query().exec();
 }
 void MainWindow::on_stopButton_clicked()
 {
@@ -2389,6 +2588,7 @@ void MainWindow::on_stopButton_clicked()
 
         ui->startButton->setEnabled(true);
         ui->stopButton->setEnabled(false);
+        setStatusLed(ui->status_1,0);
 
     }
 }
@@ -2399,6 +2599,16 @@ void MainWindow::on_startButton_2_clicked()
     //thread2.start();
     ui->startButton_2->setEnabled(false);
     ui->stopButton_2->setEnabled(true);
+    setStatusLed(ui->status_2,1);
+    QString DeviceName = ui->netDevice_2->text();
+    QString DeviceIp = ui->netIP_2->text();
+    QString sta = "空闲";
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 2").arg(DeviceName).arg(DeviceIp);
+    QString temp1 = QString("update carManage set carID = '%1',carState = '%2' where number = 2 ").arg(DeviceName).arg(sta);
+    query.exec(temp1);//执行修改信息的操作
+    query.exec(temp);//执行修改信息的操作
+    qryModel6->query().exec();
 }
 
 
@@ -2411,7 +2621,7 @@ void MainWindow::on_stopButton_2_clicked()
 
         ui->startButton_2->setEnabled(true);
         ui->stopButton_2->setEnabled(false);
-
+        setStatusLed(ui->status_2,0);
     }
 }
 
@@ -2423,6 +2633,16 @@ void MainWindow::on_startButton_3_clicked()
     //thread2.start();
     ui->startButton_3->setEnabled(false);
     ui->stopButton_3->setEnabled(true);
+    setStatusLed(ui->status_3,1);
+    QString DeviceName = ui->netDevice_3->text();
+    QString DeviceIp = ui->netIP_3->text();
+    QString sta = "空闲";
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 3").arg(DeviceName).arg(DeviceIp);
+    QString temp1 = QString("update carManage set carID = '%1',carState = '%2' where number = 3 ").arg(DeviceName).arg(sta);
+    query.exec(temp1);//执行修改信息的操作
+    query.exec(temp);//执行修改信息的操作
+    qryModel6->query().exec();
 }
 
 
@@ -2435,6 +2655,7 @@ void MainWindow::on_stopButton_3_clicked()
 
         ui->startButton_3->setEnabled(true);
         ui->stopButton_3->setEnabled(false);
+        setStatusLed(ui->status_3,0);
 
     }
 }
@@ -2442,9 +2663,18 @@ void MainWindow::on_startButton_4_clicked()
 {
     thread4.start();
     amr_s_2.online_status = 1;
-
     ui->startButton_4->setEnabled(false);
     ui->stopButton_4->setEnabled(true);
+    setStatusLed(ui->status_4,1);
+    QString DeviceName = ui->netDevice_4->text();
+    QString DeviceIp = ui->netIP_4->text();
+    QString sta = "空闲";
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 4").arg(DeviceName).arg(DeviceIp);
+    QString temp1 = QString("update carManage set carID = '%1' ,carState = '%2' where number = 4 ").arg(DeviceName).arg(sta);
+    query.exec(temp1);//执行修改信息的操作
+    query.exec(temp);//执行修改信息的操作
+    qryModel6->query().exec();
 }
 
 
@@ -2457,6 +2687,7 @@ void MainWindow::on_stopButton_4_clicked()
 
         ui->startButton_4->setEnabled(true);
         ui->stopButton_4->setEnabled(false);
+        setStatusLed(ui->status_4,0);
 
     }
 }//小车进程按钮功能结束
@@ -2464,27 +2695,27 @@ void MainWindow::on_stopButton_4_clicked()
 //为了调试便利写的手动下发指令的窗口
 void MainWindow::on_f_code_Button_clicked()//测试窗口，手动下发命令
 {
-    quint16 sendCommand = 3066;     //编号3066为指定路径导航api
-    QString sendDataStr = ui->f_code_code->toPlainText();
-    QByteArray sendData = sendDataStr.toLatin1();
-    qDebug()<<"ip: "<< sendData;
-    quint16 number = ui->f_code_num->currentIndex();
-    emit writeTcpData(sendCommand,sendData, number);
+//    quint16 sendCommand = 3066;     //编号3066为指定路径导航api
+//    QString sendDataStr = ui->f_code_code->toPlainText();
+//    QByteArray sendData = sendDataStr.toLatin1();
+//    qDebug()<<"ip: "<< sendData;
+//    quint16 number = ui->f_code_num->currentIndex();
+//    emit writeTcpData(sendCommand,sendData, number);
 
-//    QFile file("D:\\t\\dhblab_meta_socket\\storage\\devices\\unicast_.txt");
+    QFile file("D:\\t\\dhblab_meta_socket\\storage\\devices\\unicast_4.txt");
 
-//    file.open(QIODevice::WriteOnly);
-//    QString msg = ui->f_code_code->toPlainText();
-//    QString str_num = ui->f_code_num->currentText();
-//    QString code_type = ui->f_code_type->currentText();
+    file.open(QIODevice::WriteOnly);
+    QString msg = ui->f_code_code->toPlainText();
+    QString str_num = ui->f_code_num->currentText();
+    QString code_type = ui->f_code_type->currentText();
 
 
-//    file.write(str_num.toUtf8());
-//    file.write(",");
-//    file.write(code_type.toUtf8());
-//    file.write(",");
-//    file.write(msg.toUtf8());
-//    file.close();
+    file.write(str_num.toUtf8());
+    file.write(",");
+    file.write(code_type.toUtf8());
+    file.write(",");
+    file.write(msg.toUtf8());
+    file.close();
 }
 
 /*-线程2 01-02-03步在此
@@ -2957,6 +3188,8 @@ void MainWindow::updateRecord(int recNo)
                                      QMessageBox::Ok,QMessageBox::NoButton);
         else
             qryModel->query().exec();//数据模型重新查询数据，更新tableView显示
+            QString sqlStr=qryModel4->query().executedQuery();//  执行过的SELECT语句
+            qryModel4->setQuery(sqlStr);         //重新查询数据
     }
     delete dataDialog;
 
@@ -2980,7 +3213,7 @@ void MainWindow::openTable()
     qryModel7=new CustomSqlQueryModel(this);
     theSelection=new QItemSelectionModel(qryModel);
 
-    qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test LIMIT 1,11");
+    qryModel->setQuery("SELECT offerID, offerKind, offerPriority, offerState, offerProcess, offerSourse, recieveTime FROM test LIMIT 0,11");
     qryModel4->setQuery("SELECT offerID, offerState FROM test");
 
     qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
@@ -3020,6 +3253,7 @@ void MainWindow::openTable()
     ui->tableTest->setSelectionModel(theSelection);
     ui->tableTest_2->setModel(qryModel4);
     ui->carView->setModel(qryModel6);
+
     ui->offerConfirmTable->setModel(qryModel5);
     ui->diaodulist->setModel(qryModel7);
 
@@ -3047,6 +3281,8 @@ void MainWindow::on_shanchu_clicked()
         else //插入，删除记录后需要重新设置SQL语句查询
         {
             qryModel->query().exec();//数据模型重新查询数据，更新tableView显示
+            QString sqlStr=qryModel4->query().executedQuery();//  执行过的SELECT语句
+            qryModel4->setQuery(sqlStr);         //重新查询数据
         }
     }
     QString text = ui->textEdit_2->toPlainText();
@@ -3063,9 +3299,9 @@ void MainWindow::on_shanchu_clicked()
 //读取数据库任务并进行下发
 void MainWindow::task_timeinfo()
 {
-    qDebug()<<"程序成功运行一遍";
+    int task_type = -10;
     qryModel2 = new QSqlQueryModel(this);
-    qryModel2->setQuery("SELECT Task_type, SPointx, SPointy, EPointx, EPointy FROM test");
+    qryModel2->setQuery("SELECT offerKind, offerStart,offerEnd FROM test");
     if (qryModel2->lastError().isValid())
     {
         QMessageBox::information(this, "错误", "数据表查询错误,错误信息\n"+qryModel2->lastError().text(),
@@ -3077,20 +3313,57 @@ void MainWindow::task_timeinfo()
 //    {
 //        task_num += 1;
 //    }
-    //qDebug()<<"任务序号："<<curent;
+   // qDebug()<<"任务行数："<<qryModel2->rowCount();
    if(curent<qryModel2->rowCount() && (D1_task_percent == 0||D2_task_percent == 0)&&(B1_task_percent == 0||B2_task_percent == 0))
    {
        QSqlRecord conData = qryModel2->record(curent); //获取当前记录
-       int tk_type  = conData.value("Task_type").toInt();
-       int stPointx = conData.value("SPointx").toInt();//获取坐标
-       int stPointy = conData.value("SPointy").toInt();//获取坐标
-       int etPointx = conData.value("EPointx").toInt();//获取坐标
-       int etPointy = conData.value("EPointy").toInt();//获取坐标
-       cfunction_string(tk_type,stPointx,stPointy,etPointx,etPointy);
+
+
+       QString tk_type  = conData.value("offerKind").toString();
+
+       if(tk_type == "出库")
+           {
+           task_type = 1;
+       }
+       else if(tk_type == "入库")
+           {
+           task_type = 2;
+       }
+       else if("移库")
+       {
+           task_type = 3;
+       }
+       else
+       {
+           task_type = 0;
+       }
+       //获得起始点和终点
+       QString stPoint = conData.value("offerStart").toString();
+       QString etPoint = conData.value("offerEnd").toString();
+       qDebug()<<"dd"<<stPoint<<etPoint;
+
+       QSqlQuery query; //查询出当前记录的所有字段
+       query.prepare("select * from change where zuobiao = :zuo");
+       query.bindValue(":zuo",stPoint);
+       query.exec();
+       query.first();
+       QSqlRecord Zuobiao = query.record();//获取对应坐标的记录
+
+       int stPointx = Zuobiao.value("stx").toInt();//获取坐标
+       int stPointy = Zuobiao.value("sty").toInt();//获取坐标
+
+       query.prepare("select * from change where zuobiao = :zuo");
+       query.bindValue(":zuo",etPoint);
+       query.exec();
+       query.first();
+       Zuobiao = query.record();//获取对应坐标的记录
+
+       int etPointx = Zuobiao.value("stx").toInt();;//获取坐标
+       int etPointy = Zuobiao.value("sty").toInt();;//获取坐标
+       qDebug()<<"任务信息："<<tk_type<<stPointx<<stPointy<<etPointx<<etPointy;
+       cfunction_string(task_type,stPointx,stPointy,etPointx,etPointy);
        curent++;
    }
-
-
 }
 
 
@@ -3193,27 +3466,30 @@ void MainWindow::on_newOk_clicked()
     //获取新建任务的具体信息
     QSqlRecord  recData = getRecordData(query);
     QString taskkind = ui->newOfferKind->currentText();
-    if(taskkind == "入库")
-    {
-        taskbnum += 1;
-        QString btk = tr("B-230201-00000%1").arg(taskbnum);
-        recData.setValue("offerID",btk);
-    }
-    else if(taskkind == "出库")
-    {
-        taskanum += 1;
-        QString atk = tr("A-230201-00000%1").arg(taskanum);
-        recData.setValue("offerID",atk);
-    }
-    else if(taskkind == "移库")
-    {
-        taskcnum += 1;
-        QString ctk = tr("C-230201-00000%1").arg(taskcnum);
-        recData.setValue("offerID",ctk);
-    }
+    char kind = 'E';
+     QString date = DATE.mid(2,2)+DATE.mid(5,2)+DATE.mid(8,2);
+
+     if(taskkind == "入库")
+     {
+         kind = 'B';
+     }
+     else if(taskkind == "出库")
+     {
+          kind = 'A';
+     }
+     else if(taskkind == "移库")
+     {
+          kind = 'C';
+     }
+
+     offerNUM++;
+
+     //组合任务ID再写进数据库
+     QString offerid = QString("%1-%2-%3").arg(kind).arg(date).arg(offerNUM);
+     recData.setValue("offerID",offerid);
 
 
-    qDebug()<<"任务类型："<<ui->newOfferKind->currentText()<<"任务起点:"<<ui->newOfferStart->currentText()<<"起点层高："<<ui->newstartHigh->currentText();
+   // qDebug()<<"任务类型："<<ui->newOfferKind->currentText()<<"任务起点:"<<ui->newOfferStart->currentText()<<"起点层高："<<ui->newstartHigh->currentText();
 
     //新建query对象以实现插入记录操作
     query.prepare("INSERT INTO test (offerID, offerState, offerProcess, offerSourse, recieveTime, offerKind, offerStart, startHigh, offerEnd, endHigh, offerPriority) "
@@ -3223,7 +3499,7 @@ void MainWindow::on_newOk_clicked()
     query.bindValue(":offerState","待执行");
     query.bindValue(":offerProcess", 0);
     query.bindValue(":offerSourse", "TSX");
-    query.bindValue(":recieveTime", "22:14:20");
+    query.bindValue(":recieveTime", TIME);
     query.bindValue(":offerKind",recData.value("offerKind"));
     query.bindValue(":offerStart",recData.value("offerStart"));
     query.bindValue(":startHigh",recData.value("startHigh"));
@@ -3241,6 +3517,8 @@ void MainWindow::on_newOk_clicked()
         //此处要重新执行查询语句，不然显示的最大行数会被限制
         QString sqlStr=qryModel->query().executedQuery();//  执行过的SELECT语句
         qryModel->setQuery(sqlStr);         //重新查询数据
+        sqlStr=qryModel4->query().executedQuery();//  执行过的SELECT语句
+        qryModel4->setQuery(sqlStr);         //重新查询数据
     }
 }
 
@@ -3280,7 +3558,7 @@ void MainWindow::on_rejectOffer_clicked()
 void MainWindow::on_acceptOffer_clicked()
 {
      QSqlQuery query;
-     query.exec("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+     query.exec("SELECT offerStart, offerEnd, offerPriority, recieveTime, offerKind FROM offerConfirm LIMIT 0,1");
      //需要特别注意，刚执行完query.exec()这个函数时得到结果集，query是指向结果集以外的,此处要用next函数
      query.next();
      if (!query.isValid()) //是否为有效记录
@@ -3288,17 +3566,41 @@ void MainWindow::on_acceptOffer_clicked()
          qDebug()<<"error!";
          return;
      }
+
+
      //QSqlRecord  recData = qryModel5->record(0);
      QSqlRecord  recData = query.record();
+
+     QString taskkind = recData.value("offerkind").toString();
+     char kind = 'E';
+      QString date = DATE.mid(2,2)+DATE.mid(5,2)+DATE.mid(8,2);
+
+      if(taskkind == "入库")
+      {
+          kind = 'B';
+      }
+      else if(taskkind == "出库")
+      {
+          kind = 'A';
+      }
+      else if(taskkind == "移库")
+      {
+          kind = 'C';
+      }
+
+      offerNUM++;
+
+      //组合任务ID再写进数据库
+      QString offerid = QString("%1-%2-%3").arg(kind).arg(date).arg(offerNUM);
      query.prepare("INSERT INTO test (offerID, offerState, offerProcess, offerSourse, recieveTime, offerKind, offerStart, startHigh, offerEnd, endHigh, offerPriority) "
                    "VALUES(:offerID, :offerState, :offerProcess, :offerSourse, :recieveTime, :offerKind, :offerStart, :startHigh, :offerEnd, :endHigh, :offerPriority)");
      //绑定对应的值
-     query.bindValue(":offerID","100");
+     query.bindValue(":offerID",offerid);
      query.bindValue(":offerState","待执行");
      query.bindValue(":offerProcess", 0);
      query.bindValue(":offerSourse", "TSX");
-     query.bindValue(":recieveTime", recData.value("recieveTime"));
-     query.bindValue(":offerKind","出库");
+     query.bindValue(":recieveTime", TIME);
+     query.bindValue(":offerKind",recData.value("offerKind"));
      query.bindValue(":offerStart",recData.value("offerStart"));
      query.bindValue(":startHigh",0);
      query.bindValue(":offerEnd",recData.value("offerEnd"));
@@ -3310,9 +3612,13 @@ void MainWindow::on_acceptOffer_clicked()
      else //插入，删除记录后需要重新设置SQL语句查询
      {
          query.exec("delete from offerConfirm where offerID = (select offerID from offerConfirm limit 0,1)");
-         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm");
+         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime, offerKind FROM offerConfirm");
          ui->offerNum->setText(QString::number(qryModel5->rowCount()));
-         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime FROM offerConfirm LIMIT 0,1");
+         qryModel5->setQuery("SELECT offerStart, offerEnd, offerPriority, recieveTime, offerKind FROM offerConfirm LIMIT 0,1");
+         QString sqlStr=qryModel->query().executedQuery();//  执行过的SELECT语句
+         qryModel->setQuery(sqlStr);         //重新查询数据
+         sqlStr=qryModel4->query().executedQuery();//  执行过的SELECT语句
+         qryModel4->setQuery(sqlStr);         //重新查询数据
      }
 
 }
@@ -3985,4 +4291,233 @@ void MainWindow::on_starttBtn_clicked()
 void MainWindow::on_starttBtn_2_clicked()
 {
        timer4->stop();
+}
+
+
+void MainWindow::on_delete_8_clicked()
+{
+
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 5");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_8->setText("");
+    ui->netIP_8->setText("");
+}
+
+void MainWindow::on_startButton_8_clicked()
+{
+    ui->startButton_8->setEnabled(false);
+    ui->stopButton_8->setEnabled(true);
+    setStatusLed(ui->status_5,1);
+    QString DeviceName = ui->netDevice_8->text();
+    QString DeviceIp = ui->netIP_8->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 5").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_2_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 2");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_2->setText("");
+    ui->netIP_2->setText("");
+}
+
+void MainWindow::on_delete_1_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 1");
+    query.exec(temp);//执行修改信息的操作
+    ui->net1_text_devnm1->setText("");
+    ui->net1_text_devip1->setText("");
+}
+
+void MainWindow::on_delete_3_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 3");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_3->setText("");
+    ui->netIP_3->setText("");
+}
+
+void MainWindow::on_delete_4_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 4");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_4->setText("");
+    ui->netIP_4->setText("");
+}
+
+void MainWindow::on_startButton_9_clicked()
+{
+    ui->startButton_9->setEnabled(false);
+    ui->stopButton_9->setEnabled(true);
+    setStatusLed(ui->status_6,1);
+    QString DeviceName = ui->netDevice_9->text();
+    QString DeviceIp = ui->netIP_9->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 6").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_9_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 6");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_9->setText("");
+    ui->netIP_9->setText("");
+}
+
+void MainWindow::on_startButton_7_clicked()
+{
+    ui->startButton_7->setEnabled(false);
+    ui->stopButton_7->setEnabled(true);
+    setStatusLed(ui->status_8,1);
+    QString DeviceName = ui->netDevice_7->text();
+    QString DeviceIp = ui->netIP_7->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 8").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_7_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 8");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_7->setText("");
+    ui->netIP_7->setText("");
+}
+
+void MainWindow::on_startButton_13_clicked()
+{
+    ui->startButton_13->setEnabled(false);
+    ui->stopButton_13->setEnabled(true);
+    setStatusLed(ui->status_9,1);
+    QString DeviceName = ui->netDevice_13->text();
+    QString DeviceIp = ui->netIP_13->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 9").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_13_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 9");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_13->setText("");
+    ui->netIP_13->setText("");
+}
+
+void MainWindow::on_startButton_12_clicked()
+{
+    ui->startButton_12->setEnabled(false);
+    ui->stopButton_12->setEnabled(true);
+    setStatusLed(ui->status_10,1);
+    QString DeviceName = ui->netDevice_12->text();
+    QString DeviceIp = ui->netIP_12->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 10").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_12_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 10");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_12->setText("");
+    ui->netIP_12->setText("");
+}
+
+void MainWindow::on_startButton_14_clicked()
+{
+    ui->startButton_14->setEnabled(false);
+    ui->stopButton_14->setEnabled(true);
+    setStatusLed(ui->status_11,1);
+    QString DeviceName = ui->netDevice_14->text();
+    QString DeviceIp = ui->netIP_14->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 11").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_14_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 11");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_14->setText("");
+    ui->netIP_14->setText("");
+}
+
+void MainWindow::on_startButton_11_clicked()
+{
+    ui->startButton_11->setEnabled(false);
+    ui->stopButton_11->setEnabled(true);
+    setStatusLed(ui->status_12,1);
+    QString DeviceName = ui->netDevice_11->text();
+    QString DeviceIp = ui->netIP_11->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 12").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
+}
+
+void MainWindow::on_delete_11_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 12");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_11->setText("");
+    ui->netIP_11->setText("");
+}
+
+void MainWindow::on_delete_10_clicked()
+{
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 12");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_10->setText("");
+    ui->netIP_10->setText("");
+}
+
+void MainWindow::on_stopButton_8_clicked()
+{
+    setStatusLed(ui->status_5,0);
+}
+
+void MainWindow::on_stopButton_9_clicked()
+{
+    setStatusLed(ui->status_6,0);
+}
+
+void MainWindow::on_stopButton_7_clicked()
+{
+    setStatusLed(ui->status_8,0);
+}
+
+void MainWindow::on_stopButton_13_clicked()
+{
+    setStatusLed(ui->status_9,0);
+}
+
+void MainWindow::on_stopButton_12_clicked()
+{
+    setStatusLed(ui->status_10,0);
+}
+
+void MainWindow::on_stopButton_14_clicked()
+{
+    setStatusLed(ui->status_11,0);
+}
+
+void MainWindow::on_stopButton_11_clicked()
+{
+    setStatusLed(ui->status_12,0);
 }

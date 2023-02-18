@@ -122,24 +122,38 @@ void MainWindow::connect_test()
 //上线按钮，连接两个端口
 void MainWindow::on_startButton_10_clicked()
 {
-    QString ip = "192.168.3.120";  //网络页面输入ip地址
-    unsigned short port = 19206;    //发送指令端口
-    emit startConnectSend(port,ip);
-    recv_task.start();
-    ui->startButton_10->setDisabled(true);
-    ui->stopButton_10->setDisabled(false);
-    setStatusLed(ui->status_10,1);
+//    QString ip = "192.168.3.120";  //网络页面输入ip地址
+//    unsigned short port = 19206;    //发送指令端口
+//    emit startConnectSend(port,ip);
+//    recv_task.start();
+//    ui->startButton_10->setDisabled(true);
+//    ui->stopButton_10->setDisabled(false);
+//    setStatusLed(ui->status_10,1);
+    ui->startButton_10->setEnabled(false);
+    ui->stopButton_10->setEnabled(true);
+    setStatusLed(ui->status_7,1);
+    QString DeviceName = ui->netDevice_10->text();
+    QString DeviceIp = ui->netIP_10->text();
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '%1' , devIp = '%2' where number = 7").arg(DeviceName).arg(DeviceIp);
+    query.exec(temp);//执行修改信息的操作
 }
 
 //下线按钮，解除连接
 void MainWindow::on_stopButton_10_clicked()
 {
-    recv_task.stopThread();//结束线程的run()函数执行
-    recv_task.wait();//
-    emit disconnect();
-    ui->startButton_10->setDisabled(false);
-    ui->stopButton_10->setDisabled(true);
-    setStatusLed(ui->status_10,0);
+//    recv_task.stopThread();//结束线程的run()函数执行
+//    recv_task.wait();//
+//    emit disconnect();
+//    ui->startButton_10->setDisabled(false);
+//    ui->stopButton_10->setDisabled(true);
+//    setStatusLed(ui->status_10,0);
+    QSqlQuery query;
+    QString temp = QString("update devcon set devName = '' , devIp = '' where number = 7");
+    query.exec(temp);//执行修改信息的操作
+    ui->netDevice_10->setText("");
+    ui->netIP_10->setText("");
+    setStatusLed(ui->status_7,0);
 }
 
 void MainWindow::getCarData(double x,double y,double angle)

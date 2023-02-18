@@ -49,7 +49,7 @@ void DRAWmap::paintEvent(QPaintEvent* event)
      m_painter->drawText(QRect(45,map_w-780,120,100),"充电位");
      m_painter->drawText(QRect(600,map_w-715,120,100),"充电位");
 
-     /*m_painter->drawText(QRect(50,map_w-750,120,20),"u1");
+     m_painter->drawText(QRect(50,map_w-750,120,20),"u1");
      m_painter->drawText(QRect(50,map_w-494,120,20),"t1");
      m_painter->drawText(QRect(50,map_w-388,120,20),"a1");
 
@@ -87,7 +87,7 @@ void DRAWmap::paintEvent(QPaintEvent* event)
      m_painter->drawText(QRect(470,map_w-305,120,20),"s1");
      m_painter->drawText(QRect(603,map_w-305,120,20),"s2");
      m_painter->drawText(QRect(470,map_w-132,120,20),"s3");
-     m_painter->drawText(QRect(603,map_w-132,120,20),"s4");*/
+     m_painter->drawText(QRect(603,map_w-132,120,20),"s4");
 
      QFont font2;//
      font2.setFamily("Times New Roman");
